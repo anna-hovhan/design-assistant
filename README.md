@@ -19,5 +19,17 @@ In Claude Code: `/placeholder "Visa: The future of brand"`.
 The label comes from the name: a short prefix before a colon (`ASICS: ...` gives ASICS), else a leading acronym (`ML ...` gives ML),
 else the initials of the first two main words. `--label` overrides it. PNG output needs `npx playwright install chromium`.
 
+## Claude Code commands
+
+| Command | Produces |
+| --- | --- |
+| `/placeholder "<name>"` | Named gradient cover image (SVG/PNG) |
+| `/architecture-diagram "<system>"` | Conceptual architecture diagram (SVG) |
+| `/explainer "<idea>"` | Explainer page, slides or poster (HTML) |
+| `/one-pager "<subject>"` | Print-ready one-page brief (HTML + PDF) |
+| `/visual-brief "<content>"` | Recommends which of the above fits |
+
+All of them follow the visual language in `docs/brand.md` and write to `out/`.
+
 ## Adding a generator
 See `AGENTS.md`.
