@@ -1,0 +1,28 @@
+{
+  "eyebrow": "Architecture, five-layer stack",
+  "layers": [
+    { "label": "Layer 1: User interface", "tone": "neutral", "width": 0.6,
+      "components": [{ "title": "Streamlit web interface", "lines": ["Unified UI: Chat · Research · Translation · Summarisation"] }] },
+    { "label": "Layer 2: API and auth", "tone": "peri",
+      "components": [
+        { "title": "FastAPI backend", "lines": ["JWT auth (RS256) · Session mgmt · Workflow routing · Audit logging"], "weight": 3 },
+        { "title": "AWS Cognito", "lines": ["MFA · RBAC"], "weight": 1 }] },
+    { "label": "Layer 3: AI orchestration", "tone": "dream",
+      "components": [
+        { "title": "Hybrid router", "lines": ["Claude 3.5 Haiku", "Rule-based + LLM classifier", "temp=0.1 · confidence score"] },
+        { "title": "RAG pipeline", "lines": ["Bedrock KB retrieval + Claude 3.7 Sonnet generation"] },
+        { "title": "Direct LLM", "lines": ["Claude 3.7 Sonnet"], "tone": "blush", "weight": 0.8 },
+        { "title": "Response generation", "lines": ["Numbered citations · routing decision + confidence score", "every decision transparent"] }] },
+    { "label": "Layer 4: Infrastructure (Terraform IaC)", "tone": "neutral",
+      "components": [
+        { "title": "S3 + KMS", "lines": ["Dept-based RBAC", "PII auto-purge 7d"], "tone": "butter" },
+        { "title": "RDS PostgreSQL", "lines": ["Users · sessions", "Conversations · audit"], "tone": "peri" },
+        { "title": "ECS / Fargate", "lines": ["Auto-scaling", "VPC + ALB + SSL"], "tone": "aqua" },
+        { "title": "CI/CD pipeline", "lines": ["GitHub Actions", "80% doc coverage gate"], "tone": "blush" }] },
+    { "label": "Layer 5: Observability and evaluation", "tone": "aqua",
+      "components": [
+        { "title": "MLFlow", "lines": ["Experiment tracking", "Model cards · metrics"] },
+        { "title": "Grafana", "lines": ["Real-time perf dashboards", "Quality drift detection"] },
+        { "title": "Arize Phoenix", "lines": ["LLM output eval (AI-as-judge)", "Faithfulness · cost · latency"] }] }
+  ]
+}

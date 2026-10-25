@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collection Page Styles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Design styles of the Collection page (src/pages/CollectionDetail.tsx), taken from src/index.css and the page's classes.
+   Light only, like the site. Values are the site's HSL tokens as hex. */
+:root{
+  --bg:#f4f6fb; --fg:#0b1132; --ink2:#3e4770; --muted:#7b82a3; --border:#d4d8ed;
+  --primary:#2e3cff; --dream:#8271c6; --peri:#99a5ff; --blush:#ffb2cf; --butter:#ffe7a3; --aqua:#60e7f0;
+  --display:'Syne',sans-serif; --body:'Manrope',sans-serif; --mono:'JetBrains Mono',monospace; --serif:'Instrument Serif',serif;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;font-family:var(--body);color:var(--fg);line-height:1.6;
+  background:
+   radial-gradient(900px 800px at -12% 12%,rgba(153,165,255,.42),transparent 60%),
+   radial-gradient(900px 700px at 100% 4%,rgba(255,178,207,.35),transparent 60%),
+   radial-gradient(900px 800px at 30% 78%,rgba(255,231,163,.32),transparent 60%),var(--bg);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:48px 72px}
+.wrap{max-width:1160px;margin:0 auto;display:grid;gap:56px}
+h1,h2,h3,h4{font-family:var(--display);margin:0;letter-spacing:-.03em;text-wrap:balance}
+.accent{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0;color:var(--dream);padding-right:.08em}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font:500 12px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.label-line{display:inline-block;width:44px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--aqua),var(--primary),var(--blush))}
+.glass{background:rgba(255,255,255,.52);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);border:1px solid rgba(255,255,255,.9);box-shadow:0 24px 60px -24px rgba(46,60,255,.22),inset 0 1px 0 rgba(255,255,255,.9)}
+.mono{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+section{display:grid;gap:20px}
+section>h2{font-size:clamp(26px,3.4vw,40px);font-weight:700}
+.grid{display:grid;gap:14px}
+.sw{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.chip{border-radius:22px;overflow:hidden}
+.chip i{display:block;height:84px}
+.chip div{padding:12px 14px}
+.chip b{display:block;font-size:14px}
+.chip span{font:400 12px var(--mono);color:var(--ink2)}
+.t{padding:22px 26px;display:grid;gap:14px;border-radius:26px}
+.t .row{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline}
+.t .row>span{font:400 12px var(--mono);color:var(--muted)}
+.cols{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{border-radius:26px;padding:22px 24px}
+.tag{display:inline-block;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.75);font-size:12px;font-weight:600;color:var(--ink2)}
+.pills{display:flex;gap:8px;padding:8px;border-radius:99px;overflow-x:auto;width:fit-content;max-width:100%}
+.pills a{flex:0 0 auto;padding:10px 18px;border-radius:99px;font-size:14px;font-weight:600;color:var(--ink2);display:flex;gap:10px}
+.pills a span{font:500 11px var(--mono);opacity:.7}
+.pills a.on{background:var(--primary);color:#fff}
+.stat{border-radius:22px;padding:18px 20px}
+.stat b{display:block;font:700 38px/1 var(--display);letter-spacing:-.04em}
+.stat span{font-size:12.5px;color:var(--muted)}
+.step{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:15px;color:var(--ink2)}
+.step i{width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font:500 12px var(--mono);font-style:normal}
+.metric{display:flex;gap:16px;align-items:center;border-radius:22px;padding:18px 24px;width:fit-content}
+.metric b{font:700 40px/1 var(--display);letter-spacing:-.04em;color:var(--primary)}
+.metric span{font-size:13px;line-height:1.35;color:var(--ink2)}
+.grad{height:110px;border-radius:26px}
+.radii{display:flex;gap:16px;flex-wrap:wrap;align-items:end}
+.radii div{background:rgba(255,255,255,.7);border:1px solid var(--border);display:grid;place-items:center;font:400 12px var(--mono);color:var(--ink2);width:130px;height:90px}
+@media(max-width:640px){.t .row{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <span class="eyebrow"><i class="label-line"></i>Collection page · design styles</span>
+    <h1 style="font-size:clamp(44px,8vw,96px);font-weight:800;letter-spacing:-.045em;line-height:.94;margin-top:18px">Collection <span class="accent">styles</span></h1>
+    <p style="max-width:62ch;color:var(--ink2);font-size:18px;margin:20px 0 0">Colours, type, surfaces and components used on the Collection page. The italic accent word is always Instrument Serif in purple.</p>
+  </header>
+
+  <section>
+    <h2>Colour</h2>
+    <div class="grid sw">
+      <div class="glass chip"><i style="background:#f4f6fb;border-bottom:1px solid var(--border)"></i><div><b>Background</b><span>#f4f6fb</span></div></div>
+      <div class="glass chip"><i style="background:#0b1132"></i><div><b>Foreground</b><span>#0b1132</span></div></div>
+      <div class="glass chip"><i style="background:#2e3cff"></i><div><b>Primary</b><span>#2e3cff</span></div></div>
+      <div class="glass chip"><i style="background:#8271c6"></i><div><b>Dream (accent)</b><span>#8271c6</span></div></div>
+      <div class="glass chip"><i style="background:#3e4770"></i><div><b>Ink 2 (body)</b><span>#3e4770</span></div></div>
+      <div class="glass chip"><i style="background:#7b82a3"></i><div><b>Muted</b><span>#7b82a3</span></div></div>
+      <div class="glass chip"><i style="background:#d4d8ed"></i><div><b>Border</b><span>#d4d8ed</span></div></div>
+      <div class="glass chip"><i style="background:#99a5ff"></i><div><b>Periwinkle</b><span>#99a5ff</span></div></div>
+      <div class="glass chip"><i style="background:#ffb2cf"></i><div><b>Blush</b><span>#ffb2cf</span></div></div>
+      <div class="glass chip"><i style="background:#ffe7a3"></i><div><b>Butter</b><span>#ffe7a3</span></div></div>
+      <div class="glass chip"><i style="background:#60e7f0"></i><div><b>Aqua</b><span>#60e7f0</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Gradients</h2>
+    <div class="grid cols">
+      <div><div class="grad" style="background:linear-gradient(135deg,#99a5ff,#ffb2cf)"></div><p class="mono" style="margin:8px 0 0">Periwinkle → blush</p></div>
+      <div><div class="grad" style="background:linear-gradient(135deg,#ffe7a3,#99a5ff)"></div><p class="mono" style="margin:8px 0 0">Butter → periwinkle</p></div>
+      <div><div class="grad" style="background:linear-gradient(135deg,#ffb2cf,#ffe7a3)"></div><p class="mono" style="margin:8px 0 0">Blush → butter</p></div>
+      <div><div class="grad" style="background:linear-gradient(135deg,#99a5ff,#ffe7a3)"></div><p class="mono" style="margin:8px 0 0">Periwinkle → butter</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Type</h2>
+    <div class="glass t">
+      <div class="row"><span>Syne 800 · 96px · −0.045em</span><div style="font:800 clamp(40px,7vw,96px)/.94 var(--display);letter-spacing:-.045em">AI workflow <span class="accent">automation</span></div></div>
+      <div class="row"><span>Syne 700 · 40px · −0.03em</span><div style="font:700 40px/1.05 var(--display);letter-spacing:-.03em">At a glance</div></div>
+      <div class="row"><span>Syne 700 · 21px</span><div style="font:700 21px/1.15 var(--display)">Project title</div></div>
+      <div class="row"><span>Instrument Serif italic · accent</span><div class="accent" style="font-size:44px;line-height:1">automation</div></div>
+      <div class="row"><span>Manrope 400 · 16.5px / 1.6</span><div style="font-size:16.5px;color:var(--ink2);max-width:56ch">Every inbound lead is scored, enriched and assigned before anyone opens the inbox.</div></div>
+      <div class="row"><span>JetBrains Mono · 11px · +0.14em</span><div class="mono">The problem</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Surfaces</h2>
+    <div class="grid cols">
+      <div class="glass card"><h3 style="font-size:19px">Glass card</h3><p style="margin:8px 0 0;color:var(--ink2);font-size:14px">White at 52%, blur 22px, 1px white border, soft blue shadow, inset highlight.</p></div>
+      <div class="card" style="background:#e6e9f4"><h3 style="font-size:19px">Muted fill</h3><p style="margin:8px 0 0;color:var(--ink2);font-size:14px">Image placeholders and quiet areas.</p></div>
+    </div>
+    <div class="radii">
+      <div style="border-radius:32px">32px · media</div>
+      <div style="border-radius:26px">26px · cards</div>
+      <div style="border-radius:22px">22px · stats</div>
+      <div style="border-radius:99px">pill</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Components</h2>
+    <span class="eyebrow"><i class="label-line"></i>Collection · 4 projects</span>
+    <div class="glass pills"><a class="on"><span>01</span>Lead router</a><a><span>02</span>Invoice agent</a><a><span>03</span>Support triage</a></div>
+    <div class="grid cols">
+      <div class="glass stat"><b>26</b><span>commands</span></div>
+      <div class="glass metric"><b>3 min</b><span>median first response<br>down from 4 hours</span></div>
+      <div class="glass card" style="display:grid;gap:12px">
+        <span class="mono">The system</span>
+        <div class="step"><i>1</i><span><b style="color:var(--fg)">Gather.</b> Pull the sources.</span></div>
+        <div class="step"><i>2</i><span><b style="color:var(--fg)">Board.</b> Lay out the synthesis.</span></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag">Claude Code</span><span class="tag">MCP</span><span class="tag">Agents</span></div>
+  </section>
+</main>
+</body>
+</html>
