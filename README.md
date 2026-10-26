@@ -5,7 +5,7 @@ My personal design assistant. It generates visual assets from the command line o
 ## What it does
 One line in, one on-brand asset out. Five commands share one set of brand rules (`docs/brand.md`): code generators draw the repeatable shapes, and Claude draws the rest to the same rules.
 
-[![design-assistant explainer: the five commands, who draws what, and a /placeholder example](docs/design-assistant-explainer.png)](docs/design-assistant-explainer.html)
+[![design-assistant at a glance: the problem, the five commands and who draws what, three steps, and a /placeholder example](docs/design-assistant-explainer.png)](docs/design-assistant-explainer.html)
 
 Open [`docs/design-assistant-explainer.html`](docs/design-assistant-explainer.html) in a browser for the full page.
 
