@@ -37,6 +37,10 @@ npm run design -- architecture my-spec.json diagram.png --theme=dark
 In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram five-layer-stack --theme=dark`. The command uses this generator for stacked layers and draws flow and context diagrams by hand. Spec shape and examples: `templates/architecture/`.
 After changing fonts, run `npm run build:fonts` to regenerate `src/generators/architecture/fontdata.ts`.
 
+### waves
+Silk ribbon wave backgrounds (portfolio, reference and twin variants) from `templates/waves/`.
+In Claude Code: `/waves portfolio --png` for a one-screen background, `/waves-tile 9000` for a version that tiles down a long page.
+
 ## Templates
 `templates/architecture/` holds architecture specs. `templates/pages/` holds the Collection page design mock and its style sheet from the portfolio, as standalone HTML.
 
