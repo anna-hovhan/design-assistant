@@ -45,3 +45,6 @@ See `ROADMAP.md` for the commands and skills to add next.
 
 ## Adding a generator
 See `AGENTS.md`.
+
+## Reference templates
+`templates/concepts/three-column-flow.html` is a generic conceptual-diagram layout (two sources, one combined result, a loop line and a numbered setup row). Copy it and replace the `[BRACKETED]` text to make an explainer, one-pager hero or concept diagram.
