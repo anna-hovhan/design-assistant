@@ -48,3 +48,4 @@ See `AGENTS.md`.
 
 ## Reference templates
 `templates/concepts/three-column-flow.html` is a generic conceptual-diagram layout (two sources, one combined result, a loop line and a numbered setup row). Copy it and replace the `[BRACKETED]` text to make an explainer, one-pager hero or concept diagram.
+`templates/mermaid/` holds generic Mermaid sources: `layered-system-map.mmd` (inputs, engine, outputs and promotion layers) and `dependency-chain.mmd` (a "depends on" chain row). Render with `npx -p @mermaid-js/mermaid-cli mmdc -i <file>.mmd -o out/<name>.svg`.
