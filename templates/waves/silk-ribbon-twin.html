@@ -84,7 +84,7 @@ let ref=false;function ribbon(opts){
     let d="";
     for(let y=-40;y<=H+40;y+=16){
       // gentle per-strand drift so lines cross softly, like silk folding
-      const twist=Math.sin(y/330+i*0.035)*10*f;
+      const twist=Math.sin(y/330+i*0.035)*16*f;
       const x=edge(y)+spread(y)*f+twist;
       d+=(d?" L":"M")+x.toFixed(1)+" "+y;
     }
@@ -109,15 +109,14 @@ function build(kind){
   ref=document.documentElement.dataset.mode==="reference";
   const col=ref?whiteish:tinted;
   // main ribbon: enters top right, sweeps left through the page, folds back right
-  const edge=curve([[ -40,880],[300,850],[620,700],[900,520],[1150,640],[1500,300],[1850,520],[2200,330],[2440,420]]);
-  const spread=y=>{ // tight at the folds, wide where the fan opens
-    const s=curve([[ -40,160],[300,200],[620,520],[900,170],[1150,560],[1500,190],[1850,600],[2200,230],[2440,330]]);
-    return s(y)*1.0;
-  };
-  svg.appendChild(ribbon({edge,spread,n:120,power:1.35,color:col,w:ref?0.9:0.8}));
+  // Smooth periodic fold: sums of sines have no joints, so no corners or flat runs.
+  const T=Math.PI*2/1300;
+  const edge=y=>715+187*Math.sin(y*T)+49*Math.sin(2*y*T+1.2);
+  const spread=y=>360+167*Math.sin(y*T+2.4)+42*Math.sin(2*y*T+0.4);
+  svg.appendChild(ribbon({edge,spread,n:150,power:1.35,color:col,w:ref?0.9:0.8}));
   if(kind==="twin"){
-    const e2=curve([[-40,-80],[400,120],[800,-30],[1300,160],[1800,20],[2440,170]]);
-    const s2=curve([[-40,60],[800,150],[1300,50],[1800,180],[2440,70]]);
+    const e2=y=>-60+90*Math.sin(y*T*1.5+0.8)+40*Math.sin(y*T*0.5);
+    const s2=y=>110+60*Math.sin(y*T*1.5+2.0);
     svg.appendChild(ribbon({edge:e2,spread:s2,n:90,power:1.6,color:col,w:.9}));
   }
 }

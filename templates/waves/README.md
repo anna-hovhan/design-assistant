@@ -8,4 +8,4 @@ Three variants of one background: a single ribbon of ~120 hairline strands, tigh
 | `silk-ribbon-reference.html` | Reference art colours: white strands on a navy to pink gradient |
 | `silk-ribbon-twin.html` | Portfolio colours plus a second, lighter ribbon on the left |
 
-Tuning (in the script): fold positions are the `curve([...])` control points (`[y, x]`), fan width is the spread curve, `n` is the strand count and `power` how tightly strands pack at the fold. To tile it down a long page, repeat the curves with matching end points, as the portfolio's `HomepageWaves` does.
+Tuning (in the script): fold position is the `edge` function and fan width the `spread` function (sums of sines, so the curves stay smooth with no corners), `n` is the strand count and `power` how tightly strands pack at the fold. To tile it down a long page, the sine form already repeats every `H` units; repeat it as the portfolio's `HomepageWaves` does.
