@@ -48,3 +48,5 @@ See `AGENTS.md`.
 
 ## Reference templates
 `templates/concepts/three-column-flow.html` is a generic conceptual-diagram layout (two sources, one combined result, a loop line and a numbered setup row). Copy it and replace the `[BRACKETED]` text to make an explainer, one-pager hero or concept diagram.
+
+`templates/concepts/hub-loop-flow.html` is a landscape (16:9) hub-and-loop explainer: a source panel, a hub inside a circular loop ring (sticky notes, an AI workflow row and a kanban), and a target panel with a return arrow, plus a row of command tiles. It scales to any viewport and has light and dark themes. Copy it and replace the `[BRACKETED]` text.

@@ -1,0 +1,307 @@
+<!--
+  REFERENCE TEMPLATE: landscape hub-and-loop explainer (one 1600x900 slide).
+  Pattern: [Source A] -> [Hub] (inside a circular loop ring) -> [Target], with a dashed return arrow from Target to Hub.
+    Hub holds three zones: sticky notes, an AI workflow row, and a three-column kanban.
+    Source A shows chat-style messages; Target shows tracker-style issues. Bottom row: three commands and one side note.
+  Replace every [BRACKETED] value. Keep copy short: titles 2-4 words, details under 12 words.
+  Colour classes on avatars and stickies (c-maya, c-dev, c-priya, c-leo) keep one colour per author: reuse the same class in both places.
+  Issue type classes: bug, task, story. Status classes: st, st prog. The yellow AI node is .node.claude.
+  Palette and type follow docs/brand.md. Light and dark themes are built in. The script at the bottom scales the slide to fit any viewport.
+-->
+<title>Template: hub loop flow</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* Tokens from docs/brand.md. Slide is 1600x900, scaled to the viewport by the script at the bottom. */
+:root{
+  --bg:#f6f7fd; --ink:#0b1033; --ink2:#3e4770; --muted:#5b6082;
+  --primary:#2e3cff; --accent:#2e3cff; --peri:#99a5ff; --blush:#ffb2cf; --butter:#ffe7a3; --aqua:#60e7f0; --dream:#8271c6;
+  --card:rgba(255,255,255,.72); --card-bd:#ffffff; --card-solid:rgba(255,255,255,.94);
+  --surface:#ffffff; --surface-bd:#e6e9f6; --line:#eceef8;
+  --shadow:rgba(46,60,255,.28);
+  --pill-soft-bg:#d9defd; --pill-soft-fg:#2e3cff;
+  --pill-pink-bg:#ffd3e3; --pill-pink-fg:#a1275e;
+  --pill-ink-bg:#0b1033; --pill-ink-fg:#ffffff;
+  --glow-a:rgba(153,165,255,.30); --glow-b:rgba(255,178,207,.36); --glow-c:rgba(255,231,163,.34);
+  --on-pastel:#0b1033;
+  --f-display:'Syne',system-ui,sans-serif; --f-body:'Manrope',system-ui,sans-serif; --f-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1132; --ink:#eef0ff; --ink2:#c3c8ea; --muted:#9aa1cc; --accent:#99a5ff;
+    --card:rgba(255,255,255,.06); --card-bd:rgba(255,255,255,.14); --card-solid:rgba(19,26,72,.96);
+    --surface:#151c4a; --surface-bd:rgba(255,255,255,.12); --line:rgba(255,255,255,.09);
+    --shadow:rgba(0,0,0,.5);
+    --pill-soft-bg:rgba(153,165,255,.2); --pill-soft-fg:#c9d0ff;
+    --pill-pink-bg:rgba(255,178,207,.2); --pill-pink-fg:#ffc7dc;
+    --pill-ink-bg:#eef0ff; --pill-ink-fg:#0b1033;
+    --glow-a:rgba(46,60,255,.28); --glow-b:rgba(130,113,198,.30); --glow-c:rgba(96,231,240,.10);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1132; --ink:#eef0ff; --ink2:#c3c8ea; --muted:#9aa1cc; --accent:#99a5ff;
+  --card:rgba(255,255,255,.06); --card-bd:rgba(255,255,255,.14); --card-solid:rgba(19,26,72,.96);
+  --surface:#151c4a; --surface-bd:rgba(255,255,255,.12); --line:rgba(255,255,255,.09);
+  --shadow:rgba(0,0,0,.5);
+  --pill-soft-bg:rgba(153,165,255,.2); --pill-soft-fg:#c9d0ff;
+  --pill-pink-bg:rgba(255,178,207,.2); --pill-pink-fg:#ffc7dc;
+  --pill-ink-bg:#eef0ff; --pill-ink-fg:#0b1033;
+  --glow-a:rgba(46,60,255,.28); --glow-b:rgba(130,113,198,.30); --glow-c:rgba(96,231,240,.10);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:
+    radial-gradient(800px 520px at -8% 6%,var(--glow-a),transparent 60%),
+    radial-gradient(760px 520px at 104% 2%,var(--glow-b),transparent 60%),
+    radial-gradient(700px 420px at 50% 100%,var(--glow-c),transparent 60%),
+    var(--bg);
+  background-color:var(--bg);
+  color:var(--ink); font:400 16px/1.5 var(--f-body);
+  min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:8px;
+  overflow-x:hidden;
+}
+#fit{position:relative;width:1600px;height:900px;flex:none}
+#stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;padding:34px 48px 30px;display:flex;flex-direction:column}
+
+.eyebrow{font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:48px}
+h1{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:1.04;letter-spacing:-.035em;margin-top:8px;max-width:26ch}
+.sub{font-size:16px;color:var(--ink2);max-width:520px;padding-bottom:4px}
+
+.flow{flex:1;margin-top:12px;display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,2.25fr) 150px minmax(0,1fr);align-items:center;min-height:0}
+.panel{background:var(--card);border:1px solid var(--card-bd);border-radius:28px;padding:18px;box-shadow:0 24px 60px -28px var(--shadow),inset 0 1px 0 var(--card-bd);min-width:0}
+.panel-head{display:flex;align-items:center;gap:11px}
+.ico{width:36px;height:36px;border-radius:12px;background:var(--surface);border:1px solid var(--surface-bd);display:grid;place-items:center;flex:none}
+.ico svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.panel-head h2{font-family:var(--f-display);font-weight:700;font-size:22px;letter-spacing:-.02em;line-height:1.05}
+.panel-head p{font-size:12px;color:var(--muted);margin-top:1px}
+.pill{display:inline-block;padding:5px 12px;border-radius:100px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.pill.soft{background:var(--pill-soft-bg);color:var(--pill-soft-fg)}
+.pill.pink{background:var(--pill-pink-bg);color:var(--pill-pink-fg)}
+.pill.ink{background:var(--pill-ink-bg);color:var(--pill-ink-fg)}
+.cap{font:500 10.5px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+.chan{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.chan b{font:500 13px var(--f-mono)}
+.msgs{margin-top:10px;background:var(--surface);border:1px solid var(--surface-bd);border-radius:20px;padding:2px 14px}
+.msg{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.msg:first-child{border-top:0}
+.msg.reply{padding-left:18px}
+.av{width:30px;height:30px;border-radius:10px;flex:none;display:grid;place-items:center;font:700 10.5px var(--f-body);color:var(--on-pastel)}
+.msg .who{font-size:12.5px;font-weight:700;line-height:1.2}
+.msg .who span{font-weight:500;color:var(--muted);font-size:11.5px;margin-left:6px}
+.msg p{font-size:13px;line-height:1.38;color:var(--ink2);margin-top:2px}
+.c-maya{background:var(--peri)}.c-dev{background:var(--blush)}.c-priya{background:var(--butter)}.c-leo{background:var(--aqua)}
+
+.link{display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px;padding:0 24px}
+.link .lab{font:500 10.5px/1.35 var(--f-mono);color:var(--accent)}
+.link .how{font-size:11.5px;color:var(--muted);line-height:1.3}
+.arrow{width:100%;height:14px;overflow:visible}
+.arrow line,.arrow path{stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.back{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.back .arrow line{stroke:var(--muted);stroke-dasharray:4 4}
+.back .arrow path{stroke:var(--muted)}
+.back .lab{color:var(--muted)}
+
+.miro-wrap{position:relative;padding-block:30px;min-width:0}
+.ring{position:absolute;top:0;bottom:0;left:-24px;right:-24px;border:1.5px solid var(--accent);border-radius:50%;opacity:.8}
+.ring-chip{position:absolute;left:50%;transform:translateX(-50%);background:var(--bg);color:var(--accent);font:500 11px var(--f-mono);letter-spacing:.05em;padding:3px 14px;border-radius:100px;border:1.5px solid var(--accent);white-space:nowrap;z-index:2}
+.ring-chip.top{top:-11px}.ring-chip.bot{bottom:-11px}
+.miro{position:relative;z-index:1;background:var(--card-solid);border-radius:28px;border:1px solid var(--card-bd);padding:16px 20px 18px;box-shadow:0 30px 70px -30px var(--shadow)}
+.miro-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.zone{margin-top:11px}
+.zone-t{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+
+.notes{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+.note{border-radius:5px 5px 13px 5px;padding:8px 9px 9px;color:var(--on-pastel);min-height:84px;box-shadow:0 8px 14px -8px rgba(11,16,51,.35);font-size:11.5px;line-height:1.3}
+.note b{display:block;font-size:11px;margin-bottom:2px}
+.note:nth-child(odd){transform:rotate(-1.2deg)}.note:nth-child(even){transform:rotate(1deg)}
+.note.theme{background:var(--surface);border:1.5px dashed var(--peri);color:var(--ink);box-shadow:none}
+.note.theme b{font:500 9.5px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+
+.ai{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px}
+.node{position:relative;background:var(--surface);border:1px solid var(--surface-bd);border-radius:16px;padding:9px 12px 10px;min-width:0}
+.node:not(:last-child)::after{content:"";position:absolute;right:-18px;top:50%;width:10px;height:10px;border-top:1.8px solid var(--accent);border-right:1.8px solid var(--accent);transform:translateY(-50%) rotate(45deg)}
+.node:not(:last-child)::before{content:"";position:absolute;right:-18px;top:50%;width:18px;height:1.8px;background:var(--accent);transform:translate(-4px,-50%)}
+.node b{display:block;font-family:var(--f-display);font-weight:700;font-size:14px;letter-spacing:-.01em;line-height:1.1}
+.node span{display:block;font-size:11.5px;line-height:1.3;color:var(--muted);margin-top:3px}
+.node.claude{background:linear-gradient(120deg,#ffe7a3,#ffd9a0);border:1.5px solid #f1d27a;color:var(--on-pastel)}
+.node.claude span{color:#4a4524}
+.mini{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.mini i{font:500 9.5px var(--f-mono);font-style:normal;border-radius:100px;padding:1px 7px;border:1.5px solid var(--peri);color:var(--ink2)}
+
+.kanban{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.col{background:var(--surface);border:1px solid var(--surface-bd);border-radius:16px;padding:8px 9px 9px;min-width:0}
+.col-h{display:flex;justify-content:space-between;font:700 11.5px var(--f-body);padding:0 3px 2px}
+.col-h em{font:500 10.5px var(--f-mono);font-style:normal;color:var(--muted)}
+.k{background:var(--bg);border:1px solid var(--surface-bd);border-left:4px solid var(--primary);border-radius:10px;padding:6px 9px;font-size:11.5px;line-height:1.25;font-weight:600;margin-top:6px}
+.k small{display:block;font:500 9.5px var(--f-mono);color:var(--muted);margin-top:2px}
+.k.rev{border-left-color:var(--dream)}.k.done{border-left-color:var(--ink)}.k.done small{color:var(--accent)}
+
+.issues{margin-top:12px;background:var(--surface);border:1px solid var(--surface-bd);border-radius:20px;padding:2px 13px}
+.issue{padding:9px 0;border-top:1px solid var(--line)}
+.issue:first-child{border-top:0}
+.issue-top{display:flex;align-items:center;gap:7px}
+.ty{font:700 9.5px var(--f-mono);border-radius:6px;padding:2px 6px;color:var(--on-pastel);text-transform:uppercase}
+.ty.bug{background:var(--blush)}.ty.task{background:var(--peri)}.ty.story{background:var(--aqua)}
+.key{font:500 11.5px var(--f-mono);color:var(--accent)}
+.issue p{font-size:12.5px;font-weight:600;line-height:1.3;margin-top:4px}
+.issue-meta{display:flex;gap:7px;align-items:center;margin-top:5px;font-size:11px;color:var(--muted)}
+.st{font-size:10.5px;font-weight:700;border-radius:6px;padding:1px 7px;background:var(--pill-soft-bg);color:var(--pill-soft-fg)}
+.st.prog{background:var(--pill-pink-bg);color:var(--pill-pink-fg)}
+.new{font:500 9.5px var(--f-mono);color:var(--accent);border:1.5px solid var(--accent);border-radius:100px;padding:0 6px;margin-left:auto}
+.dry{margin-top:10px;border:1.5px dashed var(--peri);background:var(--pill-soft-bg);border-radius:16px;padding:9px 12px;font-size:11.5px;line-height:1.4;color:var(--ink2)}
+.dry b{display:block;font-family:var(--f-display);font-size:14px;color:var(--ink)}
+
+.foot{margin-top:10px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.fc{background:var(--card);border:1px solid var(--card-bd);border-radius:20px;padding:11px 15px}
+.fc code{font:500 11.5px var(--f-mono);background:var(--pill-ink-bg);color:var(--pill-ink-fg);border-radius:100px;padding:3px 11px;display:inline-block}
+.fc p{font-size:12px;color:var(--ink2);margin-top:6px;line-height:1.35}
+.fc.srv{border:1.5px dashed var(--peri)}
+.fc.srv b{font-family:var(--f-display);font-size:14px}
+.eg{position:absolute;right:48px;bottom:8px;font-size:10px;color:var(--muted)}
+</style>
+
+<div id="fit"><div id="stage">
+  <div class="top">
+    <div>
+      <div class="eyebrow">[Eyebrow label]</div>
+      <h1>[Headline: Source A to Target, through one Hub.]</h1>
+    </div>
+    <p class="sub">[One sentence saying what flows in, what the hub adds, and what comes out.]</p>
+  </div>
+
+  <div class="flow">
+    <!-- Source A -->
+    <section class="panel" aria-label="[Source A]">
+      <div class="panel-head">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></div>
+        <div><h2>[Source A]</h2><p>[Short descriptor]</p></div>
+      </div>
+      <div class="chan"><b>[# channel]</b><span class="pill soft">[Time window]</span></div>
+      <div class="msgs">
+        <div class="msg"><div class="av c-maya" aria-hidden="true">[AA]</div><div><div class="who">[Name A]<span>[time]</span></div><p>[Message text, one or two lines]</p></div></div>
+        <div class="msg"><div class="av c-dev" aria-hidden="true">[AA]</div><div><div class="who">[Name B]<span>[time]</span></div><p>[Message text, one or two lines]</p></div></div>
+        <div class="msg reply"><div class="av c-priya" aria-hidden="true">[AA]</div><div><div class="who">&#8627; [Name C]<span>[time]</span></div><p>[Message text, one or two lines]</p></div></div>
+        <div class="msg"><div class="av c-leo" aria-hidden="true">[AA]</div><div><div class="who">[Name D]<span>[time]</span></div><p>[Message text, one or two lines]</p></div></div>
+      </div>
+    </section>
+
+    <!-- connector 1 -->
+    <div class="link">
+      <div class="lab">[/command-<wbr>one]</div>
+      <svg class="arrow" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><line x1="4" y1="7" x2="92" y2="7"/><path d="M84 1l8 6-8 6"/></svg>
+      <div class="how">[What it reads]</div>
+    </div>
+
+    <!-- Hub inside the loop ring -->
+    <div class="miro-wrap">
+      <div class="ring" aria-hidden="true"></div>
+      <div class="ring-chip top">[loop step label] &rarr;</div>
+      <div class="ring-chip bot">&larr; [loop return label]</div>
+      <section class="miro" aria-label="[Hub]">
+        <div class="miro-head">
+          <div class="panel-head">
+            <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 9h4M8 13h8M8 17h5"/></svg></div>
+            <div><h2>[Hub]</h2><p>[Short descriptor]</p></div>
+          </div>
+          <span class="pill pink">[Board label]</span>
+        </div>
+        <div class="zone">
+          <div class="zone-t"><span class="cap">[Notes caption]</span><span class="cap">[Colour key]</span></div>
+          <div class="notes">
+            <div class="note c-maya"><b>[Author A]</b>[Short note]</div>
+            <div class="note c-dev"><b>[Author B]</b>[Short note]</div>
+            <div class="note c-priya"><b>&#8627; [Author C]</b>[Short note]</div>
+            <div class="note c-leo"><b>[Author D]</b>[Short note]</div>
+            <div class="note c-maya"><b>[Author A]</b>[Short note]</div>
+            <div class="note theme"><b>[Theme]</b>[Theme title]</div>
+          </div>
+        </div>
+        <div class="zone">
+          <div class="zone-t"><span class="cap">[AI workflow caption]</span></div>
+          <div class="ai">
+            <div class="node"><b>[Input]</b><span>[Input detail]</span></div>
+            <div class="node claude"><b>[AI step]</b><span>[AI step detail]</span></div>
+            <div class="node"><b>[Output]</b><div class="mini"><i>[tag one]</i><i>[tag two]</i><i>[tag three]</i></div></div>
+            <div class="node"><b>[Result]</b><span>[Result detail]</span></div>
+          </div>
+        </div>
+        <div class="zone">
+          <div class="zone-t"><span class="cap">[Kanban caption]</span></div>
+          <div class="kanban">
+            <div class="col"><div class="col-h">[Column one] <em>[n]</em></div>
+              <div class="k">[Card title]<small>[Type · source]</small></div>
+              <div class="k">[Card title]<small>[Type · source]</small></div>
+            </div>
+            <div class="col"><div class="col-h">[Column two] <em>[n]</em></div>
+              <div class="k rev">[Card title]<small>[Type · note]</small></div>
+            </div>
+            <div class="col"><div class="col-h">[Column three] <em>[n]</em></div>
+              <div class="k done">[KEY-1]: [Card title]<small>[Done note]</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- connector 2 + return arrow -->
+    <div class="link">
+      <div class="lab">[/command-<wbr>two]</div>
+      <svg class="arrow" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><line x1="4" y1="7" x2="92" y2="7"/><path d="M84 1l8 6-8 6"/></svg>
+      <div class="how">[How it is confirmed]</div>
+      <div class="back">
+        <svg class="arrow" viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true"><line x1="8" y1="7" x2="96" y2="7"/><path d="M16 1L8 7l8 6"/></svg>
+        <div class="lab">[tool_<wbr>name]</div>
+        <div class="how">[What comes back]</div>
+      </div>
+    </div>
+
+    <!-- Target -->
+    <section class="panel" aria-label="[Target]">
+      <div class="panel-head">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg></div>
+        <div><h2>[Target]</h2><p>[Short descriptor]</p></div>
+      </div>
+      <div class="chan"><b>[PROJ]</b><span class="pill ink">[Count label]</span></div>
+      <div class="issues">
+        <div class="issue"><div class="issue-top"><span class="ty bug">[Type]</span><span class="key">[KEY-1]</span><span class="new">[from hub]</span></div><p>[Issue title, one line]</p><div class="issue-meta"><span class="st">[Status]</span><span>[Priority]</span></div></div>
+        <div class="issue"><div class="issue-top"><span class="ty bug">[Type]</span><span class="key">[KEY-1]</span><span class="new">[from hub]</span></div><p>[Issue title, one line]</p><div class="issue-meta"><span class="st">[Status]</span><span>[Priority]</span></div></div>
+        <div class="issue"><div class="issue-top"><span class="ty task">[Type]</span><span class="key">[KEY-1]</span><span class="new">[from hub]</span></div><p>[Issue title, one line]</p><div class="issue-meta"><span class="st">[Status]</span><span>[Priority]</span></div></div>
+        <div class="issue"><div class="issue-top"><span class="ty story">[Type]</span><span class="key">[KEY-1]</span></div><p>[Issue title, one line]</p><div class="issue-meta"><span class="st prog">[Status]</span><span>[Priority]</span></div></div>
+      </div>
+      <div class="dry"><b>[Note title]</b>[One line explaining the safeguard.]</div>
+    </section>
+  </div>
+
+  <div class="foot">
+    <div class="fc"><code>[/command-one]</code><p>[One line description.]</p></div>
+    <div class="fc"><code>[/command-two]</code><p>[One line description.]</p></div>
+    <div class="fc"><code>[/command-three]</code><p>[One line description.]</p></div>
+    <div class="fc srv"><b>[Side note title]</b><p>[One line side note.]</p></div>
+  </div>
+  <p class="eg">[Footnote about example data.]</p>
+</div></div>
+
+<script>
+(function(){
+  var fit=document.getElementById('fit'),stage=document.getElementById('stage');
+  function go(){
+    var w=document.body.clientWidth-parseFloat(getComputedStyle(document.body).paddingLeft)-parseFloat(getComputedStyle(document.body).paddingRight);
+    var h=window.innerHeight-16;
+    var s=Math.min(w/1600,h/900);
+    if(!(s>0))s=1;
+    stage.style.transform='scale('+s+')';
+    fit.style.width=(1600*s)+'px';fit.style.height=(900*s)+'px';
+  }
+  go();window.addEventListener('resize',go);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(go);
+})();
+</script>
