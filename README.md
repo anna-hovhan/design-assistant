@@ -38,7 +38,7 @@ In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram fiv
 After changing fonts, run `npm run build:fonts` to regenerate `src/generators/architecture/fontdata.ts`.
 
 ## Templates
-`templates/architecture/` holds architecture specs. `templates/pages/` holds the Collection page design mock and its style sheet from the portfolio, as standalone HTML.
+`templates/architecture/` holds architecture specs. `templates/flow/` holds a placeholder-text flow diagram (`three-group-flow.svg`: three groups of boxes reading from one source band) to copy and edit. `templates/pages/` holds the Collection page design mock and its style sheet from the portfolio, as standalone HTML.
 
 ## Ideas
 See `ROADMAP.md` for the commands and skills to add next.
