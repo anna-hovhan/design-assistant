@@ -8,3 +8,6 @@ Shared by every command in `.claude/commands/`. Match the placeholder generator 
 - **Shape:** large radii (22 to 32px), thin 1.5px outlines, generous whitespace, one accent gradient per asset.
 - **Accessibility:** body text contrast at least 4.5:1; never rely on colour alone to separate groups.
 - **Output:** write to `out/<slug>.<ext>`, never overwrite an existing file without asking.
+
+## Portfolio theme (architecture generator)
+`src/generators/architecture` uses the portfolio site's own tokens instead of the gradient pairs above, so diagrams match the website: periwinkle `#99a5ff`, blush `#ffb2cf`, butter `#ffe7a3`, aqua `#60e7f0`, dream purple `#8271c6`, primary `#2e3cff`, ink `#0b1132`, page `#f4f6fb`. Light theme sits on the site gradient; dark theme on navy `#0b1132`. Text is Syne 700 for titles and Manrope for details and labels, drawn as paths.
