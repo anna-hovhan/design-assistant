@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What design-assistant does</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;600&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b1033;--muted:#5b6082;--page:#f6f7fd;--primary:#2e3cff;--dream:#8271c6;--peri:#99a5ff;--blush:#ffb2cf;--butter:#ffe7a3;--aqua:#60e7f0;--grad:linear-gradient(135deg,#2a3cff,#4fd8f0)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--page);color:var(--ink);font:400 18px/1.55 Manrope,system-ui,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;border-bottom:1px solid #e3e6f5}
+section:last-child{border:0}
+.tag{font:500 13px 'JetBrains Mono',monospace;color:var(--primary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+h1,h2{font-family:Syne,sans-serif;font-weight:800;line-height:1.05;letter-spacing:-.02em}
+h1{font-size:clamp(40px,7vw,76px);max-width:14ch}
+h2{font-size:clamp(30px,4.6vw,46px);max-width:20ch}
+p.lead{margin-top:18px;max-width:46ch;color:var(--muted)}
+.card{background:rgba(255,255,255,.7);border:1px solid #fff;border-radius:28px;box-shadow:0 10px 40px rgba(46,60,255,.08);padding:28px}
+.visual{margin-top:36px;overflow-x:auto}
+
+svg{display:block;width:100%;height:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.steps .card h3{font:800 22px Syne,sans-serif;margin:8px 0}
+.steps .card p{color:var(--muted);font-size:16px}
+.num{font:500 13px 'JetBrains Mono',monospace;color:var(--dream)}
+code{font:500 14px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9ecff;border-radius:16px;padding:16px 18px;display:block;overflow-x:auto;white-space:pre}
+.ex{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;margin-top:36px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chips span{font:500 14px 'JetBrains Mono',monospace;background:#fff;border:1.5px solid var(--peri);border-radius:999px;padding:8px 16px}
+.row.five{display:grid;grid-template-columns:repeat(5,1fr)}
+.ex>svg{border-radius:30px}
+.arch{margin-top:36px;display:grid;gap:12px}
+.layer{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:18px 22px}
+.layer>b{font:500 13px 'JetBrains Mono',monospace;color:var(--dream);text-transform:uppercase;letter-spacing:.06em}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.cmd{flex:1 1 150px;background:#fff;border:1.5px solid var(--peri);border-radius:20px;padding:12px 14px}
+.cmd.router{background:var(--butter);border-color:var(--primary)}
+.cmd code{display:inline;background:none;color:var(--primary);padding:0;font-size:14px;white-space:normal}
+.cmd small{display:block;color:var(--muted);font-size:14px;line-height:1.35;margin-top:4px}
+.eng{flex:1 1 240px;border-radius:20px;padding:14px 16px;border:1.5px solid var(--primary)}
+.eng.code{background:#e8fbfd}.eng.hand{background:#ffeaf2}
+.eng strong{font:800 17px Syne,sans-serif;display:block}
+.eng small{color:var(--muted);font-size:14px;line-height:1.35;display:block;margin-top:4px}
+.sw{display:flex;gap:6px;align-items:center}.sw i{width:22px;height:22px;border-radius:50%;border:1.5px solid #fff;box-shadow:0 0 0 1px #d8dcf3}
+.down{text-align:center;color:var(--primary);font:500 16px 'JetBrains Mono',monospace;line-height:1}
+@media(max-width:1000px){.row.five{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.row.five{grid-template-columns:1fr}}
+@media(max-width:760px){.layer{grid-template-columns:1fr;gap:10px}}
+@media(max-width:760px){section{padding:52px 0}.steps,.ex{grid-template-columns:1fr}body{font-size:17px}}
+</style>
+</head>
+<body>
+<main>
+
+<section>
+  <div class="tag">design-assistant</div>
+  <h1>One line in. One on-brand asset out.</h1>
+  <p class="lead">A personal tool that draws tiles and diagrams in the portfolio's look, from the command line or from Claude Code.</p>
+  <div class="visual card">
+    <svg viewBox="0 0 680 140" role="img" aria-label="A request line flows into a gradient tile">
+      <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3cff"/><stop offset="1" stop-color="#4fd8f0"/></linearGradient></defs>
+      <rect x="0" y="40" width="330" height="60" rx="30" fill="#fff" stroke="#99a5ff" stroke-width="1.5"/>
+      <text x="24" y="77" font-family="JetBrains Mono" font-size="19" fill="#0b1033">/placeholder "Sample Text"</text>
+      <path d="M345 70h40" stroke="#2e3cff" stroke-width="1.5" fill="none"/><path d="M378 62l9 8-9 8" stroke="#2e3cff" stroke-width="1.5" fill="none"/>
+      <rect x="405" y="10" width="275" height="120" rx="26" fill="url(#g1)"/>
+      <text x="542" y="82" text-anchor="middle" font-family="Syne" font-weight="800" font-size="24" fill="none" stroke="#fff" stroke-width="1.1">Sample Text</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="tag">The problem</div>
+  <h2>Every visual starts from a blank canvas.</h2>
+  <p class="lead">A tile for a case study, a diagram of a system: each one is redrawn by hand and drifts a little from the brand.</p>
+  <div class="visual card">
+    <svg viewBox="0 0 800 140" role="img" aria-label="Four tiles in slightly different, mismatched styles">
+      <rect x="20" y="20" width="160" height="100" rx="10" fill="#f4a6a6"/>
+      <rect x="220" y="30" width="160" height="100" rx="30" fill="#7ad" stroke="#333" stroke-width="3"/>
+      <rect x="420" y="15" width="160" height="100" rx="22" fill="#cfc"/>
+      <rect x="620" y="25" width="160" height="100" rx="4" fill="#fb4"/>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="tag">The architecture</div>
+  <h2>Five commands, one shared style.</h2>
+  <p class="lead">Every command reads the same brand rules. Code generators draw the repeatable shapes; Claude draws the rest.</p>
+  <div class="arch">
+    <div class="card layer"><b>You ask</b><div class="row"><div class="cmd"><code>npm run design</code><small>CLI</small></div><div class="cmd"><code>/command</code><small>Claude Code slash command</small></div></div></div>
+    <div class="down" aria-hidden="true">&#8595;</div>
+    <div class="card layer"><b>5 commands</b><div class="row five">
+      <div class="cmd router"><code>/visual-brief</code><small>Picks the right visual, hands off to the next four</small></div>
+      <div class="cmd"><code>/placeholder</code><small>Named cover tile</small></div>
+      <div class="cmd"><code>/architecture-diagram</code><small>Layers, flow or context diagram</small></div>
+      <div class="cmd"><code>/explainer</code><small>One idea as a scroll, slides or poster</small></div>
+      <div class="cmd"><code>/one-pager</code><small>Printable A4 or Letter brief</small></div>
+    </div></div>
+    <div class="down" aria-hidden="true">&#8595;</div>
+    <div class="card layer"><b>Who draws it</b><div class="row">
+      <div class="eng code"><strong>Code generators</strong><small>placeholder, architecture (stacked layers). Same input, same SVG.</small></div>
+      <div class="eng hand"><strong>Claude, by the rules</strong><small>Flow and context diagrams, explainers, one-pagers as HTML.</small></div>
+    </div></div>
+    <div class="down" aria-hidden="true">&#8593;</div>
+    <div class="card layer"><b>Brand rules</b><div class="row"><div class="cmd"><code>docs/brand.md</code><small>Gradients, fonts, shapes, contrast</small></div><div class="cmd sw" aria-label="Brand colours"><i style="background:#99a5ff"></i><i style="background:#ffb2cf"></i><i style="background:#ffe7a3"></i><i style="background:#60e7f0"></i><i style="background:#8271c6"></i><i style="background:#2e3cff"></i><i style="background:#0b1132"></i></div></div></div>
+    <div class="down" aria-hidden="true">&#8595;</div>
+    <div class="card layer"><b>You get</b><div class="row"><div class="cmd"><code>out/&lt;slug&gt;</code><small>.svg, .png, .html or .pdf</small></div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="tag">How it works</div>
+  <h2>Three steps from request to file.</h2>
+  <div class="steps">
+    <div class="card"><div class="num">01</div><h3>Ask</h3><p>Type a slash command in Claude Code, or run <b>npm run design</b>.</p></div>
+    <div class="card"><div class="num">02</div><h3>Generate</h3><p>Code generators are pure functions: same input, same output. The rest follows the brand rules.</p></div>
+    <div class="card"><div class="num">03</div><h3>Save</h3><p>The file lands in <b>out/</b>. Ask for .png or PDF where supported.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="tag">Example: /placeholder</div>
+  <h2>A name becomes a tile.</h2>
+  <div class="ex">
+    <code>npm run design -- placeholder \
+  "Sample Text"
+# -> out/sample-text.svg
+# label: ST (initials of the two words)</code>
+    <svg role="img" aria-label="Real output of the placeholder generator for Sample Text: gradient tile with outlined ST lettering" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gst" x1="NaN" y1="NaN" x2="NaN" y2="NaN"><stop offset="0" stop-color="#ff9fb7"/><stop offset="1" stop-color="#ffd9a0"/></linearGradient></defs><rect width="1200" height="720" fill="url(#gst)"/><g fill="none" stroke="#fff" stroke-width="18.0" stroke-linejoin="miter"><path transform="translate(330.5 365) scale(0.2500)" d="M35-235L308-235Q315-214 349-199.5Q383-185 440.5-177.5Q498-170 574-170Q649-170 692.5-174.5Q736-179 754-190.5Q772-202 772-222Q772-241 743-251.5Q714-262 640-266Q566-270 432-270Q332-270 259.5-279.5Q187-289 140.5-309.5Q94-330 72-361.5Q50-393 50-437Q50-513 101.5-562.5Q153-612 257.5-636.5Q362-661 519-661Q749-661 870.5-594.5Q992-528 992-403L733-403Q728-436 671-453.5Q614-471 509-471Q405-471 354.5-459Q304-447 304-418Q304-403 318-394Q332-385 366.5-379.5Q401-374 464-372Q527-370 624-370Q731-370 806-359.5Q881-349 927.5-328Q974-307 995-274.5Q1016-242 1016-198Q1016-122 968-74Q920-26 816-3Q712 20 544 20Q449 20 369.5 9Q290-2 228-23.5Q166-45 123-76.5Q80-108 57.5-147.5Q35-187 35-235Z"/><path transform="translate(594.5 365) scale(0.2500)" d="M30-450L30-640L1070-640L1070-450L30-450ZM425 0L425-463L675-463L675 0Z"/></g></svg>
+  </div>
+  <p class="lead">Real generator output. Add <b>--label=</b> to choose different lettering. The same name always gives the same colours.</p>
+</section>
+
+<section>
+  <div class="tag">What to do next</div>
+  <h2>Describe the visual you need.</h2>
+  <p class="lead">Not sure which command? Start with <b>/visual-brief</b> and describe the content, goal and audience.</p>
+</section>
+
+</main>
+</body>
+</html>
