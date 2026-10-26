@@ -1,28 +1,39 @@
 {
-  "eyebrow": "Architecture, five-layer stack",
+  "preserveCase": true,
+  "connectors": "line",
   "layers": [
-    { "label": "Layer 1: User interface", "tone": "neutral", "width": 0.6,
-      "components": [{ "title": "Streamlit web interface", "lines": ["Unified UI: Chat · Research · Translation · Summarisation"] }] },
-    { "label": "Layer 2: API and auth", "tone": "peri",
+    { "label": "LAYER 1 — USER INTERFACE", "tone": "neutral", "width": 0.6,
+      "components": [{ "title": "Streamlit web interface", "lines": ["Unified UI — Chat · Research · Translation · Summarisation"] }] },
+    { "label": "LAYER 2 — API & AUTH", "tone": "peri",
       "components": [
-        { "title": "FastAPI backend", "lines": ["JWT auth (RS256) · Session mgmt · Workflow routing · Audit logging"], "weight": 3 },
-        { "title": "AWS Cognito", "lines": ["MFA · RBAC"], "weight": 1 }] },
-    { "label": "Layer 3: AI orchestration", "tone": "dream",
+        { "title": "FastAPI backend", "tone": "peri", "weight": 3,
+          "lines": [{ "text": "JWT auth (RS256) · Session mgmt · Workflow routing · Audit logging", "style": "accent" }] },
+        { "title": "AWS Cognito", "tone": "peri", "weight": 1, "lines": [{ "text": "MFA · RBAC", "style": "accent" }] }] },
+    { "label": "LAYER 3 — AI ORCHESTRATION", "tone": "dream", "gap": 72,
+      "links": [
+        { "from": "router", "to": "rag", "tone": "dream" },
+        { "from": "router", "to": "direct", "tone": "butter" },
+        { "from": "rag", "to": "response" },
+        { "from": "direct", "to": "response" }],
       "components": [
-        { "title": "Hybrid router", "lines": ["Claude 3.5 Haiku", "Rule-based + LLM classifier", "temp=0.1 · confidence score"] },
-        { "title": "RAG pipeline", "lines": ["Bedrock KB retrieval + Claude 3.7 Sonnet generation"] },
-        { "title": "Direct LLM", "lines": ["Claude 3.7 Sonnet"], "tone": "blush", "weight": 0.8 },
-        { "title": "Response generation", "lines": ["Numbered citations · routing decision + confidence score", "every decision transparent"] }] },
-    { "label": "Layer 4: Infrastructure (Terraform IaC)", "tone": "neutral",
+        { "id": "router", "title": "Hybrid router",
+          "lines": [{ "text": "Claude 3.5 Haiku", "style": "accent" }, { "text": "Rule-based + LLM classifier", "style": "accent" }, { "text": "temp=0.1 · confidence score", "style": "muted" }] },
+        { "weight": 1.45, "stack": [
+          { "id": "rag", "title": "RAG pipeline",
+            "lines": [{ "text": "Bedrock KB retrieval", "style": "accent" }, { "text": "+ Claude 3.7 Sonnet generation", "style": "accent" }] },
+          { "id": "direct", "title": "Direct LLM — Claude 3.7 Sonnet", "tone": "butter" }] },
+        { "id": "response", "title": "Response generation",
+          "lines": [{ "text": "Numbered citations · routing", "style": "accent" }, { "text": "decision + confidence score", "style": "accent" }, { "text": "every decision transparent", "style": "muted" }] }] },
+    { "label": "LAYER 4 — INFRASTRUCTURE (TERRAFORM IaC)", "tone": "neutral",
       "components": [
-        { "title": "S3 + KMS", "lines": ["Dept-based RBAC", "PII auto-purge 7d"], "tone": "butter" },
-        { "title": "RDS PostgreSQL", "lines": ["Users · sessions", "Conversations · audit"], "tone": "peri" },
-        { "title": "ECS / Fargate", "lines": ["Auto-scaling", "VPC + ALB + SSL"], "tone": "aqua" },
-        { "title": "CI/CD pipeline", "lines": ["GitHub Actions", "80% doc coverage gate"], "tone": "blush" }] },
-    { "label": "Layer 5: Observability and evaluation", "tone": "aqua",
+        { "title": "S3 + KMS", "tone": "butter", "lines": [{ "text": "Dept-based RBAC", "style": "accent" }, { "text": "PII auto-purge 7d", "style": "accent" }] },
+        { "title": "RDS PostgreSQL", "tone": "peri", "lines": [{ "text": "Users · sessions", "style": "accent" }, { "text": "Conversations · audit", "style": "accent" }] },
+        { "title": "ECS / Fargate", "tone": "aqua", "lines": [{ "text": "Auto-scaling", "style": "accent" }, { "text": "VPC + ALB + SSL", "style": "accent" }] },
+        { "title": "CI/CD pipeline", "tone": "blush", "lines": [{ "text": "GitHub Actions", "style": "accent" }, { "text": "80% doc coverage gate", "style": "accent" }] }] },
+    { "label": "LAYER 5 — OBSERVABILITY & EVALUATION", "tone": "aqua",
       "components": [
-        { "title": "MLFlow", "lines": ["Experiment tracking", "Model cards · metrics"] },
-        { "title": "Grafana", "lines": ["Real-time perf dashboards", "Quality drift detection"] },
-        { "title": "Arize Phoenix", "lines": ["LLM output eval (AI-as-judge)", "Faithfulness · cost · latency"] }] }
+        { "title": "MLFlow", "lines": [{ "text": "Experiment tracking", "style": "accent" }, { "text": "Model cards · metrics", "style": "accent" }] },
+        { "title": "Grafana", "lines": [{ "text": "Real-time perf dashboards", "style": "accent" }, { "text": "Quality drift detection", "style": "accent" }] },
+        { "title": "Arize Phoenix", "lines": [{ "text": "LLM output eval (AI-as-judge)", "style": "accent" }, { "text": "Faithfulness · cost · latency", "style": "accent" }] }] }
   ]
 }

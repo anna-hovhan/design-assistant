@@ -1,5 +1,5 @@
 {
-  "eyebrow": "Architecture, structural view (4 layers)",
+  "eyebrow": "Architecture — structural view (4 layers)",
   "layers": [
     { "label": "Access + authentication", "tone": "neutral",
       "components": [{ "title": "User / browser" }, { "title": "API Gateway (REST)" }, { "title": "Amazon Cognito" }] },

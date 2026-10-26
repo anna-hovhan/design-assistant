@@ -6,13 +6,18 @@ import { FONTDATA } from "./fontdata";
 export type Tone = "neutral" | "peri" | "blush" | "butter" | "aqua" | "dream";
 export type Theme = "light" | "dark";
 
+export type Line = string | { text: string; style?: "accent" | "muted" };
 export type ArchComponent = {
-  title: string;
-  lines?: string[];
+  /** Lets a layer's `links` refer to this box. */
+  id?: string;
+  title?: string;
+  lines?: Line[];
   /** Relative width inside the layer. Default 1. */
   weight?: number;
   /** Tints this component. Default: plain surface. */
   tone?: Tone;
+  /** Boxes stacked in one column, for example two alternative paths. The column itself has no title. */
+  stack?: ArchComponent[];
 };
 export type ArchLayer = {
   label: string;
@@ -20,12 +25,20 @@ export type ArchLayer = {
   components: ArchComponent[];
   /** Fraction of the full width, centred. Default 1. */
   width?: number;
+  /** Space between the columns. Default 20; widen it when `links` need room. */
+  gap?: number;
+  /** Lines from one box to another by id, drawn right edge to left edge. */
+  links?: { from: string; to: string; tone?: Tone }[];
   /** A box to the right of the layer, joined by an arrow (for example "Multi-AZ"). */
   aside?: { title: string; tone?: Tone };
 };
 export type ArchSpec = {
-  /** Small uppercase line at the top. */
+  /** Small line at the top. */
   eyebrow?: string;
+  /** Keep the capitalisation of labels as written instead of upper-casing them. */
+  preserveCase?: boolean;
+  /** Between layers: arrows (default) or plain lines. */
+  connectors?: "arrow" | "line";
   layers: ArchLayer[];
 };
 
@@ -107,61 +120,92 @@ const TITLE = { font: "syne700" as FontKey, size: 27, line: 34 };
 const DETAIL = { font: "manrope500" as FontKey, size: 20, line: 30 };
 const LABEL = { font: "manrope700" as FontKey, size: 15, tracking: 2.4, line: 20 };
 
-type Box = { x: number; w: number; titleLines: string[]; detail: string[]; };
+type Leaf = { spec: ArchComponent; titleLines: string[]; lines: { text: string; style?: "accent" | "muted" }[]; h: number };
+type Rect = { x: number; y: number; w: number; h: number };
+
+const leafFor = (k: ArchComponent, w: number): Leaf => {
+  const textW = w - 2 * 22;
+  const titleLines = k.title ? wrapText(k.title, TITLE.font, TITLE.size, textW) : [];
+  const lines = (k.lines ?? []).flatMap((ln) => {
+    const { text, style } = typeof ln === "string" ? { text: ln, style: undefined } : ln;
+    return wrapText(text, DETAIL.font, DETAIL.size, textW).map((part) => ({ text: part, style }));
+  });
+  const h = 24 + titleLines.length * TITLE.line + (lines.length ? (titleLines.length ? 6 : 0) + lines.length * DETAIL.line : 0) + 22;
+  return { spec: k, titleLines, lines, h };
+};
 
 export const architectureSvg = (spec: ArchSpec, theme: Theme = "light"): string => {
   const t = THEMES[theme];
   const c = new Canvas();
   const tonePick = (tone: Tone | undefined) => TONES[tone ?? "neutral"];
   const labelInk = (tone: Tone | undefined) => (theme === "dark" ? tonePick(tone).inkDark : tonePick(tone).ink);
+  const caps = (text: string) => (spec.preserveCase ? text : text.toUpperCase());
 
   const hasAside = spec.layers.some((l) => l.aside);
   const fullW = W - 2 * PAD - (hasAside ? ASIDE_W + 56 : 0);
   let y = PAD;
   const shapes: string[] = [];
+  const lines: string[] = [];
 
   if (spec.eyebrow) {
     shapes.push(`<rect x="${PAD}" y="${y + 6}" width="44" height="3" rx="1.5" fill="url(#line)"/>`);
-    c.text(spec.eyebrow.toUpperCase(), "manrope700", LABEL.size, PAD + 62, y + 14, t.muted, { tracking: LABEL.tracking });
+    c.text(caps(spec.eyebrow), "manrope700", LABEL.size, PAD + 62, y + 14, t.muted, { tracking: LABEL.tracking });
     y += 58;
   }
 
   spec.layers.forEach((layer, li) => {
+    const gap = layer.gap ?? GAP;
     const layerW = fullW * (layer.width ?? 1);
     const lx = PAD + (fullW - layerW) / 2;
     const innerW = layerW - 2 * INNER;
     const totalWeight = layer.components.reduce((n, k) => n + (k.weight ?? 1), 0);
-    const usable = innerW - GAP * (layer.components.length - 1);
+    const usable = innerW - gap * (layer.components.length - 1);
     let bx = lx + INNER;
-    const boxes = layer.components.map((k): Box => {
+    const cells = layer.components.map((k) => {
       const w = (usable * (k.weight ?? 1)) / totalWeight;
-      const textW = w - 2 * 22;
       const x = bx;
-      bx += w + GAP;
-      return {
-        x, w,
-        titleLines: wrapText(k.title, TITLE.font, TITLE.size, textW),
-        detail: (k.lines ?? []).flatMap((ln) => wrapText(ln, DETAIL.font, DETAIL.size, textW)),
-      };
+      bx += w + gap;
+      const leaves = (k.stack ?? [k]).map((leaf) => leafFor(leaf, w));
+      const natural = k.stack ? leaves.reduce((n, l) => n + l.h, 0) + 14 * (leaves.length - 1) : Math.max(88, leaves[0].h);
+      return { x, w, leaves, natural, stacked: Boolean(k.stack) };
     });
-    const boxH = Math.max(88, ...boxes.map((b) => 24 + b.titleLines.length * TITLE.line + (b.detail.length ? 6 + b.detail.length * DETAIL.line : 0) + 22));
+    const boxH = Math.max(88, ...cells.map((cell) => cell.natural));
     const layerH = INNER + LABEL.line + 18 + boxH + INNER;
     const tone = tonePick(layer.tone);
 
     shapes.push(`<rect x="${fmt(lx)}" y="${fmt(y)}" width="${fmt(layerW)}" height="${fmt(layerH)}" rx="36" fill="${tone.hex}" fill-opacity="${t.containerAlpha}" stroke="${tone.hex}" stroke-opacity="${t.strokeAlpha}" stroke-width="2" filter="url(#shadow)"/>`);
-    c.text(layer.label.toUpperCase(), "manrope700", LABEL.size, lx + INNER + 4, y + INNER + 14, labelInk(layer.tone), { tracking: LABEL.tracking });
+    c.text(caps(layer.label), "manrope700", LABEL.size, lx + INNER + 4, y + INNER + 14, labelInk(layer.tone), { tracking: LABEL.tracking });
 
     const by = y + INNER + LABEL.line + 18;
-    boxes.forEach((b, i) => {
-      const k = layer.components[i];
-      const ktone = k.tone ? tonePick(k.tone) : null;
-      shapes.push(`<rect x="${fmt(b.x)}" y="${fmt(by)}" width="${fmt(b.w)}" height="${fmt(boxH)}" rx="24" fill="${ktone ? ktone.hex : t.surface}" fill-opacity="${ktone ? (theme === "dark" ? 0.28 : 0.45) : t.surfaceAlpha}" stroke="${ktone ? ktone.hex : t.surface}" stroke-opacity="${ktone ? t.strokeAlpha : 0.9}" stroke-width="1.5"/>`);
-      const blockH = b.titleLines.length * TITLE.line + (b.detail.length ? 6 + b.detail.length * DETAIL.line : 0);
-      let ty = by + (boxH - blockH) / 2;
-      const cx = b.x + b.w / 2;
-      b.titleLines.forEach((ln) => { c.text(ln, TITLE.font, TITLE.size, cx, ty + TITLE.size * 0.95, t.fg, { anchor: "middle" }); ty += TITLE.line; });
-      if (b.detail.length) ty += 6;
-      b.detail.forEach((ln) => { c.text(ln, DETAIL.font, DETAIL.size, cx, ty + DETAIL.size * 0.9, t.sub, { anchor: "middle" }); ty += DETAIL.line; });
+    const rects = new Map<string, Rect>();
+    cells.forEach((cell) => {
+      const extra = cell.stacked ? (boxH - cell.natural) / cell.leaves.length : 0;
+      let cy = by;
+      cell.leaves.forEach((leaf) => {
+        const h = cell.stacked ? leaf.h + extra : boxH;
+        const k = leaf.spec;
+        if (k.id) rects.set(k.id, { x: cell.x, y: cy, w: cell.w, h });
+        const ktone = k.tone ? tonePick(k.tone) : null;
+        shapes.push(`<rect x="${fmt(cell.x)}" y="${fmt(cy)}" width="${fmt(cell.w)}" height="${fmt(h)}" rx="24" fill="${ktone ? ktone.hex : t.surface}" fill-opacity="${ktone ? (theme === "dark" ? 0.28 : 0.45) : t.surfaceAlpha}" stroke="${ktone ? ktone.hex : t.surface}" stroke-opacity="${ktone ? t.strokeAlpha : 0.9}" stroke-width="1.5"/>`);
+        const blockH = leaf.titleLines.length * TITLE.line + (leaf.lines.length ? (leaf.titleLines.length ? 6 : 0) + leaf.lines.length * DETAIL.line : 0);
+        let ty = cy + (h - blockH) / 2;
+        const cx = cell.x + cell.w / 2;
+        leaf.titleLines.forEach((ln) => { c.text(ln, TITLE.font, TITLE.size, cx, ty + TITLE.size * 0.95, t.fg, { anchor: "middle" }); ty += TITLE.line; });
+        if (leaf.lines.length && leaf.titleLines.length) ty += 6;
+        leaf.lines.forEach((ln) => {
+          const ink = ln.style === "accent" ? labelInk(k.tone ?? layer.tone) : ln.style === "muted" ? t.muted : t.sub;
+          c.text(ln.text, DETAIL.font, DETAIL.size, cx, ty + DETAIL.size * 0.9, ink, { anchor: "middle" });
+          ty += DETAIL.line;
+        });
+        cy += h + 14;
+      });
+    });
+
+    (layer.links ?? []).forEach((link) => {
+      const from = rects.get(link.from), to = rects.get(link.to);
+      if (!from || !to) throw new Error(`Link ${link.from} -> ${link.to} refers to an unknown box id in layer "${layer.label}".`);
+      const color = link.tone ? tonePick(link.tone).hex : t.arrow;
+      lines.push(`<path d="M${fmt(from.x + from.w)} ${fmt(from.y + from.h / 2)}L${fmt(to.x)} ${fmt(to.y + to.h / 2)}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>`);
     });
 
     if (layer.aside) {
@@ -169,15 +213,16 @@ export const architectureSvg = (spec: ArchSpec, theme: Theme = "light"): string 
       const at = tonePick(layer.aside.tone ?? "aqua");
       shapes.push(`<path d="M${fmt(lx + layerW + 10)} ${fmt(ay + ah / 2)}H${fmt(ax - 12)}M${fmt(ax - 22)} ${fmt(ay + ah / 2 - 8)}L${fmt(ax - 12)} ${fmt(ay + ah / 2)}L${fmt(ax - 22)} ${fmt(ay + ah / 2 + 8)}" fill="none" stroke="${t.arrow}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`);
       shapes.push(`<rect x="${fmt(ax)}" y="${fmt(ay)}" width="${aw}" height="${fmt(ah)}" rx="28" fill="${at.hex}" fill-opacity="${theme === "dark" ? 0.22 : 0.4}" stroke="${at.hex}" stroke-opacity="${t.strokeAlpha}" stroke-width="2"/>`);
-      const lines = wrapText(layer.aside.title, TITLE.font, 24, aw - 40);
-      let ty = ay + (ah - lines.length * 32) / 2;
-      lines.forEach((ln) => { c.text(ln, TITLE.font, 24, ax + aw / 2, ty + 24, labelInk(layer.aside!.tone ?? "aqua"), { anchor: "middle" }); ty += 32; });
+      const asideLines = wrapText(layer.aside.title, TITLE.font, 24, aw - 40);
+      let ty = ay + (ah - asideLines.length * 32) / 2;
+      asideLines.forEach((ln) => { c.text(ln, TITLE.font, 24, ax + aw / 2, ty + 24, labelInk(layer.aside!.tone ?? "aqua"), { anchor: "middle" }); ty += 32; });
     }
 
     y += layerH;
     if (li < spec.layers.length - 1) {
       const ax = PAD + fullW / 2;
-      shapes.push(`<path d="M${fmt(ax)} ${fmt(y + 8)}V${fmt(y + ARROW - 8)}M${fmt(ax - 8)} ${fmt(y + ARROW - 18)}L${fmt(ax)} ${fmt(y + ARROW - 8)}L${fmt(ax + 8)} ${fmt(y + ARROW - 18)}" fill="none" stroke="${t.arrow}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`);
+      const head = spec.connectors === "line" ? "" : `M${fmt(ax - 8)} ${fmt(y + ARROW - 18)}L${fmt(ax)} ${fmt(y + ARROW - 8)}L${fmt(ax + 8)} ${fmt(y + ARROW - 18)}`;
+      shapes.push(`<path d="M${fmt(ax)} ${fmt(y + (head ? 8 : 0))}V${fmt(y + ARROW - (head ? 8 : 0))}${head}" fill="none" stroke="${t.arrow}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`);
       y += ARROW;
     }
   });
@@ -190,6 +235,6 @@ export const architectureSvg = (spec: ArchSpec, theme: Theme = "light"): string 
   const defs = `<defs>${glow("peri", "#99a5ff", theme === "light" ? 0.42 : 0.28)}${glow("blush", "#ffb2cf", theme === "light" ? 0.38 : 0.16)}${glow("butter", "#ffe7a3", 0.32)}` +
     `<linearGradient id="line" x1="0" x2="1"><stop offset="0" stop-color="#60e7f0"/><stop offset=".5" stop-color="#2e3cff"/><stop offset="1" stop-color="#ffb2cf"/></linearGradient>` +
     `<filter id="shadow" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="${t.shadow}" flood-opacity="${t.shadowAlpha}"/></filter>${c.defs()}</defs>`;
-  const summary = [spec.eyebrow, ...spec.layers.map((l) => `${l.label}: ${l.components.map((k) => k.title).join(", ")}`)].filter(Boolean).join(". ");
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(summary)}"><title>${esc(spec.eyebrow ?? "Architecture")}</title>${defs}${bg}${shapes.join("")}${c.body.join("")}</svg>`;
+  const summary = [spec.eyebrow, ...spec.layers.map((l) => `${l.label}: ${l.components.flatMap((k) => (k.stack ?? [k]).map((x) => x.title ?? "")).filter(Boolean).join(", ")}`)].filter(Boolean).join(". ");
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(summary)}"><title>${esc(spec.eyebrow ?? "Architecture")}</title>${defs}${bg}${shapes.join("")}${lines.join("")}${c.body.join("")}</svg>`;
 };
