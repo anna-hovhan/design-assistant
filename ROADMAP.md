@@ -5,7 +5,7 @@ Each item is a generator in `src/generators/<name>/` plus a `.claude/commands/<n
 ## Next (small, build on what exists)
 | Command | What it does |
 | --- | --- |
-| `/architecture` (done) | Layered architecture diagram from a spec, light or dark. |
+| `/architecture-diagram` (done) | Architecture diagram from a description, a spec or a template. Stacked layers come from the generator, light or dark; flow and context diagrams are drawn by hand. |
 | `/architecture-from-repo` | Reads a repo (README, infra files such as Terraform or docker-compose) and drafts the spec, then draws it. The user reviews the spec before it is drawn. |
 | `/flow` | Left-to-right process or pipeline diagram (steps, branches, a human-review step), same styling. |
 | `/stat-card` | One big number with a label on a gradient tile, for case-study results and social posts. |

@@ -27,7 +27,7 @@ Text is drawn as paths from Manrope and Syne outlines, so the SVG works as an `<
 npm run design -- architecture four-layer-structural                       # out/four-layer-structural-light.svg
 npm run design -- architecture my-spec.json diagram.png --theme=dark
 ```
-In Claude Code: `/architecture five-layer-stack --theme=dark`. Spec shape and examples: `templates/architecture/`.
+In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram five-layer-stack --theme=dark`. The command uses this generator for stacked layers and draws flow and context diagrams by hand. Spec shape and examples: `templates/architecture/`.
 After changing fonts, run `npm run build:fonts` to regenerate `src/generators/architecture/fontdata.ts`.
 
 ## Templates

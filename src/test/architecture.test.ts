@@ -42,3 +42,24 @@ describe("architecture generator", () => {
     }
   });
 });
+
+describe("architecture detail", () => {
+  const five = JSON.parse(readFileSync(new URL("../../templates/architecture/five-layer-stack.json", import.meta.url), "utf8")) as ArchSpec;
+  it("keeps label capitalisation when asked", () => {
+    const upper = architectureSvg({ ...five, preserveCase: false });
+    expect(upper).not.toBe(architectureSvg(five));
+  });
+  it("draws links between boxes and fails on an unknown id", () => {
+    const strokes = (architectureSvg(five).match(/<path d="M[\d.]+ [\d.]+L[\d.]+ [\d.]+" fill="none"/g) ?? []).length;
+    expect(strokes).toBe(4);
+    const broken: ArchSpec = { layers: [{ label: "L", links: [{ from: "a", to: "b" }], components: [{ id: "a", title: "A" }] }] };
+    expect(() => architectureSvg(broken)).toThrow(/unknown box id/);
+  });
+  it("lists every title, including stacked boxes, in the description", () => {
+    const svg = architectureSvg(five);
+    for (const title of ["Hybrid router", "RAG pipeline", "Direct LLM — Claude 3.7 Sonnet", "Response generation", "Arize Phoenix", "CI/CD pipeline"]) expect(svg).toContain(title.replace("&", "&amp;"));
+  });
+  it("draws connectors as plain lines when asked", () => {
+    expect(architectureSvg(five)).not.toMatch(/V[\d.]+L[\d.]+ [\d.]+L[\d.]+ [\d.]+" fill="none" stroke="#99a1c4"/);
+  });
+});
