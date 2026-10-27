@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<title>design-assistant templates at a glance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;600&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b1033;--muted:#5b6082;--page:#f6f7fd;--primary:#2e3cff;--dream:#8271c6;--peri:#99a5ff;--blush:#ffb2cf;--butter:#ffe7a3;--aqua:#60e7f0}
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:750px;background:var(--page);color:var(--ink);font:400 14px/1.4 Manrope,system-ui,sans-serif;padding:26px 28px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+h1,h3{font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.01em}
+.tag{font:500 11px 'JetBrains Mono',monospace;color:var(--primary);letter-spacing:.08em;text-transform:uppercase}
+.card{background:rgba(255,255,255,.75);border:1px solid #fff;border-radius:22px;box-shadow:0 6px 24px rgba(46,60,255,.08);padding:14px 16px}
+.head{display:grid;grid-template-columns:1fr 520px;gap:20px;align-items:center;height:118px}
+h1{font-size:34px;line-height:1.05;margin-top:6px}
+.hero{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.pill{font:500 13px 'JetBrains Mono',monospace;border:1.5px solid var(--peri);border-radius:999px;background:#fff;padding:12px 16px;white-space:nowrap}
+.arrow{color:var(--primary);font:500 22px 'JetBrains Mono',monospace}
+.tile{flex:1;height:84px;border-radius:20px;background:linear-gradient(135deg,#2a3cff,#4fd8f0);display:grid;place-items:center}
+.tile svg{width:150px;height:auto}
+.grid{flex:1;display:grid;grid-template-columns:262px 1fr 262px;gap:12px;min-height:0}
+.col{display:flex;flex-direction:column;gap:12px;min-height:0}
+h3{font-size:17px;line-height:1.15;margin:4px 0 10px}
+p.lead{color:var(--muted);font-size:13px;line-height:1.35}
+.steps{display:grid;gap:16px;margin-top:12px}
+.steps div{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start}
+.steps b{font:500 12px 'JetBrains Mono',monospace;color:var(--dream);padding-top:2px}
+.steps strong{font:800 15px Syne,sans-serif;display:block}
+.steps span{color:var(--muted);font-size:13px;line-height:1.3;display:block}
+.fam{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;min-height:0}
+.fam .card{display:flex;flex-direction:column;padding:12px 14px;min-height:0}
+.thumb{height:84px;border-radius:14px;overflow:hidden;margin-bottom:8px;flex:none}
+.thumb svg{display:block;width:100%;height:100%}
+.fam code{font:500 12px 'JetBrains Mono',monospace;color:var(--primary)}
+.fam strong{font:800 15px Syne,sans-serif;display:block;margin:3px 0 2px}
+.fam small{color:var(--muted);font-size:12.5px;line-height:1.3;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:8px}
+.chips span{font:500 10.5px 'JetBrains Mono',monospace;color:var(--dream);background:#fff;border:1px solid var(--peri);border-radius:999px;padding:2px 8px}
+.sw{display:flex;gap:5px;align-items:center;margin-top:10px}.sw i{width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px #d8dcf3}
+pre{font:500 11.5px/1.55 'JetBrains Mono',monospace;background:#0b1132;color:#e9ecff;border-radius:14px;padding:11px 12px;white-space:pre;overflow:hidden;margin-top:6px}
+pre i{font-style:normal;color:#8f9bff}
+.foot{height:34px;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.foot b{font:800 17px Syne,sans-serif;color:var(--ink)}
+.foot code{font:500 12.5px 'JetBrains Mono',monospace;color:var(--primary);background:#fff;border:1.5px solid var(--peri);border-radius:999px;padding:4px 12px}
+</style>
+</head>
+<body>
+<div class="head">
+  <div><div class="tag">design-assistant &middot; templates</div><h1>Not just tiles. Any template, on&#8209;brand.</h1></div>
+  <div class="card hero"><div class="pill">templates/&lt;family&gt;/&lt;name&gt;</div><div class="arrow">&rarr;</div>
+    <div class="tile"><svg viewBox="0 0 220 40" role="img" aria-label="Your visual"><text x="110" y="28" text-anchor="middle" font-family="Syne" font-weight="800" font-size="23" fill="none" stroke="#fff" stroke-width="1">Your visual</text></svg></div></div>
+</div>
+<div class="grid">
+  <div class="col">
+    <div class="card"><div class="tag">What changed</div><h3>From one tile to a template library.</h3>
+      <p class="lead">The first version drew cover tiles. Now <code style="font:500 12px 'JetBrains Mono',monospace;color:var(--primary)">templates/</code> holds whole layouts, from diagrams to website pages.</p>
+      <div class="sw" aria-label="Brand colours"><i style="background:#99a5ff"></i><i style="background:#ffb2cf"></i><i style="background:#ffe7a3"></i><i style="background:#60e7f0"></i><i style="background:#8271c6"></i><i style="background:#2e3cff"></i><i style="background:#0b1132"></i></div></div>
+    <div class="card" style="flex:1"><div class="tag">Use a template</div>
+      <div class="steps">
+        <div><b>01</b><p><strong>Pick</strong><span>Name a template, or describe the visual and let <b style="font:600 13px Manrope;color:var(--ink)">/visual-brief</b> choose.</span></p></div>
+        <div><b>02</b><p><strong>Fill</strong><span>Swap the copy or edit the JSON spec. Brand rules stay fixed.</span></p></div>
+        <div><b>03</b><p><strong>Save</strong><span>The result lands in out/ as .svg, .png, .html or .pdf.</span></p></div>
+      </div></div>
+  </div>
+
+  <div class="fam">
+    <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#eef0ff,#fdeef5)">
+      <svg viewBox="0 0 270 112" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="#99a5ff" stroke-width="1.5">
+        <rect x="40" y="10" width="190" height="20" rx="8" fill="#fff"/>
+        <rect x="14" y="38" width="242" height="26" rx="8" fill="#ffe7a3" stroke="#2e3cff"/>
+        <rect x="24" y="43" width="66" height="16" rx="5" fill="#fff"/><rect x="102" y="43" width="66" height="16" rx="5" fill="#fff"/><rect x="180" y="43" width="66" height="16" rx="5" fill="#fff"/>
+        <rect x="14" y="72" width="242" height="26" rx="8" fill="#e8fbfd"/>
+        <rect x="24" y="77" width="100" height="16" rx="5" fill="#fff"/><rect x="134" y="77" width="112" height="16" rx="5" fill="#fff"/></g></svg></div>
+      <code>templates/architecture/</code><strong>Architecture diagrams</strong><small>Stacked layers from a JSON spec.</small>
+      <div class="chips"><span>four-layer</span><span>five-layer</span></div></div>
+
+    <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#eef0ff,#fff4d6)">
+      <svg viewBox="0 0 270 112" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><g stroke="#99a5ff" stroke-width="1.5" fill="#fff">
+        <rect x="12" y="10" width="68" height="52" rx="10"/>
+        <rect x="101" y="10" width="68" height="52" rx="10"/><rect x="190" y="10" width="68" height="52" rx="10" fill="#e8fbfd" stroke="#2e3cff"/></g>
+        <g stroke="#2e3cff" stroke-width="1.6" fill="none"><path d="M82 36h17M92 31l7 5-7 5M171 36h17M181 31l7 5-7 5"/><path d="M46 62v14h178V64M219 69l5-6 5 6" stroke-dasharray="4 3"/></g>
+        <g fill="#8271c6"><circle cx="30" cy="94" r="6"/><circle cx="78" cy="94" r="6"/><circle cx="126" cy="94" r="6"/><circle cx="174" cy="94" r="6"/><circle cx="222" cy="94" r="6"/></g></svg></div>
+      <code>templates/concepts/</code><strong>Concept diagrams</strong><small>Sources, one result, numbered steps.</small>
+      <div class="chips"><span>three-column-flow</span></div></div>
+
+    <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#f1f0ff,#ffeaf2 60%,#fff4d6)">
+      <svg viewBox="0 0 270 112" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <rect x="14" y="8" width="242" height="14" rx="7" fill="#fff" opacity=".9"/><rect x="22" y="12" width="14" height="6" rx="3" fill="#2e3cff"/><rect x="170" y="12" width="78" height="6" rx="3" fill="#99a5ff"/>
+        <rect x="14" y="30" width="110" height="9" rx="4" fill="#0b1132"/><rect x="14" y="43" width="150" height="5" rx="2.5" fill="#99a5ff"/>
+        <g stroke="#fff" stroke-width="1.5" fill="rgba(255,255,255,.85)"><rect x="14" y="58" width="74" height="44" rx="10"/><rect x="98" y="66" width="74" height="44" rx="10"/><rect x="182" y="74" width="74" height="44" rx="10"/></g>
+        <g fill="#8271c6"><rect x="22" y="66" width="30" height="5" rx="2.5"/><rect x="106" y="74" width="30" height="5" rx="2.5"/><rect x="190" y="82" width="30" height="5" rx="2.5"/></g></svg></div>
+      <code>templates/pages/</code><strong>Website pages</strong><small>Full-page mocks in glass cards.</small>
+      <div class="chips"><span>what-i-do</span><span>how-i-work</span><span>ai-os</span><span>collection</span></div></div>
+
+    <div class="card"><div class="thumb" style="background:linear-gradient(135deg,#ff9fb7,#ffd9a0);display:grid;place-items:center">
+      <svg viewBox="0 0 270 112" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><text x="135" y="76" text-anchor="middle" font-family="Syne" font-weight="800" font-size="64" fill="none" stroke="#fff" stroke-width="2.5">ST</text></svg></div>
+      <code>src/generators/placeholder</code><strong>Cover tiles</strong><small>Any name becomes a gradient tile.</small>
+      <div class="chips"><span>/placeholder</span></div></div>
+  </div>
+
+  <div class="col" style="min-height:0;overflow:hidden">
+    <div class="card"><div class="tag">In the repo</div>
+<pre>templates/
+  <i>architecture/</i>  2 specs
+  <i>concepts/</i>      1 flow
+  <i>pages/</i>         5 mocks
+src/generators/
+  <i>placeholder/</i>   tiles</pre>
+      <p class="lead" style="margin-top:10px">Add a layout by dropping a file in its family folder.</p></div>
+    <div class="card" style="flex:1"><div class="tag">One shared style</div><h3>All follow docs/brand.md.</h3>
+      <p class="lead">Gradients, Syne and Manrope type, large radii, thin outlines. Whatever the layout, the set feels like one.</p>
+      <div class="chips" style="margin-top:12px"><span>/architecture-diagram</span><span>/explainer</span><span>/one-pager</span><span>/placeholder</span></div></div>
+  </div>
+</div>
+<div class="foot"><b>Have a layout in mind?</b> Name the template, or describe the visual and start with <code>/visual-brief</code></div>
+</body>
+</html>
