@@ -40,7 +40,7 @@ After changing fonts, run `npm run build:fonts` to regenerate `src/generators/ar
 ## Templates
 Beyond tiles, the tool starts from a library of templates: `templates/architecture/` (JSON specs for layered diagrams), `templates/concepts/` (concept-diagram layouts) and `templates/pages/` (full website page mocks and the Collection page style sheet, as standalone HTML).
 
-![design-assistant templates: architecture diagrams, concept diagrams, website pages and cover tiles, all on one brand](docs/design-assistant-templates-card.png)
+![design-assistant assets: architecture diagrams, concept diagrams, website pages and cover tiles, all on one brand](docs/design-assistant-templates-card.png)
 
 ## Ideas
 See `ROADMAP.md` for the commands and skills to add next.
