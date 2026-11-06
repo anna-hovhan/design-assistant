@@ -9,3 +9,5 @@ Backgrounds use the three deepest gradient pairs, rotated so neighbouring cards 
 - `final/`: the versions chosen for the site. GTM Engine is `a/` with the grid at opacity .07; AI Strategy is `a/` with its teal elements in indigo `#4d4dff`. The rest match `a/`.
 
 AI workflow automation, AI Application Platform and ML sponsorship recommender kept their existing images on the site, so they appear only in `a/` and `b/`.
+
+These were drawn before `/card-illustration` set its safe area. Some of the `b/` art runs below y=520, where the card's glass panel hides it (the payments wheel, the fourth workflow row), and its strokes are 4 units rather than 4.5. Follow the command, not these files, for placement and stroke width.

@@ -10,6 +10,7 @@ Recommend the single best visual and say why in two sentences, choosing between:
 - `/architecture-diagram` when the point is how parts of a system relate.
 - `/explainer` when the audience must understand an idea they do not know yet.
 - `/one-pager` when someone needs a printable summary to act on or keep.
+- `/card-illustration` when a portfolio card needs an illustrated cover that shows what the project does.
 - `/placeholder` when only a named cover image is missing.
 
 Then ask whether to proceed, and if yes, run that command with arguments distilled from the request.
