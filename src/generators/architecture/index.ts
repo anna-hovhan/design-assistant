@@ -44,23 +44,24 @@ export type ArchSpec = {
 
 type FontKey = "manrope500" | "manrope700" | "syne700";
 
-const TONES: Record<Tone, { hex: string; ink: string; inkDark: string }> = {
-  neutral: { hex: "#b7bdd6", ink: "#6c7396", inkDark: "#aab1d4" },
-  peri: { hex: "#99a5ff", ink: "#3d47c9", inkDark: "#b4bcff" },
-  blush: { hex: "#ffb2cf", ink: "#b73a75", inkDark: "#ffc6dc" },
-  butter: { hex: "#ffe7a3", ink: "#8d6200", inkDark: "#ffe7a3" },
-  aqua: { hex: "#60e7f0", ink: "#087a86", inkDark: "#7aeff6" },
-  dream: { hex: "#8271c6", ink: "#6350b0", inkDark: "#b3a6ea" },
+export const TONES: Record<Tone, { hex: string; ink: string; inkDark: string }> = {
+  neutral: { hex: "#b7bdd6", ink: "#6c7396", inkDark: "#c3c8e6" },
+  peri: { hex: "#99a5ff", ink: "#3d47c9", inkDark: "#c3c9ff" },
+  blush: { hex: "#ffb2cf", ink: "#b73a75", inkDark: "#ffd0e2" },
+  butter: { hex: "#ffe7a3", ink: "#8d6200", inkDark: "#ffecb8" },
+  aqua: { hex: "#60e7f0", ink: "#087a86", inkDark: "#8ff3f8" },
+  dream: { hex: "#8271c6", ink: "#6350b0", inkDark: "#c7bdf2" },
 };
 
-const THEMES = {
+// Dark values are tuned so every text colour stays at 4.5:1 or more over any tint, glow included (see the test).
+export const THEMES = {
   light: {
     bg: "#f4f6fb", fg: "#0b1132", sub: "#3e4770", muted: "#7b82a3", arrow: "#99a1c4", surface: "#ffffff", surfaceAlpha: 0.84,
-    containerAlpha: 0.3, strokeAlpha: 0.9, shadow: "#2e3cff", shadowAlpha: 0.14,
+    containerAlpha: 0.3, strokeAlpha: 0.9, shadow: "#2e3cff", shadowAlpha: 0.14, tintAlpha: 0.45, asideAlpha: 0.4, periGlow: 0.42, blushGlow: 0.38,
   },
   dark: {
-    bg: "#0b1132", fg: "#eef0ff", sub: "#b4bae0", muted: "#8089b8", arrow: "#6b74a8", surface: "#0b1132", surfaceAlpha: 0.78,
-    containerAlpha: 0.2, strokeAlpha: 0.7, shadow: "#000000", shadowAlpha: 0.4,
+    bg: "#0b1132", fg: "#eef0ff", sub: "#d6daf3", muted: "#a3aad8", arrow: "#6b74a8", surface: "#0b1132", surfaceAlpha: 0.78,
+    containerAlpha: 0.15, strokeAlpha: 0.7, shadow: "#000000", shadowAlpha: 0.4, tintAlpha: 0.13, asideAlpha: 0.16, periGlow: 0.12, blushGlow: 0.12,
   },
 } as const;
 
@@ -186,14 +187,15 @@ export const architectureSvg = (spec: ArchSpec, theme: Theme = "light"): string 
         const k = leaf.spec;
         if (k.id) rects.set(k.id, { x: cell.x, y: cy, w: cell.w, h });
         const ktone = k.tone ? tonePick(k.tone) : null;
-        shapes.push(`<rect x="${fmt(cell.x)}" y="${fmt(cy)}" width="${fmt(cell.w)}" height="${fmt(h)}" rx="24" fill="${ktone ? ktone.hex : t.surface}" fill-opacity="${ktone ? (theme === "dark" ? 0.28 : 0.45) : t.surfaceAlpha}" stroke="${ktone ? ktone.hex : t.surface}" stroke-opacity="${ktone ? t.strokeAlpha : 0.9}" stroke-width="1.5"/>`);
+        shapes.push(`<rect x="${fmt(cell.x)}" y="${fmt(cy)}" width="${fmt(cell.w)}" height="${fmt(h)}" rx="24" fill="${ktone ? ktone.hex : t.surface}" fill-opacity="${ktone ? t.tintAlpha : t.surfaceAlpha}" stroke="${ktone ? ktone.hex : t.surface}" stroke-opacity="${ktone ? t.strokeAlpha : 0.9}" stroke-width="1.5"/>`);
         const blockH = leaf.titleLines.length * TITLE.line + (leaf.lines.length ? (leaf.titleLines.length ? 6 : 0) + leaf.lines.length * DETAIL.line : 0);
         let ty = cy + (h - blockH) / 2;
         const cx = cell.x + cell.w / 2;
         leaf.titleLines.forEach((ln) => { c.text(ln, TITLE.font, TITLE.size, cx, ty + TITLE.size * 0.95, t.fg, { anchor: "middle" }); ty += TITLE.line; });
         if (leaf.lines.length && leaf.titleLines.length) ty += 6;
         leaf.lines.forEach((ln) => {
-          const ink = ln.style === "accent" ? labelInk(k.tone ?? layer.tone) : ln.style === "muted" ? t.muted : t.sub;
+          // Muted grey is too faint on a tinted box in the dark theme, so it falls back to the detail colour there.
+          const ink = ln.style === "accent" ? labelInk(k.tone ?? layer.tone) : ln.style === "muted" && !(ktone && theme === "dark") ? t.muted : t.sub;
           c.text(ln.text, DETAIL.font, DETAIL.size, cx, ty + DETAIL.size * 0.9, ink, { anchor: "middle" });
           ty += DETAIL.line;
         });
@@ -212,7 +214,7 @@ export const architectureSvg = (spec: ArchSpec, theme: Theme = "light"): string 
       const ax = PAD + fullW + 56, aw = ASIDE_W, ah = Math.min(layerH, 230), ay = y + (layerH - ah) / 2;
       const at = tonePick(layer.aside.tone ?? "aqua");
       shapes.push(`<path d="M${fmt(lx + layerW + 10)} ${fmt(ay + ah / 2)}H${fmt(ax - 12)}M${fmt(ax - 22)} ${fmt(ay + ah / 2 - 8)}L${fmt(ax - 12)} ${fmt(ay + ah / 2)}L${fmt(ax - 22)} ${fmt(ay + ah / 2 + 8)}" fill="none" stroke="${t.arrow}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`);
-      shapes.push(`<rect x="${fmt(ax)}" y="${fmt(ay)}" width="${aw}" height="${fmt(ah)}" rx="28" fill="${at.hex}" fill-opacity="${theme === "dark" ? 0.22 : 0.4}" stroke="${at.hex}" stroke-opacity="${t.strokeAlpha}" stroke-width="2"/>`);
+      shapes.push(`<rect x="${fmt(ax)}" y="${fmt(ay)}" width="${aw}" height="${fmt(ah)}" rx="28" fill="${at.hex}" fill-opacity="${t.asideAlpha}" stroke="${at.hex}" stroke-opacity="${t.strokeAlpha}" stroke-width="2"/>`);
       const asideLines = wrapText(layer.aside.title, TITLE.font, 24, aw - 40);
       let ty = ay + (ah - asideLines.length * 32) / 2;
       asideLines.forEach((ln) => { c.text(ln, TITLE.font, 24, ax + aw / 2, ty + 24, labelInk(layer.aside!.tone ?? "aqua"), { anchor: "middle" }); ty += 32; });
@@ -232,7 +234,7 @@ export const architectureSvg = (spec: ArchSpec, theme: Theme = "light"): string 
     ? `<rect width="${W}" height="${H}" fill="${t.bg}"/><ellipse cx="140" cy="${fmt(H * 0.18)}" rx="820" ry="620" fill="url(#peri)"/><ellipse cx="${W - 60}" cy="${fmt(H * 0.1)}" rx="760" ry="560" fill="url(#blush)"/><ellipse cx="${fmt(W * 0.3)}" cy="${fmt(H * 0.92)}" rx="900" ry="560" fill="url(#butter)"/>`
     : `<rect width="${W}" height="${H}" fill="${t.bg}"/><ellipse cx="140" cy="${fmt(H * 0.12)}" rx="760" ry="560" fill="url(#peri)"/><ellipse cx="${W - 60}" cy="${fmt(H * 0.95)}" rx="700" ry="520" fill="url(#blush)"/>`;
   const glow = (id: string, color: string, a: number) => `<radialGradient id="${id}"><stop offset="0" stop-color="${color}" stop-opacity="${a}"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></radialGradient>`;
-  const defs = `<defs>${glow("peri", "#99a5ff", theme === "light" ? 0.42 : 0.28)}${glow("blush", "#ffb2cf", theme === "light" ? 0.38 : 0.16)}${glow("butter", "#ffe7a3", 0.32)}` +
+  const defs = `<defs>${glow("peri", "#99a5ff", t.periGlow)}${glow("blush", "#ffb2cf", t.blushGlow)}${glow("butter", "#ffe7a3", 0.32)}` +
     `<linearGradient id="line" x1="0" x2="1"><stop offset="0" stop-color="#60e7f0"/><stop offset=".5" stop-color="#2e3cff"/><stop offset="1" stop-color="#ffb2cf"/></linearGradient>` +
     `<filter id="shadow" x="-10%" y="-20%" width="120%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="${t.shadow}" flood-opacity="${t.shadowAlpha}"/></filter>${c.defs()}</defs>`;
   const summary = [spec.eyebrow, ...spec.layers.map((l) => `${l.label}: ${l.components.flatMap((k) => (k.stack ?? [k]).map((x) => x.title ?? "")).filter(Boolean).join(", ")}`)].filter(Boolean).join(". ");
