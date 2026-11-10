@@ -7,7 +7,7 @@
   README visual for the company-brain repo (poster format, landscape), 1600 wide, exported at 2x.
   Takeaway: Company Brain is the notes plus the tools that run them: 32 skills, 5 hooks, the brain CLI,
   an MCP server, generated views, and the Obsidian vault with templates and framework guides.
-  Facts from company-brain (2026-11-10): System/Skills.md, .company-brain/hooks/hooks.json,
+  Facts from company-brain (2026-11-10): the six framework skills' SKILL.md, brain.py refresh(), System/Skills.md, .company-brain/hooks/hooks.json,
   ./brain --help, .company-brain/mcp/vault/server.py, CLAUDE.md section 3, Templates/, System/Frameworks/,
   .obsidian/community-plugins.json, README.md "How Claude accesses it".
 -->
@@ -58,6 +58,15 @@ h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;fon
 .c-mcp{background:rgba(96,231,240,.18);border:1.5px solid rgba(20,184,200,.45)}
 .c-views{background:rgba(255,178,207,.24);border:1.5px solid rgba(214,84,140,.38)}
 .c-vault{grid-column:1 / -1}
+.c-fw{grid-column:1 / -1}
+.fw{margin-top:14px;display:flex;flex-direction:column}
+.fw-row{display:grid;grid-template-columns:270px 140px 1fr 330px;gap:20px;align-items:center;padding:11px 0;border-top:1px solid rgba(46,60,255,.12);font-size:15.5px;line-height:1.45;color:var(--ink2)}
+.fw-head{border-top:none;padding-top:4px}
+.fw-head .mono{font-size:11.5px;letter-spacing:.14em}
+.fw-name{font-weight:700;color:var(--ink)}
+.fw-out{color:var(--ink);font-weight:600}
+b.inl{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.88em;color:var(--ink)}
+
 .vault{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:12px}
 .vault h3{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.02em}
 .vault p{font-size:15px;line-height:1.45;color:var(--ink2);margin-top:6px}
@@ -117,14 +126,29 @@ h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;fon
           <li><span>OKR trees</span></li>
           <li><span>Opportunity solution trees and canvases</span></li>
           <li><span>Effort-impact matrix</span></li>
-          <li><span>Org chart and People Directory</span></li>
+          <li><span>Org chart, People Directory and who works on what</span></li>
+          <li><span>The index of every note</span></li>
         </ul>
       </div>
+
+    <div class="card c-fw">
+      <div class="top"><h2>How the framework notes work</h2><span class="count">8 frameworks · 6 skills</span></div>
+      <p class="what">Each framework has a template and a skill. Claude drafts the note with you from what the brain already knows, and the structured ones are turned into views by <b class="inl">brain refresh</b>.</p>
+      <div class="fw">
+          <div class="fw-row fw-head"><span class="mono">Framework</span><span class="mono">Skill</span><span class="mono">The note you write with Claude</span><span class="mono">What it becomes</span></div>
+          <div class="fw-row"><span class="fw-name">OKRs</span><span><span class="chip">okr</span></span><span>Objectives and key results at company, team or personal level, each linked to the goal it serves, with weekly check-ins</span><span class="fw-out">OKR trees</span></div>
+          <div class="fw-row"><span class="fw-name">Opportunity Solution Tree</span><span><span class="chip">ost</span></span><span>An outcome tied to a key result, then opportunities with evidence, solutions and experiments, one note each</span><span class="fw-out">Trees and Obsidian canvases</span></div>
+          <div class="fw-row"><span class="fw-name">Effort-Impact with RICE</span><span><span class="chip">prioritize</span></span><span>Effort, impact and RICE scores on solutions and projects, each with its reason</span><span class="fw-out">Effort-impact matrix</span></div>
+          <div class="fw-row"><span class="fw-name">Now-Next-Later roadmap</span><span><span class="chip">roadmap</span></span><span>A Kanban board for the company or a team, each card tied to the key result it serves</span><span class="fw-out">Kept in sync with projects by the skill</span></div>
+          <div class="fw-row"><span class="fw-name">Value Proposition Canvas</span><span><span class="chip">vpc</span></span><span>One canvas per customer segment: jobs, pains and gains from evidence, the value map and the fit</span><span class="fw-out">A note you keep editing; its assumptions become experiments</span></div>
+          <div class="fw-row"><span class="fw-name">Strategy Kernel, Playing to Win, Business Model Canvas</span><span><span class="chip">strategy</span></span><span>Strategy notes drafted from what the brain and its sources already say</span><span class="fw-out">Notes you keep editing; approved strategy changes only with your yes</span></div>
+      </div>
+    </div>
 
     <div class="card c-vault">
       <div class="top"><h2>The Obsidian vault</h2><span class="count">plain markdown</span></div>
       <div class="vault">
-        <div><h3>24 templates</h3><p>From the daily note and team update to objectives, decisions, stakeholder notes and the canvases.</p></div>
+        <div><h3>24 templates</h3><p>One per note type, from the daily note and team update to objectives, decisions and stakeholder notes. Skills and <b class="inl">brain new</b> create every note from one, in the right folder with the right name.</p></div>
         <div><h3>8 framework guides</h3><p>OKRs, Opportunity Solution Tree, Value Proposition Canvas, Effort-Impact with RICE, Strategy Kernel, Playing to Win, Business Model Canvas, Now-Next-Later.</p></div>
         <div><h3>4 community plugins</h3><p>Dataview for live hubs, Kanban for boards and roadmaps, Templater and Calendar.</p></div>
       </div>
