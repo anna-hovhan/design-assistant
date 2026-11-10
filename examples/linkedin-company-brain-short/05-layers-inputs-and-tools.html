@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The strategy reaches everyone, in three layers</title>
+<!--
+  Layers version of 04-floors-inputs-and-tools.html (2026-11-10): layers instead of floors, Obsidian as prominent as Claude. Variant of 02-three-floors.html (poster format, landscape), 1600x1100, exported at 2x.
+  Adds the inputs on the left (read as data, they land on your desk) and Obsidian and Claude on the right.
+  Facts from company-brain: System/Layers and privacy.md ("What Claude pulls from your tools"),
+  .company-brain/skills/weekly and connect, README.md "How Claude accesses it", CLAUDE.md sections 1 and 6.
+  Fixed coordinates so the connectors in the SVG land on their shapes.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0b1033;--ink2:#3e4770;--ink3:#5b6082;--primary:#2e3cff;--peri:#99a5ff;--blush:#ffb2cf;--butter:#ffe7a3;--aqua:#60e7f0;--dream:#8271c6}
+html,body{width:1600px;height:1100px;overflow:hidden}
+body{font-family:'Manrope',sans-serif;color:var(--ink);background:#f6f7fd}
+.page{position:relative;width:1600px;height:1100px;overflow:hidden;
+  background:
+    radial-gradient(800px 600px at -10% 20%,rgba(153,165,255,.34),transparent 60%),
+    radial-gradient(760px 560px at 108% 0%,rgba(96,231,240,.26),transparent 60%),
+    radial-gradient(820px 560px at 70% 112%,rgba(255,178,207,.40),transparent 60%),
+    #f6f7fd}
+.abs{position:absolute}
+.mono{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.label{left:72px;top:64px;display:flex;align-items:center;gap:14px}
+.label i{display:block;width:44px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--aqua),var(--primary),var(--blush))}
+h1{left:72px;top:92px;font-family:'Syne',sans-serif;font-weight:800;font-size:54px;letter-spacing:-.045em;line-height:1.02}
+h1 em{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:72px;letter-spacing:-.02em;line-height:1;color:var(--dream);margin-top:2px}
+.sub{left:72px;top:246px;font-size:21px;line-height:1.5;color:var(--ink2);width:1300px}
+svg.wires{left:0;top:0;width:1600px;height:1100px}
+/* inputs */
+.inputs{left:72px;top:356px;width:210px}
+.inputs .mono{font-size:12px;letter-spacing:.16em;line-height:1.5}
+.inp{position:absolute;left:72px;width:210px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:100px;font-size:16px;font-weight:600;background:rgba(255,231,163,.85);border:1.5px solid rgba(201,162,31,.55)}
+.inputs-note{left:72px;top:752px;width:210px;font-size:14px;line-height:1.45;color:var(--ink3)}
+/* vault and floors */
+.vault{left:352px;top:340px;width:900px;height:598px;border:2px dashed rgba(130,113,198,.75);border-radius:30px}
+.vault-tag{left:384px;top:326px;padding:5px 14px;border-radius:100px;background:var(--dream);color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.floor{position:absolute;left:376px;width:852px;height:146px;display:grid;grid-template-columns:340px 1fr;align-items:center;gap:20px;padding:20px 26px;border-radius:24px;border:1.5px solid}
+.floor .num{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:var(--ink3);margin-bottom:8px}
+.floor h2{font-family:'Syne',sans-serif;font-weight:800;font-size:25px;letter-spacing:-.03em;line-height:1}
+.floor .who{font-size:15.5px;font-weight:600;color:var(--ink2);margin-top:8px;line-height:1.35}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{padding:8px 14px;border-radius:100px;font-size:15.5px;font-weight:600;background:#fff;border:1.5px solid;color:var(--ink)}
+.f-company{top:364px;background:rgba(96,231,240,.20);border-color:rgba(20,184,200,.55)}
+.f-company .chip{border-color:rgba(20,184,200,.45)}
+.f-team{top:568px;background:rgba(153,165,255,.22);border-color:rgba(46,60,255,.35)}
+.f-team .chip{border-color:rgba(46,60,255,.30)}
+.f-me{top:772px;background:rgba(255,178,207,.28);border-color:rgba(214,84,140,.45)}
+.f-me .chip{border-color:rgba(214,84,140,.38)}
+.pill{position:absolute;left:402px;display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 12px;border-radius:100px;font-size:15.5px;font-weight:600;height:40px}
+.down{top:519px;background:rgba(255,255,255,.9);border:1.5px solid rgba(20,184,200,.55);color:var(--ink)}
+.up{top:723px;background:var(--ink);color:#fff}
+/* right side */
+.obs{left:1353px;top:372px;width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0b1560 5%,#8271c6 60%,#99a5ff);color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.03em;box-shadow:0 22px 50px -20px rgba(11,21,96,.7)}
+.obs-label{left:1308px;top:524px;width:230px;text-align:center;font-size:12px;letter-spacing:.14em;line-height:1.6}
+.obs-note{left:1308px;top:578px;width:230px;text-align:center;font-size:14.5px;line-height:1.45;color:var(--ink2)}
+.claude{left:1353px;top:660px;width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2e3cff 10%,#8271c6 60%,#ffb2cf);color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.03em;box-shadow:0 22px 50px -20px rgba(46,60,255,.7)}
+.claude-label{left:1308px;top:812px;width:230px;text-align:center;font-size:12px;letter-spacing:.14em;line-height:1.6}
+.claude-note{left:1308px;top:866px;width:230px;text-align:center;font-size:14.5px;line-height:1.45;color:var(--ink2)}
+/* check */
+.check{left:72px;top:968px;width:1456px;display:flex;align-items:center;gap:22px;padding:18px 26px;border-radius:22px;background:rgba(255,231,163,.55);border:1.5px solid rgba(201,162,31,.45)}
+.check .mono{flex:none;color:#6b5300;font-size:12.5px}
+.check p{font-size:17px;line-height:1.45;font-weight:500}
+.foot{left:72px;right:72px;bottom:28px;display:flex;justify-content:space-between}
+.foot .mono{font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="abs label"><i></i><span class="mono">Who sees what in Company Brain</span></div>
+  <h1 class="abs">The strategy reaches everyone, <em>and your drafts stay yours</em></h1>
+  <p class="abs sub">Your tools feed your personal layer. Claude and Obsidian work across all three, and your work is promoted up only with your yes.</p>
+
+  <!-- connectors, drawn under the shapes -->
+  <svg class="abs wires" viewBox="0 0 1600 1100" fill="none" stroke-linecap="round">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8271c6" stroke-width="1.8" stroke-linejoin="round"/></marker>
+      <marker id="arrn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#0b1560" stroke-width="1.8" stroke-linejoin="round"/></marker>
+      <marker id="arrp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#d6548c" stroke-width="1.8" stroke-linejoin="round"/></marker>
+    </defs>
+    <!-- inputs to your desk: chips centred at y 426, 482, 538, 594, 650, 706; desk left edge x 376, y 845 -->
+    <g stroke="#d6548c" stroke-opacity=".55" stroke-width="2" stroke-dasharray="3 7">
+      <path d="M282 426 C 330 426, 320 835, 372 840" marker-end="url(#arrp)"/>
+      <path d="M282 482 C 330 482, 322 838, 372 842"/>
+      <path d="M282 538 C 330 538, 324 840, 372 844"/>
+      <path d="M282 594 C 330 594, 326 842, 372 846"/>
+      <path d="M282 650 C 330 650, 328 844, 372 848"/>
+      <path d="M282 706 C 330 706, 330 846, 372 850"/>
+    </g>
+    <!-- Claude to each layer: circle centre (1423,730); layer right edge x 1228 -->
+    <g stroke="#8271c6" stroke-width="2.4">
+      <path d="M1357 705 C 1300 690, 1290 460, 1232 455" marker-end="url(#arr)"/>
+      <path d="M1354 722 C 1300 715, 1290 650, 1232 645" marker-end="url(#arr)"/>
+      <path d="M1357 755 C 1300 770, 1290 842, 1232 845" marker-end="url(#arr)"/>
+    </g>
+    <!-- Obsidian opens the vault: circle centre (1423,442) -->
+    <path d="M1353 442 L 1258 442" stroke="#0b1560" stroke-width="2.4" stroke-dasharray="6 6" marker-end="url(#arrn)"/>
+  </svg>
+
+  <div class="abs inputs"><span class="mono">Your tools,<br>read as data</span></div>
+  <span class="inp" style="top:404px">Slack</span>
+  <span class="inp" style="top:460px">Calendar</span>
+  <span class="inp" style="top:516px">Email</span>
+  <span class="inp" style="top:572px">Jira</span>
+  <span class="inp" style="top:628px">Meeting notes</span>
+  <span class="inp" style="top:684px">Drive and Desktop files</span>
+  <p class="abs inputs-note">Only the ones you connect. All of it lands in your personal layer.</p>
+
+  <div class="abs vault"></div>
+  <span class="abs vault-tag">One Obsidian vault · plain markdown</span>
+
+  <div class="floor f-company">
+    <div><div class="num">SHARED FOLDER</div><h2>Company layer</h2><div class="who">Everyone reads it, and so does their AI.</div></div>
+    <div class="chips"><span class="chip">Mission and values</span><span class="chip">Strategy</span><span class="chip">Company goals</span><span class="chip">Roadmap</span><span class="chip">Decisions</span></div>
+  </div>
+  <span class="pill down"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#14b8c8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4v14M5 12l6 6 6-6"/></svg>Context flows down to every layer and every agent</span>
+  <div class="floor f-team">
+    <div><div class="num">SHARED FOLDER</div><h2>Team layer</h2><div class="who">Everyone reads it. The team owns it.</div></div>
+    <div class="chips"><span class="chip">Team goals</span><span class="chip">Projects</span><span class="chip">Meeting notes</span><span class="chip">Weekly updates</span></div>
+  </div>
+  <span class="pill up"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#60e7f0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 18V4M5 10l6-6 6 6"/></svg>Promoted up only with your yes</span>
+  <div class="floor f-me">
+    <div><div class="num">YOUR LAPTOP ONLY</div><h2>Personal layer</h2><div class="who">Only you.</div></div>
+    <div class="chips"><span class="chip">Daily notes</span><span class="chip">Weekly notes</span><span class="chip">1:1 notes</span><span class="chip">Private goals</span><span class="chip">Drafts</span></div>
+  </div>
+
+  <div class="abs obs">Obsidian</div>
+  <span class="abs mono obs-label">Graph · Dataview<br>Kanban · Templater</span>
+  <p class="abs obs-note">You browse and edit every layer.</p>
+  <div class="abs claude">Claude</div>
+  <span class="abs mono claude-label">Skills · CLI<br>MCP server · hooks</span>
+  <p class="abs claude-note">Reads and writes every layer, and files what your tools bring.</p>
+
+  <div class="abs check">
+    <span class="mono">Built-in check</span>
+    <p>It flags any shared note that points to a private one, because even the title of a private note can say too much.</p>
+  </div>
+
+  <div class="abs foot"><span class="mono">Company Brain · open source</span><span class="mono">github.com/anna-hovhan/company-brain</span></div>
+</div>
+</body>
+</html>
