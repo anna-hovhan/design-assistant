@@ -31,12 +31,13 @@ h1 em{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-
 .sub{left:72px;top:246px;font-size:21px;line-height:1.5;color:var(--ink2);width:1420px}
 svg.wires{left:0;top:0;width:1600px;height:1100px}
 /* inputs */
-.share{left:72px;top:372px;width:228px;height:300px;padding:20px 20px;border-radius:24px;background:rgba(96,231,240,.22);border:1.5px solid rgba(20,184,200,.55)}
+.share{left:72px;top:372px;width:228px;height:262px;padding:20px 20px;border-radius:24px;background:rgba(96,231,240,.22);border:1.5px solid rgba(20,184,200,.55)}
 .share .mono{font-size:12px;letter-spacing:.16em}
 .share h3{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.03em;line-height:1.1;margin-top:12px}
-.share p{font-size:14.5px;line-height:1.45;color:var(--ink2);margin-top:10px}
-.inputs{left:72px;top:690px;width:240px}
+.share p{font-size:14px;line-height:1.42;color:var(--ink2);margin-top:10px}
+.inputs{left:72px;top:644px;width:240px;line-height:1}
 .inputs .mono{font-size:12px;letter-spacing:.16em;line-height:1.5}
+.inp.any{background:rgba(255,255,255,.75);border-style:dashed;font-size:14px}
 .inp{position:absolute;height:36px;display:flex;align-items:center;justify-content:center;border-radius:100px;font-size:14.5px;font-weight:600;background:rgba(255,231,163,.85);border:1.5px solid rgba(201,162,31,.55)}
 /* vault and floors */
 .vault{left:352px;top:340px;width:900px;height:598px;border:2px dashed rgba(130,113,198,.75);border-radius:30px}
@@ -85,14 +86,14 @@ svg.wires{left:0;top:0;width:1600px;height:1100px}
       <marker id="arra" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#14b8c8" stroke-width="1.8" stroke-linejoin="round"/></marker>
       <marker id="arrp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#d6548c" stroke-width="1.8" stroke-linejoin="round"/></marker>
     </defs>
-    <!-- shared folder box (right edge x 300) linked into the company layer (y 437) and the team layer (y 641), left edge x 376 -->
+    <!-- shared folder box (right edge x 300) linked into the company layer (y 437) and the team layer (y 604), left edge x 376 -->
     <g stroke="#14b8c8" stroke-width="2.6">
       <path d="M306 437 H 370" marker-start="url(#arra)" marker-end="url(#arra)"/>
-      <path d="M306 641 H 370" marker-start="url(#arra)" marker-end="url(#arra)"/>
+      <path d="M306 604 H 370" marker-start="url(#arra)" marker-end="url(#arra)"/>
     </g>
-    <!-- systems: chip rows centred at y 778, 822, 866, 910; a bracket at x 314 into the personal layer at y 845 -->
+    <!-- systems: chip rows centred at y 730, 774, 818, 862, 906; a bracket at x 314 into the personal layer at y 845 -->
     <g stroke="#d6548c" stroke-opacity=".7" stroke-width="2">
-      <path d="M302 778 H 314 M302 822 H 314 M302 866 H 314 M302 910 H 314 M314 778 V 910"/>
+      <path d="M302 730 H 314 M302 774 H 314 M302 818 H 314 M302 862 H 314 M302 906 H 314 M314 730 V 906"/>
       <path d="M314 845 H 370" marker-end="url(#arrp)"/>
     </g>
     <!-- one arrow each into the vault (right border x 1252), landing between layers -->
@@ -106,13 +107,14 @@ svg.wires{left:0;top:0;width:1600px;height:1100px}
     <h3>Google Shared Drive</h3>
     <p>Or any synced folder. Linked into every teammate's vault, so a change reaches everyone as soon as it syncs.</p>
   </div>
-  <div class="abs inputs"><span class="mono">Systems of record<br>and engagement,<br>read as data</span></div>
-  <span class="inp" style="left:72px;top:760px;width:110px">Slack</span>
-  <span class="inp" style="left:190px;top:760px;width:110px">Calendar</span>
-  <span class="inp" style="left:72px;top:804px;width:110px">Email</span>
-  <span class="inp" style="left:190px;top:804px;width:110px">Jira</span>
-  <span class="inp" style="left:72px;top:848px;width:228px">Meeting notes</span>
-  <span class="inp" style="left:72px;top:892px;width:228px">Drive and Desktop files</span>
+  <div class="abs inputs"><span class="mono">Systems of record<br>and engagement,<br>via MCP, read as data</span></div>
+  <span class="inp" style="left:72px;top:712px;width:110px">Slack</span>
+  <span class="inp" style="left:190px;top:712px;width:110px">Calendar</span>
+  <span class="inp" style="left:72px;top:756px;width:110px">Email</span>
+  <span class="inp" style="left:190px;top:756px;width:110px">Jira</span>
+  <span class="inp" style="left:72px;top:800px;width:228px">Meeting notes</span>
+  <span class="inp" style="left:72px;top:844px;width:228px">Drive and Desktop files</span>
+  <span class="inp any" style="left:72px;top:888px;width:228px">Any system with an MCP server</span>
 
   <div class="abs vault"></div>
   <span class="abs vault-tag">One Obsidian vault · plain markdown</span>
