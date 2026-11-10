@@ -90,14 +90,18 @@ svg.wires{left:0;top:0;width:1600px;height:1100px}
       <path d="M282 650 C 330 650, 328 844, 372 848"/>
       <path d="M282 706 C 330 706, 330 846, 372 850"/>
     </g>
-    <!-- Claude to each layer: circle centre (1423,730); layer right edge x 1228 -->
-    <g stroke="#8271c6" stroke-width="2.4">
-      <path d="M1357 705 C 1300 690, 1290 460, 1232 455" marker-end="url(#arr)"/>
-      <path d="M1354 722 C 1300 715, 1290 650, 1232 645" marker-end="url(#arr)"/>
-      <path d="M1357 755 C 1300 770, 1290 842, 1232 845" marker-end="url(#arr)"/>
+    <!-- Obsidian and Claude both reach every layer: a rail at x 1290 with an arrow into each layer (right edge x 1228) -->
+    <g stroke="#8271c6" stroke-width="2.6">
+      <path d="M1290 437 V 845"/>
+      <path d="M1290 437 H 1234" marker-end="url(#arr)"/>
+      <path d="M1290 641 H 1234" marker-end="url(#arr)"/>
+      <path d="M1290 845 H 1234" marker-end="url(#arr)"/>
     </g>
-    <!-- Obsidian opens the vault: circle centre (1423,442) -->
-    <path d="M1353 442 L 1258 442" stroke="#0b1560" stroke-width="2.4" stroke-dasharray="6 6" marker-end="url(#arrn)"/>
+    <!-- Obsidian circle centre (1423,442); Claude circle centre (1423,730) -->
+    <path d="M1353 442 C 1320 442, 1310 437, 1290 437" stroke="#0b1560" stroke-width="2.6" stroke-dasharray="6 6"/>
+    <path d="M1353 730 C 1320 730, 1310 730, 1290 730" stroke="#8271c6" stroke-width="2.6"/>
+    <circle cx="1290" cy="437" r="5" fill="#8271c6" stroke="none"/>
+    <circle cx="1290" cy="730" r="5" fill="#8271c6" stroke="none"/>
   </svg>
 
   <div class="abs inputs"><span class="mono">Systems of record<br>and engagement,<br>read as data</span></div>
