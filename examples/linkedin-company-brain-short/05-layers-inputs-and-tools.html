@@ -5,7 +5,7 @@
 <title>The strategy reaches everyone, in three layers</title>
 <!--
   Layers version of 04-floors-inputs-and-tools.html (2026-11-10): layers instead of floors, Obsidian as prominent as Claude. Variant of 02-three-floors.html (poster format, landscape), 1600x1100, exported at 2x.
-  Adds the inputs on the left (read as data, they land on your desk) and Obsidian and Claude on the right.
+  Left: the shared folder linked into the company and team layers, and the systems of record and engagement feeding the personal layer. Right: Obsidian and Claude, one arrow each into the vault.
   Facts from company-brain: System/Layers and privacy.md ("What Claude pulls from your tools"),
   .company-brain/skills/weekly and connect, README.md "How Claude accesses it", CLAUDE.md sections 1 and 6.
   Fixed coordinates so the connectors in the SVG land on their shapes.
@@ -28,13 +28,16 @@ body{font-family:'Manrope',sans-serif;color:var(--ink);background:#f6f7fd}
 .label i{display:block;width:44px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--aqua),var(--primary),var(--blush))}
 h1{left:72px;top:92px;font-family:'Syne',sans-serif;font-weight:800;font-size:54px;letter-spacing:-.045em;line-height:1.02}
 h1 em{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:72px;letter-spacing:-.02em;line-height:1;color:var(--dream);margin-top:2px}
-.sub{left:72px;top:246px;font-size:21px;line-height:1.5;color:var(--ink2);width:1300px}
+.sub{left:72px;top:246px;font-size:21px;line-height:1.5;color:var(--ink2);width:1420px}
 svg.wires{left:0;top:0;width:1600px;height:1100px}
 /* inputs */
-.inputs{left:72px;top:330px;width:220px}
+.share{left:72px;top:372px;width:228px;height:300px;padding:20px 20px;border-radius:24px;background:rgba(96,231,240,.22);border:1.5px solid rgba(20,184,200,.55)}
+.share .mono{font-size:12px;letter-spacing:.16em}
+.share h3{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:-.03em;line-height:1.1;margin-top:12px}
+.share p{font-size:14.5px;line-height:1.45;color:var(--ink2);margin-top:10px}
+.inputs{left:72px;top:690px;width:240px}
 .inputs .mono{font-size:12px;letter-spacing:.16em;line-height:1.5}
-.inp{position:absolute;left:72px;width:210px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:100px;font-size:16px;font-weight:600;background:rgba(255,231,163,.85);border:1.5px solid rgba(201,162,31,.55)}
-.inputs-note{left:72px;top:752px;width:210px;font-size:14px;line-height:1.45;color:var(--ink3)}
+.inp{position:absolute;height:36px;display:flex;align-items:center;justify-content:center;border-radius:100px;font-size:14.5px;font-weight:600;background:rgba(255,231,163,.85);border:1.5px solid rgba(201,162,31,.55)}
 /* vault and floors */
 .vault{left:352px;top:340px;width:900px;height:598px;border:2px dashed rgba(130,113,198,.75);border-radius:30px}
 .vault-tag{left:384px;top:326px;padding:5px 14px;border-radius:100px;background:var(--dream);color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
@@ -72,46 +75,44 @@ svg.wires{left:0;top:0;width:1600px;height:1100px}
 <div class="page">
   <div class="abs label"><i></i><span class="mono">Who sees what in Company Brain</span></div>
   <h1 class="abs">The strategy reaches everyone, <em>and your drafts stay yours</em></h1>
-  <p class="abs sub">Your systems feed your personal layer. Claude and Obsidian work across all three, and your work is promoted up only with your yes.</p>
+  <p class="abs sub">Your systems feed your personal layer, a shared folder holds the company and team layers, and Claude and Obsidian work across all three.</p>
 
   <!-- connectors, drawn under the shapes -->
   <svg class="abs wires" viewBox="0 0 1600 1100" fill="none" stroke-linecap="round">
     <defs>
       <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8271c6" stroke-width="1.8" stroke-linejoin="round"/></marker>
       <marker id="arrn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#0b1560" stroke-width="1.8" stroke-linejoin="round"/></marker>
+      <marker id="arra" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#14b8c8" stroke-width="1.8" stroke-linejoin="round"/></marker>
       <marker id="arrp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#d6548c" stroke-width="1.8" stroke-linejoin="round"/></marker>
     </defs>
-    <!-- inputs to your desk: chips centred at y 426, 482, 538, 594, 650, 706; desk left edge x 376, y 845 -->
-    <g stroke="#d6548c" stroke-opacity=".55" stroke-width="2" stroke-dasharray="3 7">
-      <path d="M282 426 C 330 426, 320 835, 372 840" marker-end="url(#arrp)"/>
-      <path d="M282 482 C 330 482, 322 838, 372 842"/>
-      <path d="M282 538 C 330 538, 324 840, 372 844"/>
-      <path d="M282 594 C 330 594, 326 842, 372 846"/>
-      <path d="M282 650 C 330 650, 328 844, 372 848"/>
-      <path d="M282 706 C 330 706, 330 846, 372 850"/>
+    <!-- shared folder box (right edge x 300) linked into the company layer (y 437) and the team layer (y 641), left edge x 376 -->
+    <g stroke="#14b8c8" stroke-width="2.6">
+      <path d="M306 437 H 370" marker-start="url(#arra)" marker-end="url(#arra)"/>
+      <path d="M306 641 H 370" marker-start="url(#arra)" marker-end="url(#arra)"/>
     </g>
-    <!-- Obsidian and Claude both reach every layer: a rail at x 1290 with an arrow into each layer (right edge x 1228) -->
-    <g stroke="#8271c6" stroke-width="2.6">
-      <path d="M1290 437 V 845"/>
-      <path d="M1290 437 H 1234" marker-end="url(#arr)"/>
-      <path d="M1290 641 H 1234" marker-end="url(#arr)"/>
-      <path d="M1290 845 H 1234" marker-end="url(#arr)"/>
+    <!-- systems: chip rows centred at y 778, 822, 866, 910; a bracket at x 314 into the personal layer at y 845 -->
+    <g stroke="#d6548c" stroke-opacity=".7" stroke-width="2">
+      <path d="M302 778 H 314 M302 822 H 314 M302 866 H 314 M302 910 H 314 M314 778 V 910"/>
+      <path d="M314 845 H 370" marker-end="url(#arrp)"/>
     </g>
-    <!-- Obsidian circle centre (1423,442); Claude circle centre (1423,730) -->
-    <path d="M1353 442 C 1320 442, 1310 437, 1290 437" stroke="#0b1560" stroke-width="2.6" stroke-dasharray="6 6"/>
-    <path d="M1353 730 C 1320 730, 1310 730, 1290 730" stroke="#8271c6" stroke-width="2.6"/>
-    <circle cx="1290" cy="437" r="5" fill="#8271c6" stroke="none"/>
-    <circle cx="1290" cy="730" r="5" fill="#8271c6" stroke="none"/>
+    <!-- one arrow each into the vault (right border x 1252), landing between layers -->
+    <path d="M1358 470 C 1310 500, 1300 539, 1260 539" stroke="#0b1560" stroke-width="2.6" marker-end="url(#arrn)"/>
+    <path d="M1354 740 C 1310 742, 1300 743, 1260 743" stroke="#8271c6" stroke-width="2.6" marker-end="url(#arr)"/>
   </svg>
 
+  <div class="abs share">
+    <svg width="30" height="26" viewBox="0 0 30 26" fill="none" stroke="#0e7c88" stroke-width="2" stroke-linejoin="round"><path d="M2 5a3 3 0 0 1 3-3h6.5l3 3.4H25a3 3 0 0 1 3 3V21a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z"/></svg>
+    <div class="mono" style="margin-top:10px">Shared folder</div>
+    <h3>Google Shared Drive</h3>
+    <p>Or any synced folder. Linked into every teammate's vault, so a change reaches everyone as soon as it syncs.</p>
+  </div>
   <div class="abs inputs"><span class="mono">Systems of record<br>and engagement,<br>read as data</span></div>
-  <span class="inp" style="top:404px">Slack</span>
-  <span class="inp" style="top:460px">Calendar</span>
-  <span class="inp" style="top:516px">Email</span>
-  <span class="inp" style="top:572px">Jira</span>
-  <span class="inp" style="top:628px">Meeting notes</span>
-  <span class="inp" style="top:684px">Drive and Desktop files</span>
-  <p class="abs inputs-note">Only the ones you connect. All of it lands in your personal layer.</p>
+  <span class="inp" style="left:72px;top:760px;width:110px">Slack</span>
+  <span class="inp" style="left:190px;top:760px;width:110px">Calendar</span>
+  <span class="inp" style="left:72px;top:804px;width:110px">Email</span>
+  <span class="inp" style="left:190px;top:804px;width:110px">Jira</span>
+  <span class="inp" style="left:72px;top:848px;width:228px">Meeting notes</span>
+  <span class="inp" style="left:72px;top:892px;width:228px">Drive and Desktop files</span>
 
   <div class="abs vault"></div>
   <span class="abs vault-tag">One Obsidian vault · plain markdown</span>

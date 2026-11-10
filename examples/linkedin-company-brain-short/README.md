@@ -8,7 +8,7 @@ The visuals for the short rewrite (2026-11-09) of the LinkedIn article about [Co
 | `02-three-floors.png` | "The strategy reaches everyone, and your drafts stay yours": the company, team and personal floors, what flows down and what moves up | `/explainer`, poster format, landscape |
 | `03-friday-and-monday.png` | "Your weekly note, drafted from the week you actually had": what you, your team and your lead get from one line on Friday, and how an update ladders to the mission | `/explainer`, poster format, landscape |
 | `04-floors-inputs-and-tools.png` | Variant of `02` for a README or a talk: the same floors, with your tools (Slack, calendar, email, Jira, meeting notes, Drive and Desktop files) feeding your desk on the left, and Obsidian and Claude working on every floor on the right | `/explainer`, poster format, landscape, 1600x1100 at 2x |
-| `05-layers-inputs-and-tools.png` | `04` for AI-savvy readers: layers instead of floors, promotion named, and Obsidian in its own circle as prominent as Claude. The company-brain README overview image since 2026-11-10 | `/explainer`, poster format, landscape, 1600x1100 at 2x |
+| `05-layers-inputs-and-tools.png` | `04` for AI-savvy readers: layers instead of floors, promotion named, the shared folder linked into the company and team layers, and Obsidian and Claude as equal circles with one arrow each into the vault. The company-brain README overview image since 2026-11-10 | `/explainer`, poster format, landscape, 1600x1100 at 2x |
 
 Each PNG has an `.html` source next to it. In-article images are exported at 2x for sharp display.
 
