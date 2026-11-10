@@ -7,6 +7,7 @@ The visuals for the short rewrite (2026-11-09) of the LinkedIn article about [Co
 | `01-cover.png` | Article cover, 1920x1080 (LinkedIn's cover size): the 2026-11-07 art with new copy | `/card-illustration` line style on the navy pair, title set in HTML |
 | `02-three-floors.png` | "The strategy reaches everyone, and your drafts stay yours": the company, team and personal floors, what flows down and what moves up | `/explainer`, poster format, landscape |
 | `03-friday-and-monday.png` | "Your weekly note, drafted from the week you actually had": what you, your team and your lead get from one line on Friday, and how an update ladders to the mission | `/explainer`, poster format, landscape |
+| `04-floors-inputs-and-tools.png` | Variant of `02` for a README or a talk: the same floors, with your tools (Slack, calendar, email, Jira, meeting notes, Drive and Desktop files) feeding your desk on the left, and Obsidian and Claude working on every floor on the right | `/explainer`, poster format, landscape, 1600x1100 at 2x |
 
 Each PNG has an `.html` source next to it. In-article images are exported at 2x for sharp display.
 
