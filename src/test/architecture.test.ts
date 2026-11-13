@@ -6,11 +6,26 @@ const spec: ArchSpec = {
   eyebrow: "Test diagram",
   layers: [
     { label: "Top", tone: "peri", components: [{ title: "One" }, { title: "Two", lines: ["A longer detail line that has to wrap inside a narrow box"], weight: 2 }] },
-    { label: "Bottom", aside: { title: "Side note" }, components: [{ title: "Three", tone: "blush" }] },
+    { label: "Bottom", aside: { title: "Side note" }, components: [{ title: "Three", tone: "sky" }] },
   ],
 };
 
+// Pink: red-led with a strong blue share and green clearly below red (white and butter yellow are not).
+const hasPink = (svg: string) =>
+  /blush/i.test(svg) ||
+  [...svg.matchAll(/#([0-9a-f]{6})\b/gi)].some(([, h]) => {
+    const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+    return r > 200 && b > 130 && g < r - 25 && b > g - 10;
+  });
+
 describe("architecture generator", () => {
+  it("offers blue dark themes that differ from each other", () => {
+    const svgs = (["dark", "navy", "cobalt"] as const).map((t) => architectureSvg(spec, t));
+    expect(new Set(svgs).size).toBe(3);
+  });
+  it("uses no pink in any theme", () => {
+    for (const t of ["light", "dark", "navy", "cobalt"] as const) expect(hasPink(architectureSvg(spec, t))).toBe(false);
+  });
   it("is stable for the same spec and theme, and differs between themes", () => {
     expect(architectureSvg(spec, "light")).toBe(architectureSvg(spec, "light"));
     expect(architectureSvg(spec, "light")).not.toBe(architectureSvg(spec, "dark"));

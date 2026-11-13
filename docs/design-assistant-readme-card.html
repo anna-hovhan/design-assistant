@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;600&family=Syne:wght@800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0b1033;--muted:#5b6082;--page:#f6f7fd;--primary:#2e3cff;--dream:#8271c6;--peri:#99a5ff;--blush:#ffb2cf;--butter:#ffe7a3;--aqua:#60e7f0}
+:root{--ink:#0b1033;--muted:#5b6082;--page:#f6f7fd;--primary:#2e3cff;--dream:#8271c6;--peri:#99a5ff;--sky:#6fa8ff;--butter:#ffe7a3;--aqua:#60e7f0}
 *{box-sizing:border-box;margin:0}
 body{width:1200px;height:750px;background:var(--page);color:var(--ink);font:400 14px/1.4 Manrope,system-ui,sans-serif;padding:26px 28px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
 h1,h3{font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.01em}
@@ -38,7 +38,7 @@ h3{font-size:17px;line-height:1.15;margin:4px 0 10px}
 .c code{font:500 11.5px/1.25 'JetBrains Mono',monospace;color:var(--primary);display:block;white-space:nowrap}
 .c small{display:block;color:var(--muted);font-size:12px;line-height:1.25;margin-top:3px}
 .eng{border:1.5px solid var(--primary);border-radius:14px;padding:8px 10px}
-.eng.code{background:#e8fbfd}.eng.hand{background:#ffeaf2}
+.eng.code{background:#e8fbfd}.eng.hand{background:#e6ecff}
 .eng strong{font:800 14px Syne,sans-serif;display:block}
 .eng small{color:var(--muted);font-size:12px;line-height:1.25;display:block;margin-top:2px}
 .sw{display:flex;gap:5px;align-items:center}.sw i{width:18px;height:18px;border-radius:50%;box-shadow:0 0 0 1px #d8dcf3}
@@ -60,7 +60,7 @@ pre{font:500 11.5px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9e
 <div class="grid">
   <div class="col">
     <div class="card"><div class="tag">The problem</div><h3>Every visual starts from a blank canvas.</h3>
-      <div class="mini"><i style="background:#f4a6a6;border-radius:5px"></i><i style="background:#7ad;border:2px solid #333;border-radius:14px"></i><i style="background:#cfc;border-radius:11px"></i><i style="background:#fb4;border-radius:2px"></i></div></div>
+      <div class="mini"><i style="background:#8fa8ff;border-radius:5px"></i><i style="background:#7ad;border:2px solid #333;border-radius:14px"></i><i style="background:#cfc;border-radius:11px"></i><i style="background:#fb4;border-radius:2px"></i></div></div>
     <div class="card" style="flex:1"><div class="tag">How it works</div>
       <div class="steps">
         <div><b>01</b><p><strong>Ask</strong><span>A slash command in Claude Code, or <b style="font:600 13px Manrope;color:var(--ink);padding:0">npm run design</b>.</span></p></div>
@@ -82,7 +82,7 @@ pre{font:500 11.5px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9e
       <div class="eng code"><strong>Code generators</strong><small>placeholder, architecture layers. Same input, same SVG.</small></div>
       <div class="eng hand"><strong>Claude, by the rules</strong><small>Flow and context diagrams, explainers, one-pagers.</small></div></div></div>
     <div class="dn">&uarr;</div>
-    <div class="layer"><b>Brand rules</b><div class="row" style="grid-template-columns:1fr 1fr"><div class="c"><code>docs/brand.md</code><small>Gradients, fonts, shapes, contrast</small></div><div class="c sw" aria-label="Brand colours"><i style="background:#99a5ff"></i><i style="background:#ffb2cf"></i><i style="background:#ffe7a3"></i><i style="background:#60e7f0"></i><i style="background:#8271c6"></i><i style="background:#2e3cff"></i><i style="background:#0b1132"></i></div></div></div>
+    <div class="layer"><b>Brand rules</b><div class="row" style="grid-template-columns:1fr 1fr"><div class="c"><code>docs/brand.md</code><small>Gradients, fonts, shapes, contrast</small></div><div class="c sw" aria-label="Brand colours"><i style="background:#99a5ff"></i><i style="background:#6fa8ff"></i><i style="background:#ffe7a3"></i><i style="background:#60e7f0"></i><i style="background:#8271c6"></i><i style="background:#2e3cff"></i><i style="background:#0b1132"></i></div></div></div>
     <div class="dn">&darr;</div>
     <div class="layer" style="margin-bottom:0"><b>You get</b><div class="row"><div class="c"><code>out/&lt;slug&gt;</code><small>.svg, .png, .html or .pdf</small></div></div></div>
   </div>
@@ -91,7 +91,7 @@ pre{font:500 11.5px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9e
   "Sample Text"
 # -> out/sample-text.svg
 # label: ST (initials)</pre>
-    <svg role="img" aria-label="Real /placeholder output for Sample Text: gradient tile with outlined ST lettering" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gst" x1="NaN" y1="NaN" x2="NaN" y2="NaN"><stop offset="0" stop-color="#ff9fb7"/><stop offset="1" stop-color="#ffd9a0"/></linearGradient></defs><rect width="1200" height="720" fill="url(#gst)"/><g fill="none" stroke="#fff" stroke-width="18.0" stroke-linejoin="miter"><path transform="translate(330.5 365) scale(0.2500)" d="M35-235L308-235Q315-214 349-199.5Q383-185 440.5-177.5Q498-170 574-170Q649-170 692.5-174.5Q736-179 754-190.5Q772-202 772-222Q772-241 743-251.5Q714-262 640-266Q566-270 432-270Q332-270 259.5-279.5Q187-289 140.5-309.5Q94-330 72-361.5Q50-393 50-437Q50-513 101.5-562.5Q153-612 257.5-636.5Q362-661 519-661Q749-661 870.5-594.5Q992-528 992-403L733-403Q728-436 671-453.5Q614-471 509-471Q405-471 354.5-459Q304-447 304-418Q304-403 318-394Q332-385 366.5-379.5Q401-374 464-372Q527-370 624-370Q731-370 806-359.5Q881-349 927.5-328Q974-307 995-274.5Q1016-242 1016-198Q1016-122 968-74Q920-26 816-3Q712 20 544 20Q449 20 369.5 9Q290-2 228-23.5Q166-45 123-76.5Q80-108 57.5-147.5Q35-187 35-235Z"/><path transform="translate(594.5 365) scale(0.2500)" d="M30-450L30-640L1070-640L1070-450L30-450ZM425 0L425-463L675-463L675 0Z"/></g></svg>
+    <svg role="img" aria-label="Real /placeholder output for Sample Text: gradient tile with outlined ST lettering" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="gst" x1="NaN" y1="NaN" x2="NaN" y2="NaN"><stop offset="0" stop-color="#1e2fc4"/><stop offset="1" stop-color="#60e7f0"/></linearGradient></defs><rect width="1200" height="720" fill="url(#gst)"/><g fill="none" stroke="#fff" stroke-width="18.0" stroke-linejoin="miter"><path transform="translate(330.5 365) scale(0.2500)" d="M35-235L308-235Q315-214 349-199.5Q383-185 440.5-177.5Q498-170 574-170Q649-170 692.5-174.5Q736-179 754-190.5Q772-202 772-222Q772-241 743-251.5Q714-262 640-266Q566-270 432-270Q332-270 259.5-279.5Q187-289 140.5-309.5Q94-330 72-361.5Q50-393 50-437Q50-513 101.5-562.5Q153-612 257.5-636.5Q362-661 519-661Q749-661 870.5-594.5Q992-528 992-403L733-403Q728-436 671-453.5Q614-471 509-471Q405-471 354.5-459Q304-447 304-418Q304-403 318-394Q332-385 366.5-379.5Q401-374 464-372Q527-370 624-370Q731-370 806-359.5Q881-349 927.5-328Q974-307 995-274.5Q1016-242 1016-198Q1016-122 968-74Q920-26 816-3Q712 20 544 20Q449 20 369.5 9Q290-2 228-23.5Q166-45 123-76.5Q80-108 57.5-147.5Q35-187 35-235Z"/><path transform="translate(594.5 365) scale(0.2500)" d="M30-450L30-640L1070-640L1070-450L30-450ZM425 0L425-463L675-463L675 0Z"/></g></svg>
     <p>Real generator output. Add --label= to choose other lettering. The same name always gives the same colours.</p></div>
 </div>
 <div class="foot"><b>Describe the visual you need.</b> Not sure which command? Start with <code>/visual-brief</code></div>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Blue hero slide</title>
+<!-- 1920x1080 hero / slide / LinkedIn cover. Replace the [BRACKETED] text, then set <body data-bg="..."> to one of:
+     PRIMARY: midnight, indigo (default to these). SECONDARY: navy, cobalt, deepsea (variety only). No pink: accents are aqua, periwinkle and butter only. -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b1132;--primary:#2e3cff;--peri:#99a5ff;--aqua:#60e7f0;--butter:#ffe7a3;--dream:#8271c6;
+  --bg:linear-gradient(135deg,#0b1132,#101a6e 55%,#1e2fc4);--glow:rgba(96,231,240,.16);--glow2:rgba(153,165,255,.18)}
+body[data-bg=midnight]{--bg:linear-gradient(135deg,#070b24,#0b1132 50%,#16227a)}
+body[data-bg=navy]{--bg:linear-gradient(135deg,#0f1a7a,#1a2ab0 60%,#2e3cff)}
+body[data-bg=cobalt]{--bg:linear-gradient(135deg,#1e2fc4,#2e3cff 60%,#3d5bff);--glow:rgba(96,231,240,.22)}
+body[data-bg=indigo]{--bg:linear-gradient(135deg,#0b1132,#2b2f9e 55%,#5a4fc4);--glow2:rgba(130,113,198,.3)}
+body[data-bg=deepsea]{--bg:linear-gradient(135deg,#0b1132,#0e2a8c 55%,#0f6fb8);--glow:rgba(96,231,240,.28)}
+*{box-sizing:border-box;margin:0}
+body{width:1920px;height:1080px;overflow:hidden;position:relative;background:var(--bg);color:#fff;font-family:Manrope,system-ui,sans-serif}
+.glow{position:absolute;border-radius:50%}
+.g1{width:1000px;height:1000px;right:-260px;top:-380px;background:radial-gradient(circle,var(--glow2),transparent 65%)}
+.g2{width:900px;height:900px;left:-300px;bottom:-460px;background:radial-gradient(circle,var(--glow),transparent 65%)}
+.copy{position:absolute;left:120px;top:0;bottom:0;width:900px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font:500 20px/1 "JetBrains Mono",monospace;letter-spacing:.28em;text-transform:uppercase;color:var(--peri);margin-bottom:34px}
+h1{font:800 112px/1 Syne,sans-serif;letter-spacing:-.02em}
+h1 .accent{background:linear-gradient(90deg,var(--aqua),var(--peri));-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+p{font-size:36px;line-height:1.4;color:rgba(255,255,255,.88);margin-top:48px;max-width:760px}
+.pills{position:absolute;left:120px;bottom:72px;display:flex;gap:16px}
+.pills span{font:400 18px/1 "JetBrains Mono",monospace;letter-spacing:.2em;text-transform:uppercase;padding:18px 24px;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;color:rgba(255,255,255,.9)}
+svg.art{position:absolute;right:40px;top:110px;width:860px;height:860px}
+.lbl{font:400 17px "JetBrains Mono",monospace;letter-spacing:.22em;fill:var(--peri)}
+</style></head>
+<body data-bg="navy">
+<div class="glow g1"></div><div class="glow g2"></div>
+<div class="copy">
+  <div class="eyebrow">[A SHORT EYEBROW LINE]</div>
+  <h1>Headline<br><span class="accent">Accent</span></h1>
+  <p>[One or two sentences that say what this is and who it is for.]</p>
+</div>
+<div class="pills"><span>[Tag one]</span><span>[Tag two]</span></div>
+<svg class="art" viewBox="0 -40 900 900" fill="none" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+  <defs><g id="tile"><path d="M0-34L58 0 0 34-58 0Z" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="2.5"/></g>
+  <g id="plate"><path d="M0-205L355 0 0 205-355 0Z" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></g></defs>
+  <g transform="translate(560 160) scale(.74)"><use href="#plate"/><use href="#tile" x="-170" y="10"/><use href="#tile" x="-60" y="-55"/><use href="#tile" x="90" y="-80"/>
+    <g transform="translate(70 18)"><path d="M0-34L58 0 0 34-58 0Z" fill="#60e7f0" fill-opacity=".3" stroke="#60e7f0" stroke-width="3"/></g></g>
+  <g transform="translate(560 420) scale(.74)"><use href="#plate"/><use href="#tile" x="-150" y="20"/><use href="#tile" x="40" y="70"/>
+    <g transform="translate(70 18)"><path d="M0-34L58 0 0 34-58 0Z" fill="#60e7f0" fill-opacity=".3" stroke="#60e7f0" stroke-width="3"/></g></g>
+  <g transform="translate(560 680) scale(.74)"><use href="#plate"/><use href="#tile" x="-170" y="10"/><use href="#tile" x="-30" y="-70"/><use href="#tile" x="-20" y="95"/>
+    <g transform="translate(70 18)"><path d="M0-34L58 0 0 34-58 0Z" fill="#60e7f0" fill-opacity=".3" stroke="#60e7f0" stroke-width="3"/></g></g>
+  <path d="M632 560V240" stroke="#60e7f0" stroke-width="3"/><path d="M616 262L632 240 648 262" stroke="#60e7f0" stroke-width="3"/>
+  <g fill="#0b1132" stroke="#60e7f0" stroke-width="3"><circle cx="632" cy="290" r="22"/><circle cx="632" cy="470" r="22"/></g>
+  <g stroke="#60e7f0" stroke-width="3"><path d="M622 290l7 7 12-14"/><path d="M622 470l7 7 12-14"/></g>
+  <text class="lbl" x="20" y="140">LAYER ONE</text><text class="lbl" x="20" y="400">LAYER TWO</text><text class="lbl" x="20" y="660">LAYER THREE</text>
+</svg>
+</body></html>

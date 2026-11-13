@@ -3,7 +3,7 @@
 My personal design assistant. It generates visual assets from the command line or from Claude Code.
 
 ## What it does
-One line in, one on-brand asset out. Five commands share one set of brand rules (`docs/brand.md`): code generators draw the repeatable shapes, and Claude draws the rest to the same rules.
+One line in, one on-brand asset out. Six commands share one set of brand rules (`docs/brand.md`): code generators draw the repeatable shapes, and Claude draws the rest to the same rules.
 
 [![design-assistant at a glance: the problem, the five commands and who draws what, three steps, and a /placeholder example](docs/design-assistant-card.png)](docs/design-assistant-explainer.html)
 
@@ -27,18 +27,23 @@ The label comes from the name: a short prefix before a colon (`ASICS: ...` gives
 else the initials of the first two main words. `--label` overrides it. PNG output needs `npx playwright install chromium`.
 
 ### architecture
-A layered architecture diagram from a small JSON spec, in the portfolio's colours (light, with the site gradient, or dark).
+A layered architecture diagram from a small JSON spec, in the portfolio's colours (light, or dark / navy / cobalt blue backgrounds).
 Text is drawn as paths from Manrope and Syne outlines, so the SVG works as an `<img>` anywhere.
 
 ```
 npm run design -- architecture four-layer-structural                       # out/four-layer-structural-light.svg
-npm run design -- architecture my-spec.json diagram.png --theme=dark
+npm run design -- architecture my-spec.json diagram.png --theme=navy
 ```
-In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram five-layer-stack --theme=dark`. The command uses this generator for stacked layers and draws flow and context diagrams by hand. Spec shape and examples: `templates/architecture/`.
+In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram five-layer-stack --theme=navy`. The command uses this generator for stacked layers and draws flow and context diagrams by hand. Spec shape and examples: `templates/architecture/`.
 After changing fonts, run `npm run build:fonts` to regenerate `src/generators/architecture/fontdata.ts`.
 
+### card-illustration
+Claude draws a 1200x720 SVG cover for a portfolio Selected work card: white line art on a brand gradient, or a recolour of existing art into the brand palette.
+The command keeps the subject inside the part of the card that stays visible (above the glass text panel, clear of the corner badges, inside the phone crop).
+In Claude Code: `/card-illustration "GTM Engine: one shared AI skill library for GTM teams"` or `/card-illustration "Company Brain" --style=recolor --source=old.svg`. Examples: `templates/portfolio-selected-work/`.
+
 ## Templates
-`templates/architecture/` holds architecture specs. `templates/pages/` holds the Collection page design mock and its style sheet from the portfolio, as standalone HTML.
+`templates/architecture/` holds architecture specs. `templates/blue-backgrounds/` holds the hero slide template (1920x1080) with five medium-dark and dark blue backgrounds and PNG previews.
 
 ## Ideas
 See `ROADMAP.md` for the commands and skills to add next.
