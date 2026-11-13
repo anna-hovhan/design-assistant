@@ -1,0 +1,77 @@
+%% REFERENCE TEMPLATE: layered system map (inputs -> engine -> outputs, plus promotion layers).
+%% Replace every [BRACKETED] label. Solid = data flow, dotted = side effect or optional link,
+%% thick = the primary path. Keep node text to 2-3 short lines.
+%% Render: npx -p @mermaid-js/mermaid-cli mmdc -i layered-system-map.mmd -o out/map.svg
+%%{init: {"theme":"base","flowchart":{"curve":"basis","nodeSpacing":40,"rankSpacing":60},
+"themeVariables":{"fontFamily":"Manrope, sans-serif","primaryColor":"#e1e5ff","primaryBorderColor":"#2e3cff",
+"lineColor":"#8271c6","clusterBkg":"#f1f2fd","clusterBorder":"#99a5ff","textColor":"#0b1033"}}}%%
+flowchart LR
+  subgraph INPUTS["[INPUTS]"]
+    direction TB
+    in1["[Connectors]<br/>[tool, tool, tool]"]
+    in2["[Sources]<br/>[read-only]"]
+  end
+
+  subgraph WORK["[WHERE PEOPLE WORK]"]
+    direction TB
+    w1["[Primary workspace]<br/>[app, app]"]
+    w2["[Notes vault]"]
+  end
+
+  subgraph ENGINE["[ENGINE]"]
+    direction TB
+    skills["[N skills]<br/>[+ rules]"]
+    cli["[CLI]<br/>[command, command, command]"]
+    hooks["[Hooks]<br/>[check one, check two]"]
+    mcp["[Server]"]
+  end
+
+  subgraph OUTPUTS["[OUTPUTS]"]
+    direction TB
+    views["[Generated views]<br/>[view, view, view]"]
+    pack["[Export pack]<br/>[read-only]"]
+  end
+
+  subgraph LAYERS["[LAYERS: links point up, never down]"]
+    direction LR
+    personal["[PERSONAL]<br/>[local, private]"]
+    team["[TEAM]<br/>[shared, team-owned]"]
+    company["[COMPANY]<br/>[shared, via review]"]
+  end
+
+  remote[("[remote store]")]
+
+  in1 --> skills
+  in2 --> skills
+  w1 --> skills
+  w1 -.-> mcp
+  skills --> cli
+  skills -. "[every write]" .-> hooks
+  hooks -.-> skills
+  mcp --> personal
+  skills == "[lands first]" ==> personal
+  w2 --> personal
+  cli -- "[refresh]" --> views
+  cli -- "[export]" --> pack
+  personal == "[promote: review + approve]" ==> team
+  team == "[promote + review]" ==> company
+  views --> company
+  company --> remote
+  team --> remote
+
+  classDef input fill:#ffe7a3,stroke:#c9a227,color:#0b1033
+  classDef engine fill:#e1e5ff,stroke:#2e3cff,color:#0b1033
+  classDef hook fill:#ffb2cf,stroke:#c2417a,color:#0b1033
+  classDef output fill:#e6defc,stroke:#8271c6,color:#0b1033
+  classDef personal fill:#ffd3e3,stroke:#e58fb2,color:#0b1033
+  classDef team fill:#e1e5ff,stroke:#99a5ff,color:#0b1033
+  classDef company fill:#c9f7fa,stroke:#14b8c8,color:#0b1033
+  classDef plain fill:#ffffff,stroke:#99a5ff,color:#0b1033
+  class in1,in2 input
+  class skills,cli,mcp engine
+  class hooks hook
+  class views,pack output
+  class personal personal
+  class team team
+  class company company
+  class w1,w2 plain

@@ -1,0 +1,23 @@
+%% REFERENCE TEMPLATE: "depends on" chain footer. Two or three chains read left to right;
+%% each chain is one framework. Replace [BRACKETED] labels; add or drop chains as needed.
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Manrope, sans-serif","lineColor":"#8271c6","textColor":"#0b1033"}}}%%
+flowchart LR
+  subgraph A["[Chain A]"]
+    direction LR
+    a1(["[Step one]"]) --> a2(["[Step two]"]) --> a3(["[Step three]"]) --> a4(["[Step four]"])
+  end
+  subgraph B["[Chain B]"]
+    direction LR
+    b1(["[Step one]"]) --> b2(["[Step two]"]) --> b3(["[Step three]"]) --> b4(["[Step four]"]) --> b5(["[Step five]"])
+  end
+  subgraph C["[Chain C]"]
+    direction LR
+    c1(["[Step one]"]) --> c2(["[Step two]"])
+  end
+  a4 -.-> b1
+  classDef a fill:#fff,stroke:#14b8c8
+  classDef b fill:#fff,stroke:#2e3cff
+  classDef c fill:#fff,stroke:#e58fb2
+  class a1,a2,a3,a4 a
+  class b1,b2,b3,b4,b5 b
+  class c1,c2 c
