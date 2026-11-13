@@ -7,10 +7,10 @@ import { GLYPHS } from "./glyphs";
 const PALETTES: [string, string, string?][] = [
   ["#2a3cff", "#4fd8f0"],
   ["#0b1560", "#2f3dff"],
-  ["#4d4dff", "#ff9ccd"],
-  ["#8a6fc4", "#f4a6cf"],
-  ["#ff9fb7", "#ffd9a0"],
-  ["#14b8c8", "#5de8f0", "#f1e6a0"],
+  ["#0b1132", "#2e3cff"],
+  ["#101a6e", "#4d5cff"],
+  ["#1e2fc4", "#60e7f0"],
+  ["#14b8c8", "#5de8f0", "#99a5ff"],
 ];
 
 const SKIP = new Set(["a", "an", "and", "the", "of", "for", "my", "our", "to", "in", "on", "with"]);

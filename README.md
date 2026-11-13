@@ -27,14 +27,14 @@ The label comes from the name: a short prefix before a colon (`ASICS: ...` gives
 else the initials of the first two main words. `--label` overrides it. PNG output needs `npx playwright install chromium`.
 
 ### architecture
-A layered architecture diagram from a small JSON spec, in the portfolio's colours (light, with the site gradient, or dark).
+A layered architecture diagram from a small JSON spec, in the portfolio's colours (light, or dark / navy / cobalt blue backgrounds).
 Text is drawn as paths from Manrope and Syne outlines, so the SVG works as an `<img>` anywhere.
 
 ```
 npm run design -- architecture four-layer-structural                       # out/four-layer-structural-light.svg
-npm run design -- architecture my-spec.json diagram.png --theme=dark
+npm run design -- architecture my-spec.json diagram.png --theme=navy
 ```
-In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram five-layer-stack --theme=dark`. The command uses this generator for stacked layers and draws flow and context diagrams by hand. Spec shape and examples: `templates/architecture/`.
+In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram five-layer-stack --theme=navy`. The command uses this generator for stacked layers and draws flow and context diagrams by hand. Spec shape and examples: `templates/architecture/`.
 After changing fonts, run `npm run build:fonts` to regenerate `src/generators/architecture/fontdata.ts`.
 
 ### card-illustration
@@ -43,7 +43,7 @@ The command keeps the subject inside the part of the card that stays visible (ab
 In Claude Code: `/card-illustration "GTM Engine: one shared AI skill library for GTM teams"` or `/card-illustration "Company Brain" --style=recolor --source=old.svg`. Examples: `templates/portfolio-selected-work/`.
 
 ## Templates
-`templates/architecture/` holds architecture specs. `templates/pages/` holds the Collection page design mock and its style sheet from the portfolio, as standalone HTML.
+`templates/architecture/` holds architecture specs. `templates/blue-backgrounds/` holds the hero slide template (1920x1080) with five medium-dark and dark blue backgrounds and PNG previews.
 
 ## Ideas
 See `ROADMAP.md` for the commands and skills to add next.
@@ -52,4 +52,4 @@ See `ROADMAP.md` for the commands and skills to add next.
 See `AGENTS.md`.
 
 ## Reference templates
-`templates/concepts/three-column-flow.html` is a generic conceptual-diagram layout (two sources, one combined result, a loop line and a numbered setup row). Copy it and replace the `[BRACKETED]` text to make an explainer, one-pager hero or concept diagram.
+`templates/blue-backgrounds/hero-slide.html`: set `<body data-bg="midnight|navy|cobalt|indigo|deepsea">`, replace the bracketed text, export with Playwright at 1920x1080.
