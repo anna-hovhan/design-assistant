@@ -40,7 +40,7 @@ After changing fonts, run `npm run build:fonts` to regenerate `src/generators/ar
 ### card-illustration
 Claude draws a 1200x720 SVG cover for a portfolio Selected work card: white line art on a brand gradient, or a recolour of existing art into the brand palette.
 The command keeps the subject inside the part of the card that stays visible (above the glass text panel, clear of the corner badges, inside the phone crop).
-In Claude Code: `/card-illustration "GTM Engine: one shared AI skill library for GTM teams"` or `/card-illustration "Company Brain" --style=recolor --source=old.svg`. Examples: `templates/portfolio-selected-work/`.
+In Claude Code: `/card-illustration "GTM Engine: one shared AI skill library for GTM teams"` or `/card-illustration "Company Brain" --style=recolor --source=old.svg`. Examples: `templates/thumbnail-illustrations/`.
 
 ## Templates
 `templates/architecture/` holds architecture specs. `templates/blue-backgrounds/` holds the hero slide template (1920x1080) with five medium-dark and dark blue backgrounds and PNG previews.
