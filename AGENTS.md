@@ -9,6 +9,13 @@ that exposes a pure function (same input, same output) and is wired into `src/cl
 - Generators that draw arbitrary text read glyph outlines from a generated `fontdata.ts` (`npm run build:fonts`); fonts are dev dependencies only, so generators stay dependency-free at run time.
 - Brand colours come from the portfolio: periwinkle #99a5ff, sky #6fa8ff, butter #ffe7a3, aqua #60e7f0, dream #8271c6, primary #2e3cff, ink #0b1132.
 
+## Typography rules (mandatory for every asset, never optional)
+- **Brand fonts: Syne 800 for headlines and titles, Manrope 400/600 for body text, JetBrains Mono for small labels and numbers.** Source of truth: `docs/brand.md` ("Type"). Never use Inter, system fonts or any other face, even when recreating a reference image that uses something else.
+- **Before making any visual asset, read `docs/brand.md` in full**, not just the section you think you need. It holds type as well as colour.
+- **Never substitute a font silently.** The sandbox has no Syne or Manrope installed (JetBrains Mono is). Do not conclude "not available, use a fallback". Run `npm install`, copy the files from `node_modules/@fontsource/syne/files/` and `node_modules/@fontsource/manrope/files/` into the output's `fonts/` folder, and load them with `@font-face`. If the fonts truly cannot be loaded, stop and tell the user before rendering.
+- **Verify before showing the result:** wait for fonts (`document.fonts.ready` or a short timeout) and check the screenshot actually shows Syne headlines (wide, geometric) and Manrope body. If the render looks like a generic sans, the fonts did not load; fix it first.
+- State the fonts used in the reply when delivering an asset.
+
 ## Colour rules
 - **No pink or blush anywhere** (assets, templates, palettes, tests, docs). If a source file contains pink, recolour it to blue (sky `#6fa8ff`, periwinkle `#99a5ff`) or do not use it. Butter `#ffe7a3` is the only warm accent.
 - Backgrounds are blue: light, or dark. Full gradient values are in `docs/brand.md` ("Dark blue backgrounds").
