@@ -22,3 +22,16 @@ Use these grounds for slides, covers and hero images (see `templates/blue-backgr
 | indigo | `#0b1132 → #2b2f9e → #5a4fc4` | adds dream purple depth |
 | deepsea | `#0b1132 → #0e2a8c → #0f6fb8` | cooler, blue-teal |
 Text is white; labels are periwinkle `#99a5ff` in JetBrains Mono; the headline accent is a `#60e7f0 → #99a5ff` gradient; one aqua highlight per illustration.
+
+## Portfolio site: pink still live (reviewed 2026-11-13)
+The published site CSS/JS (`annahovhannisyan.com/assets/index-*.css|js`) still has pink in these places. The site's source is not in this repo, so apply the same swaps there (Lovable prompt or code):
+| Where | Now | Change to |
+| --- | --- | --- |
+| `--blush` token | `338 100% 85%` (#ffb2cf) | rename `--sky: 217 100% 72%` (#6fa8ff), update every `var(--blush)` |
+| `--neon-blue` (dark mode) | `338 100% 85%` (pink) | `236 100% 59%` or `--sky` |
+| `--wave-blush` / `.wave-stop-blush` (waves, 65% stop, .2975 opacity) | pink | `--sky` (or `--aqua`); `.homepage-purple-waves` already maps it to dream |
+| Page background glows (`radial-gradient(... hsl(var(--blush) / .11-.13))`, `.homepage-gradient`, `.gradient-mesh`) | pink tint, bottom/right | `hsl(var(--sky) / .14)` |
+| Accent underline `linear-gradient(90deg, aqua, primary, blush)` and the dot `to-[hsl(var(--blush))]` | ends in pink | end in `--peri` |
+| Placeholder palettes in the JS bundle (`dp`) | `#4d4dff→#ff9ccd`, `#8a6fc4→#f4a6cf`, `#ff9fb7→#ffd9a0`, `#14b8c8→#5de8f0→#f1e6a0` | the six pairs in `src/generators/placeholder/index.ts` |
+| Image alt text "Peri to blush", "Blush to butter" | names pink gradients | reword once the images are re-made on blue |
+The red `#dc2626` / `rgb(254 242 242)` tints are destructive/error states, not brand pink; leave them.
