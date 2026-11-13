@@ -18,7 +18,7 @@ Each item is a generator in `src/generators/<name>/` plus a `.claude/commands/<n
 | `/case-study-hero` | Hero image for a project: title tile plus 3 supporting tiles in the portfolio grid style. |
 | `/sequence` | Sequence diagram (who calls whom, in order) from a short list of messages. |
 | `/data-model` | Entity boxes and relations from a SQL schema or the Supabase types file. |
-| `/mock-page` | Standalone HTML page mock from a short brief, using `templates/pages/collection-page-styles.html` as the style source. |
+| `/mock-page` | Standalone HTML page mock from a short brief, on a dark blue ground from `docs/brand.md`. |
 | `/deck-slide` | A single slide in the same styling, for talks and proposals. |
 | `/style-check` | Checks an image or HTML file against the brand colours and fonts and lists what is off. |
 

@@ -23,3 +23,15 @@ describe("placeholder image", () => {
     expect(placeholderImageUrl("Visa").startsWith("data:image/svg+xml")).toBe(true);
   });
 });
+
+describe("placeholder palette", () => {
+  it("never produces pink or warm gradient stops", () => {
+    for (const name of ["Visa", "ASICS: x", "My AI OS", "Payments", "GTM", "Brain", "Alpha", "Zed"]) {
+      const stops = [...placeholderSvg(name).matchAll(/stop-color="(#[0-9a-f]{6})"/g)].map((m) => m[1]);
+      for (const hex of stops) {
+        const [r, , b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+        expect(b).toBeGreaterThan(r);
+      }
+    }
+  });
+});

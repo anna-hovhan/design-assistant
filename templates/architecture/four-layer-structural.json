@@ -3,7 +3,7 @@
   "layers": [
     { "label": "Access + authentication", "tone": "neutral",
       "components": [{ "title": "User / browser" }, { "title": "API Gateway (REST)" }, { "title": "Amazon Cognito" }] },
-    { "label": "Security + compliance controls", "tone": "blush",
+    { "label": "Security + compliance controls", "tone": "sky",
       "components": [{ "title": "Security Hub" }, { "title": "GuardDuty" }, { "title": "CloudTrail audit" }] },
     { "label": "Compute + AI processing", "tone": "peri",
       "aside": { "title": "Multi-AZ deployment (HA)", "tone": "aqua" },

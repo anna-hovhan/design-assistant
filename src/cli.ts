@@ -2,12 +2,12 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { existsSync, readFileSync } from "node:fs";
 import { placeholderLabel, placeholderSvg } from "./generators/placeholder";
-import { architectureSvg, type ArchSpec, type Theme } from "./generators/architecture";
+import { architectureSvg, THEME_NAMES, type ArchSpec, type Theme } from "./generators/architecture";
 
 const USAGE = `design-assistant
 
   npm run design -- placeholder "<name>" [output.svg|output.png] [--label=ABC]
-  npm run design -- architecture <spec.json|template> [output.svg|output.png] [--theme=light|dark]
+  npm run design -- architecture <spec.json|template> [output.svg|output.png] [--theme=light|dark|navy|cobalt]
 
 Commands
   placeholder   Gradient card with the name's lettering drawn as outlines.
@@ -54,7 +54,7 @@ if (command === "placeholder") {
   const themeFlag = rest.find(a => a.startsWith("--theme="));
   const theme = (themeFlag?.slice("--theme=".length) ?? "light") as Theme;
   const [source, out] = rest.filter(a => !a.startsWith("--"));
-  if (!source || (theme !== "light" && theme !== "dark")) { console.error(USAGE); process.exit(1); }
+  if (!source || !THEME_NAMES.includes(theme)) { console.error(USAGE); process.exit(1); }
   const file = existsSync(source) ? source : resolve(import.meta.dirname, `../templates/architecture/${source}.json`);
   if (!existsSync(file)) { console.error(`No spec or template named "${source}".`); process.exit(1); }
   const svg = architectureSvg(JSON.parse(readFileSync(file, "utf8")) as ArchSpec, theme);

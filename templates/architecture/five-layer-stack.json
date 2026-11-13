@@ -29,7 +29,7 @@
         { "title": "S3 + KMS", "tone": "butter", "lines": [{ "text": "Dept-based RBAC", "style": "accent" }, { "text": "PII auto-purge 7d", "style": "accent" }] },
         { "title": "RDS PostgreSQL", "tone": "peri", "lines": [{ "text": "Users · sessions", "style": "accent" }, { "text": "Conversations · audit", "style": "accent" }] },
         { "title": "ECS / Fargate", "tone": "aqua", "lines": [{ "text": "Auto-scaling", "style": "accent" }, { "text": "VPC + ALB + SSL", "style": "accent" }] },
-        { "title": "CI/CD pipeline", "tone": "blush", "lines": [{ "text": "GitHub Actions", "style": "accent" }, { "text": "80% doc coverage gate", "style": "accent" }] }] },
+        { "title": "CI/CD pipeline", "tone": "sky", "lines": [{ "text": "GitHub Actions", "style": "accent" }, { "text": "80% doc coverage gate", "style": "accent" }] }] },
     { "label": "LAYER 5 — OBSERVABILITY & EVALUATION", "tone": "aqua",
       "components": [
         { "title": "MLFlow", "lines": [{ "text": "Experiment tracking", "style": "accent" }, { "text": "Model cards · metrics", "style": "accent" }] },
