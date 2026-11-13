@@ -31,7 +31,6 @@ Start from `/visual-brief` when the user describes content but not a format. The
 
 Rules for choosing:
 - Prefer a generator or template over drawing from scratch; draw by hand only when none fits, and follow `docs/brand.md`.
-- Never edit or reuse a deleted pink asset; do not recreate files removed from `templates/` (for example the old `a/` recolours, the `pages/` mocks and the `examples/` sets).
 - Never overwrite an existing file in `out/` or `templates/` without asking; write new output to `out/<slug>.<ext>`.
 - Show the user the result before pushing, uploading or replacing anything used on the live site.
 
