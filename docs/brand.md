@@ -21,6 +21,8 @@ Use these grounds for slides, covers and hero images (see `templates/blue-backgr
 | cobalt | `#1e2fc4 → #2e3cff → #3d5bff` | brightest, for covers and social |
 | indigo | `#0b1132 → #2b2f9e → #5a4fc4` | adds dream purple depth |
 | deepsea | `#0b1132 → #0e2a8c → #0f6fb8` | cooler, blue-teal |
+**Primary dark backgrounds: `midnight` and `indigo`** (`templates/blue-backgrounds/hero-slide-midnight.png` and `hero-slide-indigo.png`). Use one of these by default for any dark asset. `navy`, `cobalt` and `deepsea` are secondary: use them only for variety within a set (for example alternating slides), when a brighter or cooler ground is asked for, or when neighbouring assets already use a primary one. Do not pick a secondary background just because it is bright.
+
 Text is white; labels are periwinkle `#99a5ff` in JetBrains Mono; the headline accent is a `#60e7f0 → #99a5ff` gradient; one aqua highlight per illustration.
 
 ## Portfolio site: pink still live (reviewed 2026-11-13)
