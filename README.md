@@ -10,7 +10,9 @@ Case-study tiles and diagrams need on-brand visuals before a real preview image 
 npm install
 npm run design -- placeholder "Visa: The future of brand"   # writes out/visa-the-future-of-brand.svg
 ```
-Open the SVG in a browser to see the result.
+Open the SVG in a browser to see the result. That command produces this card:
+
+<img src="docs/examples/visa-the-future-of-brand.svg" alt="Placeholder card for Visa: The future of brand. The word VISA in thin white outlined capitals on a blue to aqua gradient." width="480">
 
 ## Decision
 Generators write dependency-free SVG with text drawn as outlines from the brand fonts, so each asset works as an `<img>` anywhere and the same name always produces the same colours. Claude draws the shapes the generators can't, to the same brand rules.
@@ -47,6 +49,10 @@ Text is drawn as paths from Manrope and Syne outlines, so the SVG works as an `<
 npm run design -- architecture four-layer-structural                       # out/four-layer-structural-light.svg
 npm run design -- architecture my-spec.json diagram.png --theme=navy
 ```
+
+`four-layer-structural` in the light theme:
+
+<img src="docs/examples/four-layer-structural-light.svg" alt="Architecture diagram, structural view with four stacked layers: access and authentication, security and compliance controls, compute and AI processing with a multi-AZ deployment note, and storage and observability. Each layer holds three labelled components." width="100%">
 In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram five-layer-stack --theme=navy`. The command uses this generator for stacked layers and draws flow and context diagrams by hand. Spec shape and examples: `templates/architecture/`.
 After changing fonts, run `npm run build:fonts` to regenerate `src/generators/architecture/fontdata.ts`.
 
