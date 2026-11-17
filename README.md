@@ -2,6 +2,19 @@
 
 My personal design assistant. It generates visual assets from the command line or from Claude Code.
 
+## Problem
+Case-study tiles and diagrams need on-brand visuals before a real preview image exists, and hand-made ones drift from the brand.
+
+## Try it
+```
+npm install
+npm run design -- placeholder "Visa: The future of brand"   # writes out/visa-the-future-of-brand.svg
+```
+Open the SVG in a browser to see the result.
+
+## Decision
+Generators write dependency-free SVG with text drawn as outlines from the brand fonts, so each asset works as an `<img>` anywhere and the same name always produces the same colours. Claude draws the shapes the generators can't, to the same brand rules.
+
 ## What it does
 One line in, one on-brand asset out. Six commands share one set of brand rules (`docs/brand.md`): code generators draw the repeatable shapes, and Claude draws the rest to the same rules.
 
