@@ -7,7 +7,8 @@ that exposes a pure function (same input, same output) and is wired into `src/cl
 - Text is drawn as SVG paths (never `<text>`) because SVGs used as `<img>` cannot load web fonts.
 - Add a test in `src/test/` for every generator. Run `npm test` and `npm run typecheck` before committing.
 - Generators that draw arbitrary text read glyph outlines from a generated `fontdata.ts` (`npm run build:fonts`); fonts are dev dependencies only, so generators stay dependency-free at run time.
-- Brand colours come from the portfolio: periwinkle #99a5ff, sky #6fa8ff, butter #ffe7a3, aqua #60e7f0, dream #8271c6, primary #2e3cff, ink #0b1132.
+- Brand colours: periwinkle #99a5ff, sky #6fa8ff, butter #ffe7a3, aqua #60e7f0, dream #8271c6, primary #2e3cff, ink #0b1132.
+- **Scope: everything outside annahovhannisyan.com.** The site has its own design system (dark, lilac, Newsreader) in the Portfolio repo; images for the site are made there, never here. This style is the design system **AH Visuals** in Claude (`docs/design-system.md`).
 
 ## Typography rules (mandatory for every asset, never optional)
 - **Brand fonts: Syne 800 for headlines and titles, Manrope 400/600 for body text, JetBrains Mono for small labels and numbers.** Source of truth: `docs/brand.md` ("Type"). Never use Inter, system fonts or any other face, even when recreating a reference image that uses something else.
@@ -33,7 +34,7 @@ Start from `/visual-brief` when the user describes content but not a format. The
 | Stand-in image for a project, client or collection with no preview | `/placeholder` (`npm run design -- placeholder`) | Deterministic blue gradient with initials. Never hand-draw one. |
 | Stacked-layer architecture diagram (3 to 5 layers) | `/architecture-diagram` with `layers` style; start from `templates/architecture/four-layer-structural.json` or `five-layer-stack.json` | Light theme for web and docs; `dark` (ink) by default for dark; `navy` or `cobalt` only as secondary. |
 | Flow or context diagram (not stacked layers) | `/architecture-diagram` with `flow` or `context` style | Drawn by hand to `docs/brand.md`. |
-| Cover image for a portfolio Selected work card (1200x720) | `/card-illustration` | Default `midnight` pair; follow the safe area in the command. Examples in `templates/thumbnail-illustrations/` (`b/` line art, `final/` chosen for the site), but follow the command, not the old files. |
+| Line-art cover image (1200x720) for a project card, an article or a post outside the site | `/card-illustration` | Default `midnight` pair; follow the safe area in the command. Examples in `templates/thumbnail-illustrations/` (`b/` line art, `final/` chosen for the site), but follow the command, not the old files. |
 | Slide, hero, LinkedIn cover or social hero (1920x1080) | Copy `templates/blue-backgrounds/hero-slide.html` and set `data-bg` | Ask light or dark if not specified. Dark: `midnight` or `indigo` by default, the other three only per the colour rules. Light: `data-bg="light"`. Export with Playwright at 1920x1080. |
 | One idea taught visually (scroll, slides or poster) | `/explainer` | Ask light or dark if not specified. Standalone explainer images, posters and diagrams default to light; slides default to dark (`midnight` or `indigo`) with a light version available. |
 | Printable brief, case study or leave-behind | `/one-pager` | Light page, blue accents. |
