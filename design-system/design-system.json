@@ -5,7 +5,7 @@
   "v": 1,
   "at": "2026-11-22T22:02:06Z"
  },
- "title": "AH Visuals v1",
+ "title": "AH Visuals v2",
  "namespace": "AHVisuals",
  "libraries": [],
  "sections": {},
@@ -18,6 +18,7 @@
    "name": "Backgrounds",
    "tile": "l",
    "order": [
+    "hero-slide-light.png",
     "hero-slide-midnight.png",
     "hero-slide-indigo.png",
     "hero-slide-navy.png",
@@ -54,6 +55,12 @@
      "blob": "28c3f1602a81f8de7e9bf72788996239",
      "size": 1076761,
      "type": "image/png"
+    },
+    "hero-slide-light.png": {
+     "name": "hero-slide-light.png",
+     "blob": "bb8f2216d6eceb3e5a23b44af3674de1",
+     "size": 663554,
+     "type": "image/png"
     }
    }
   },
@@ -63,6 +70,7 @@
    "order": [
     "orbit-field-service-platform.svg",
     "four-layer-structural-light.svg",
+    "02-company-brain-light.svg",
     "02-company-brain.svg",
     "design-assistant-card.png"
    ],
@@ -90,6 +98,12 @@
      "blob": "e86a0fea88000cf1dd467d60355d47f6",
      "size": 2151,
      "type": "image/svg+xml"
+    },
+    "02-company-brain-light.svg": {
+     "name": "02-company-brain-light.svg",
+     "blob": "825376b554c98cbdcafea40523a19e01",
+     "size": 3959,
+     "type": "image/svg+xml"
     }
    }
   }
@@ -100,8 +114,8 @@
  },
  "lastChange": {
   "by": "Anna Hovhannisyan",
-  "at": "2026-11-22T22:31:25Z",
+  "at": "2026-11-22T23:10:14Z",
   "via": "Claude Code · anna-hovhan/design-assistant",
-  "note": "Example names: sample names only (Atlas replaces a real brand in the Placeholder label rule), and an Example names disclaimer in the brand book"
+  "note": "v2: light is the primary ground for every format, dark grounds secondary; a light hero slide and a light line-art cover"
  }
 }
