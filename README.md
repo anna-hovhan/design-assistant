@@ -65,7 +65,7 @@ The command keeps the subject inside the part of the card that stays visible (ab
 In Claude Code: `/card-illustration "GTM Engine: one shared AI skill library for GTM teams"` or `/card-illustration "Company Brain" --style=recolor --source=old.svg`. Examples: `templates/thumbnail-illustrations/`.
 
 ## Templates
-`templates/architecture/` holds architecture specs. `templates/blue-backgrounds/` holds the hero slide template (1920x1080) with five medium-dark and dark blue backgrounds and PNG previews.
+`templates/architecture/` holds architecture specs. `templates/blue-backgrounds/` holds the hero slide template (1920x1080) with its six grounds, light (the primary one) and five dark blues, and a PNG preview of each.
 
 ## Ideas
 See `ROADMAP.md` for the commands and skills to add next.

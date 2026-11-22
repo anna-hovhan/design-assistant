@@ -13,7 +13,7 @@ It is for everything outside annahovhannisyan.com. The site has its own design s
 
 ## Changing it
 
-1. Change the rule in `docs/brand.md` (or `AGENTS.md`) and the matching files in `design-system/` in the same pull request.
+1. Change the rule in `docs/brand.md`, the only source of colour rules, and the matching files in `design-system/` in the same change. `npm test` runs `src/test/consistency.test.ts`, which fails when the templates, the tokens, the brand book's version or the generators no longer agree with `docs/brand.md`, or when a pink colour appears anywhere; CI runs it on every pull request and every push to main.
 2. **Count the version up by one:** the name carries it, as "AH Visuals vN" in the README heading, the index `title`, and `tokens.json` `name` and `version`.
 3. **Publish to Claude** with the Artifact tool: first a plain `read` of the link, then one publish of the changed `project/` files (`root` = a folder holding `project/`). Read Claude's `project/README.md` before sending a new one and keep its generated part. Then the index alone, re-read just before, with only `title`, `lastChange` and any asset records changed.
 4. Note the version and what changed in the pull request.
