@@ -9,7 +9,7 @@ const W = arg('w', 1200), H = arg('h', 800), L = arg('layers', 4);
 // Small seeded PRNG so the same inputs always give the same picture
 let s = 7; const rnd = () => ((s = (s * 16807) % 2147483647) / 2147483647);
 
-const accents = ['#99a5ff', '#2e3cff', '#ffb2cf', '#8271c6']; // periwinkle, primary, blush, dream
+const accents = ['#99a5ff', '#2e3cff', '#6fa8ff', '#8271c6']; // periwinkle, primary, sky, dream
 const parts = [];
 const slab = (cx, y, w, depth, th, i) => {
   const x0 = cx - w / 2, sk = depth * 0.45; // sk = how far the back edge is inset (perspective)
@@ -37,7 +37,7 @@ for (let i = 0; i < L; i++) {
 const baseY = top + (L - 1) * gap + 66;
 const blocks = Array.from({ length: 7 }, (_, i) => {
   const bw = 60 + rnd() * 60, bx = 140 + i * ((W - 340) / 6) + rnd() * 30, by = baseY + 70 + rnd() * 70;
-  const c = i === 1 ? '#ffd3e3' : i === 5 ? '#d9defd' : '#ffffff';
+  const c = i === 1 ? '#d3dcff' : i === 5 ? '#d9defd' : '#ffffff';
   return `<g><rect x="${bx.toFixed(0)}" y="${by.toFixed(0)}" width="${bw.toFixed(0)}" height="${(bw * 0.6).toFixed(0)}" rx="10" fill="${c}" opacity=".78" stroke="#fff" stroke-width="1.5"/>
 <rect x="${bx.toFixed(0)}" y="${(by + bw * 0.5).toFixed(0)}" width="${bw.toFixed(0)}" height="${(bw * 0.1).toFixed(0)}" rx="4" fill="#99a5ff" opacity=".25"/></g>`;
 });

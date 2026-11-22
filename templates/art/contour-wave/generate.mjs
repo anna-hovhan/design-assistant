@@ -6,8 +6,8 @@ const arg = (k, d) => Number((process.argv.find((a) => a.startsWith(`--${k}=`)) 
 const out = process.argv.find((a) => a.endsWith('.svg')) ?? 'contour-wave.svg';
 const W = arg('w', 1000), H = arg('h', 2000), N = arg('lines', 110);
 
-// Gradient stops (see docs/brand.md): ink-navy -> dusk purple -> blush
-const stops = [['0', '#1c2b6b'], ['.5', '#8a7aa2'], ['1', '#f9d3e1']];
+// Gradient stops (see docs/brand.md): ink-navy -> slate blue -> pale blue. No pink.
+const stops = [['0', '#1c2b6b'], ['.5', '#7a82a2'], ['1', '#d3dbf9']];
 
 // Edge control points as fractions of the canvas, top-right down to bottom-left. Edit to reshape.
 const ctrl = [[0.9, -0.05], [0.86, 0.3], [0.58, 0.46], [0.5, 0.6], [0.3, 0.68], [-0.15, 0.78]];

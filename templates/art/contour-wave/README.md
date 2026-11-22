@@ -2,7 +2,7 @@
 
 Abstract cover or background art for "flow", "signal", "growth" or "momentum" stories. Reference: `reference.jpg`.
 
-**Look:** a tall diagonal gradient (deep navy top-left, dusk purple middle, blush bottom-right). One flowing edge runs from the top right to the left side; dozens of fine white lines repeat that edge, packed tight at the edge and spreading apart toward the lower right.
+**Look:** a tall diagonal gradient (deep navy top-left, slate blue middle, pale blue bottom-right). One flowing edge runs from the top right to the left side; dozens of fine white lines repeat that edge, packed tight at the edge and spreading apart toward the lower right.
 
 **Use:** phone wallpaper, slide cover, poster background. The empty upper-left area is the text zone.
 
