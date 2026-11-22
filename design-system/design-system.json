@@ -1,0 +1,107 @@
+{
+ "v": 3,
+ "layout": "files",
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-22T22:02:06Z"
+ },
+ "title": "AH Visuals v1",
+ "namespace": "AHVisuals",
+ "libraries": [],
+ "sections": {},
+ "groups": [
+  "Backgrounds",
+  "Examples"
+ ],
+ "assetGroups": {
+  "Backgrounds": {
+   "name": "Backgrounds",
+   "tile": "l",
+   "order": [
+    "hero-slide-midnight.png",
+    "hero-slide-indigo.png",
+    "hero-slide-navy.png",
+    "hero-slide-cobalt.png",
+    "hero-slide-deepsea.png"
+   ],
+   "files": {
+    "hero-slide-midnight.png": {
+     "name": "hero-slide-midnight.png",
+     "blob": "29c3bd9b0f9e135eab7b485c8fae7ddf",
+     "size": 937319,
+     "type": "image/png"
+    },
+    "hero-slide-indigo.png": {
+     "name": "hero-slide-indigo.png",
+     "blob": "96e1276c3e3db399ce025559d942916f",
+     "size": 1100149,
+     "type": "image/png"
+    },
+    "hero-slide-navy.png": {
+     "name": "hero-slide-navy.png",
+     "blob": "2f069a397192ad6f8b7234c7aa62b1a9",
+     "size": 1001098,
+     "type": "image/png"
+    },
+    "hero-slide-cobalt.png": {
+     "name": "hero-slide-cobalt.png",
+     "blob": "96bf5b4a18a7e0148a4065b32add7ad9",
+     "size": 880322,
+     "type": "image/png"
+    },
+    "hero-slide-deepsea.png": {
+     "name": "hero-slide-deepsea.png",
+     "blob": "28c3f1602a81f8de7e9bf72788996239",
+     "size": 1076761,
+     "type": "image/png"
+    }
+   }
+  },
+  "Examples": {
+   "name": "Examples",
+   "tile": "l",
+   "order": [
+    "visa-the-future-of-brand.svg",
+    "four-layer-structural-light.svg",
+    "02-company-brain.svg",
+    "design-assistant-card.png"
+   ],
+   "files": {
+    "visa-the-future-of-brand.svg": {
+     "name": "visa-the-future-of-brand.svg",
+     "blob": "c5ffbbc768b1e128322d8cb38b572b61",
+     "size": 1533,
+     "type": "image/svg+xml"
+    },
+    "four-layer-structural-light.svg": {
+     "name": "four-layer-structural-light.svg",
+     "blob": "246a80b7c21dd92b3c8ff4441b750857",
+     "size": 53760,
+     "type": "image/svg+xml"
+    },
+    "02-company-brain.svg": {
+     "name": "02-company-brain.svg",
+     "blob": "4c02381d4c33d41d0db9093749f220de",
+     "size": 3871,
+     "type": "image/svg+xml"
+    },
+    "design-assistant-card.png": {
+     "name": "design-assistant-card.png",
+     "blob": "409f151ecefbad8b723ee4f890fc6151",
+     "size": 444891,
+     "type": "image/png"
+    }
+   }
+  }
+ },
+ "blobs": {},
+ "docs": {
+  "sections": []
+ },
+ "lastChange": {
+  "by": "Anna Hovhannisyan",
+  "at": "2026-11-22T22:02:06Z",
+  "via": "Claude Code · anna-hovhan/design-assistant@f3cd494",
+  "note": "First version: tokens, brand book, nine format and element cards, built from design-assistant's brand rules, templates and examples"
+ }
+}

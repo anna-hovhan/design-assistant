@@ -7,7 +7,7 @@ Create an architecture diagram for: $ARGUMENTS
 
 There are two ways to draw, and the style decides which one is used:
 
-- **`layers` (default for "what is it made of")**: drawn by the generator (`npm run design -- architecture`). Same spec, same SVG every time, in the portfolio colours, light or dark, with text already converted to paths so it works as an `<img>`.
+- **`layers` (default for "what is it made of")**: drawn by the generator (`npm run design -- architecture`). Same spec, same SVG every time, in the brand's named colours, light or dark, with text already converted to paths so it works as an `<img>`.
 - **`flow` and `context`**: drawn by hand as SVG, because the generator only does stacked layers.
 
 If the argument is an existing spec file or a template name (`four-layer-structural`, `five-layer-stack`), skip to step 4.

@@ -24,11 +24,14 @@ One line in, one on-brand asset out. Six commands share one set of brand rules (
 
 Open [`docs/design-assistant-explainer.html`](docs/design-assistant-explainer.html) in a browser for the full page.
 
+## Design system
+The same style is the Design System **AH Visuals** in Claude, for decks, designs and pages made there. Its source is `design-system/`; how it is published and kept in step: `docs/design-system.md`. It covers everything outside annahovhannisyan.com, which has its own design system in the Portfolio repo.
+
 ## Generators
 
 ### placeholder
 A gradient card with the name's initials or acronym drawn as thin outlined lettering (Syne ExtraBold),
-originally built for portfolio case-study tiles that have no preview image yet.
+originally built for case-study tiles that have no preview image yet.
 The same name always yields the same colours.
 
 ```
@@ -42,7 +45,7 @@ The label comes from the name: a short prefix before a colon (`ASICS: ...` gives
 else the initials of the first two main words. `--label` overrides it. PNG output needs `npx playwright install chromium`.
 
 ### architecture
-A layered architecture diagram from a small JSON spec, in the portfolio's colours (light, or dark / navy / cobalt blue backgrounds).
+A layered architecture diagram from a small JSON spec, in the brand's named colours (light, or dark / navy / cobalt blue backgrounds).
 Text is drawn as paths from Manrope and Syne outlines, so the SVG works as an `<img>` anywhere.
 
 ```
@@ -57,7 +60,7 @@ In Claude Code: `/architecture-diagram "<system>"` or `/architecture-diagram fiv
 After changing fonts, run `npm run build:fonts` to regenerate `src/generators/architecture/fontdata.ts`.
 
 ### card-illustration
-Claude draws a 1200x720 SVG cover for a portfolio Selected work card: white line art on a brand gradient, or a recolour of existing art into the brand palette.
+Claude draws a 1200x720 SVG cover for a project card, an article or a post: white line art on a brand gradient, or a recolour of existing art into the brand palette.
 The command keeps the subject inside the part of the card that stays visible (above the glass text panel, clear of the corner badges, inside the phone crop).
 In Claude Code: `/card-illustration "GTM Engine: one shared AI skill library for GTM teams"` or `/card-illustration "Company Brain" --style=recolor --source=old.svg`. Examples: `templates/thumbnail-illustrations/`.
 

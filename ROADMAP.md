@@ -15,7 +15,7 @@ Each item is a generator in `src/generators/<name>/` plus a `.claude/commands/<n
 ## Later
 | Command | What it does |
 | --- | --- |
-| `/case-study-hero` | Hero image for a project: title tile plus 3 supporting tiles in the portfolio grid style. |
+| `/case-study-hero` | Hero image for a project: title tile plus 3 supporting tiles in a tile grid. |
 | `/sequence` | Sequence diagram (who calls whom, in order) from a short list of messages. |
 | `/data-model` | Entity boxes and relations from a SQL schema or the Supabase types file. |
 | `/mock-page` | Standalone HTML page mock from a short brief, on a dark blue ground from `docs/brand.md`. |
