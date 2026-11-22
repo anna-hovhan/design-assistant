@@ -1,6 +1,6 @@
-# AH Visuals v1
+# AH Visuals v2
 
-Anna Hovhannisyan's visual language for everything outside her website: one-pagers, explainers, diagrams, slides, covers and post images. Light glass cards on a pale page, or white type on deep blue gradients; Syne for headlines, Manrope for reading, JetBrains Mono for labels and numbers. It is built from the design-assistant repo, whose `docs/brand.md` is the source of every rule here, and whose generators and Claude Code commands make the assets.
+Anna Hovhannisyan's visual language for everything outside her website: one-pagers, explainers, diagrams, slides, covers and post images. Light glass cards on a pale page first, and white type on deep blue gradients when an asset is asked for dark; Syne for headlines, Manrope for reading, JetBrains Mono for labels and numbers. It is built from the design-assistant repo, whose `docs/brand.md` is the source of every rule here, and whose generators and Claude Code commands make the assets.
 
 **Not for annahovhannisyan.com.** The website has its own design system, dark with lilac accents and Newsreader headlines: **Anna Hovhannisyan** in Claude, kept in the Portfolio repo. An image that will sit on the site is made with that system, never this one.
 
@@ -16,9 +16,9 @@ Anna Hovhannisyan's visual language for everything outside her website: one-page
 
 **Two grounds.** Light: `page`, fading into `page-wash`, with content on glass cards (`card`, a 1px `card-border`, `card-shadow`, `radius-card`, `space-card` padding). Dark: one of the `bg-*` gradients with white `text`.
 
-**Light or dark, by format.** When nobody says: images, diagrams and explainers (posters, scroll pages, infographics, process and layer diagrams) are light; slides, heroes and covers are dark, on `bg-midnight` or `bg-indigo`, and each of those also gets a light version on request. In any other case, ask once.
+**Light is primary.** Every format starts light, on `bg-light`: images, diagrams, explainers, one-pagers, slides, heroes and covers. The light colours carry it: `page` and `page-wash`, `periwinkle` and `sky` for outlines and line art, `aqua`, `butter` as the one warm fill, and `primary` for the one highlight. Never pink.
 
-**Dark grounds.** `bg-midnight` and `bg-indigo` are the primary ones. `bg-navy`, `bg-cobalt` and `bg-deepsea` are secondary: only for variety within a set, when a brighter or cooler ground is asked for, or when neighbouring assets already use a primary one. Never pick one just because it is bright.
+**Dark grounds are secondary:** only when an asset is asked for dark, or to match a set that is already dark. Then `bg-midnight` or `bg-indigo` first; `bg-navy`, `bg-cobalt` and `bg-deepsea` only for variety within a set or when a brighter or cooler dark ground is asked for. Never pick one just because it is bright.
 
 **Accents.** On light: `primary` for the one highlight, `dream` for labels and step numbers, `butter` as the only warm accent. On dark: `aqua` for the one highlight, `periwinkle` for labels, white `text`, and `accent-text` (aqua to periwinkle) on at most one headline word. The theme tokens `highlight` and `label` switch between the two.
 
@@ -34,7 +34,7 @@ Anna Hovhannisyan's visual language for everything outside her website: one-page
 
 ## Imagery
 
-- **Line art:** white strokes on a deep blue pair, round caps and joins, dashed connectors, translucent white panels, and one accent for what carries the meaning (LineArtCover).
+- **Line art:** on light (primary), `primary` strokes with white glass panels and `butter` as a fill under a primary outline; on a dark pair, white strokes with translucent white panels and an `aqua` or `butter` accent. Round caps and joins, dashed connectors (LineArtCover).
 - **Generated images** (Placeholder, ArchitectureDiagram) are deterministic SVG with text drawn as outlines: the same input always gives the same file.
 - No stock images and no emoji: real work, generated art or line art only.
 
@@ -71,6 +71,6 @@ All names in the examples and previews of this system, such as "Orbit: Field ser
 ## Not synced
 
 - **Two text inks in the source.** `docs/brand.md` and the explainer use `#0b1033` for text (`text`); `AGENTS.md`'s light-background rule names ink `#0b1132`. This system follows `brand.md`.
-- **The card-illustration command names its four pairs** navy, aqua, midnight and cobalt, and its cobalt pair ends in `#4d6bff`, unlike `pair-5` (`#1e2fc4` to `#60e7f0`). The command keeps its own list.
+- **The card-illustration command names its grounds** light, midnight, navy, aqua and cobalt, and its cobalt pair ends in `#4d6bff`, unlike `pair-5` (`#1e2fc4` to `#60e7f0`). The command keeps its own list.
 - **Spacing:** the source has no spacing scale; the three `space-*` tokens are the values the templates use.
 - **Not here:** the art templates (contour-wave, glass-layer-stack) and the Mermaid templates stay in the repo, under `templates/`.

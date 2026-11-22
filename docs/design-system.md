@@ -19,3 +19,4 @@ It is for everything outside annahovhannisyan.com. The site has its own design s
 4. Note the version and what changed in the pull request.
 
 Version 1 (22 Nov 2026): the first system, from `main@f3cd494`.
+Version 2 (23 Nov 2026): light is the primary ground for every format, dark grounds secondary; a light ground in the hero template and for line-art covers.

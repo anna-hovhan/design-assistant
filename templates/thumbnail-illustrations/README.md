@@ -1,7 +1,7 @@
 # Thumbnail illustrations
 
 Thumbnails used for various purposes such as for  portfolio work section (1200x720 SVG), in the blue brand palette from `docs/brand.md`. No pink: the earlier pink-gradient versions and the old `a/` recolours were removed.
-Backgrounds use the deep blue pairs `#0b1560→#2f3dff` and `#2a3cff→#4fd8f0`.
+Backgrounds use the deep blue pairs `#0b1560→#2f3dff` and `#2a3cff→#4fd8f0`. `light/` holds the same art on the light ground, which is now the primary one (`/card-illustration`, `--pair=light`).
 
 - `b/`: white line illustrations (1.5px at card size) with one accent, aqua `#60e7f0` on navy and butter `#ffe7a3` on the others. GTM Engine, Company Brain, Reimagining R&D, AI Platform, ML recommender.
 - `final/`: `02-company-brain.svg`, the version chosen for the site.
