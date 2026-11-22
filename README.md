@@ -8,11 +8,11 @@ Case-study tiles and diagrams need on-brand visuals before a real preview image 
 ## Try it
 ```
 npm install
-npm run design -- placeholder "Visa: The future of brand"   # writes out/visa-the-future-of-brand.svg
+npm run design -- placeholder "Orbit: Field service platform"   # writes out/orbit-field-service-platform.svg
 ```
 Open the SVG in a browser to see the result. That command produces this card:
 
-<img src="docs/examples/visa-the-future-of-brand.svg" alt="Placeholder card for Visa: The future of brand. The word VISA in thin white outlined capitals on a blue to aqua gradient." width="480">
+<img src="docs/examples/orbit-field-service-platform.svg" alt="Placeholder card for the sample name Orbit: Field service platform. The word ORBIT in thin white outlined capitals on a deep navy to blue gradient." width="480">
 
 ## Decision
 Generators write dependency-free SVG with text drawn as outlines from the brand fonts, so each asset works as an `<img>` anywhere and the same name always produces the same colours. Claude draws the shapes the generators can't, to the same brand rules.
@@ -36,10 +36,10 @@ The same name always yields the same colours.
 
 ```
 npm install
-npm run design -- placeholder "Visa: The future of brand"          # out/visa-the-future-of-brand.svg
+npm run design -- placeholder "Orbit: Field service platform"      # out/orbit-field-service-platform.svg
 npm run design -- placeholder "My AI operating system" os.png --label=OS
 ```
-In Claude Code: `/placeholder "Visa: The future of brand"`.
+In Claude Code: `/placeholder "Orbit: Field service platform"`.
 
 The label comes from the name: a short prefix before a colon (`ASICS: ...` gives ASICS), else a leading acronym (`ML ...` gives ML),
 else the initials of the first two main words. `--label` overrides it. PNG output needs `npx playwright install chromium`.

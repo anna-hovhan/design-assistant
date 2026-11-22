@@ -61,18 +61,12 @@
    "name": "Examples",
    "tile": "l",
    "order": [
-    "visa-the-future-of-brand.svg",
+    "orbit-field-service-platform.svg",
     "four-layer-structural-light.svg",
     "02-company-brain.svg",
     "design-assistant-card.png"
    ],
    "files": {
-    "visa-the-future-of-brand.svg": {
-     "name": "visa-the-future-of-brand.svg",
-     "blob": "c5ffbbc768b1e128322d8cb38b572b61",
-     "size": 1533,
-     "type": "image/svg+xml"
-    },
     "four-layer-structural-light.svg": {
      "name": "four-layer-structural-light.svg",
      "blob": "246a80b7c21dd92b3c8ff4441b750857",
@@ -90,6 +84,12 @@
      "blob": "409f151ecefbad8b723ee4f890fc6151",
      "size": 444891,
      "type": "image/png"
+    },
+    "orbit-field-service-platform.svg": {
+     "name": "orbit-field-service-platform.svg",
+     "blob": "e86a0fea88000cf1dd467d60355d47f6",
+     "size": 2151,
+     "type": "image/svg+xml"
     }
    }
   }
@@ -100,8 +100,8 @@
  },
  "lastChange": {
   "by": "Anna Hovhannisyan",
-  "at": "2026-11-22T22:02:06Z",
-  "via": "Claude Code · anna-hovhan/design-assistant@f3cd494",
-  "note": "First version: tokens, brand book, nine format and element cards, built from design-assistant's brand rules, templates and examples"
+  "at": "2026-11-22T22:26:33Z",
+  "via": "Claude Code · anna-hovhan/design-assistant",
+  "note": "Placeholder example: a sample name (Orbit: Field service platform) replaces the earlier brand example"
  }
 }
