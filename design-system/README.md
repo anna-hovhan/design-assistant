@@ -64,6 +64,10 @@ Not sure which? `/visual-brief` picks the format from a description. Pages are b
 
 In Claude Code, the design-assistant repo makes them: its commands and generators follow this system, and each asset is written to `out/<slug>.<ext>` and looked at before it is shared. Anywhere else in Claude, build to this README and the cards, with the tokens and fonts of this system.
 
+## Example names
+
+All names in the examples and previews of this system, such as "Orbit: Field service platform", are fictitious and only illustrate how a format works. Any resemblance to an actual company, organization, product, project or person is coincidental and implies no affiliation, sponsorship or endorsement.
+
 ## Not synced
 
 - **Two text inks in the source.** `docs/brand.md` and the explainer use `#0b1033` for text (`text`); `AGENTS.md`'s light-background rule names ink `#0b1132`. This system follows `brand.md`.

@@ -41,7 +41,7 @@ npm run design -- placeholder "My AI operating system" os.png --label=OS
 ```
 In Claude Code: `/placeholder "Orbit: Field service platform"`.
 
-The label comes from the name: a short prefix before a colon (`ASICS: ...` gives ASICS), else a leading acronym (`ML ...` gives ML),
+The label comes from the name: a short prefix before a colon (`Atlas: ...` gives ATLAS), else a leading acronym (`ML ...` gives ML),
 else the initials of the first two main words. `--label` overrides it. PNG output needs `npx playwright install chromium`.
 
 ### architecture
@@ -76,6 +76,12 @@ See `AGENTS.md`.
 ## Reference templates
 `templates/concepts/three-column-flow.html` is a generic conceptual-diagram layout (two sources, one combined result, a loop line and a numbered setup row). Copy it and replace the `[BRACKETED]` text to make an explainer, one-pager hero or concept diagram.
 `templates/mermaid/` holds generic Mermaid sources: `layered-system-map.mmd` (inputs, engine, outputs and promotion layers) and `dependency-chain.mmd` (a "depends on" chain row). Render with `npx -p @mermaid-js/mermaid-cli mmdc -i <file>.mmd -o out/<name>.svg`.
+
+## Example names and trademarks
+
+All names used in this repository's examples, templates, tests and documentation, such as "Orbit: Field service platform" and "Atlas", are fictitious and are used only to illustrate how the tools work. Any resemblance to an actual company, organization, product, project or person is purely coincidental, and nothing here implies any affiliation with, or sponsorship or endorsement by, any of them.
+
+Claude Code, Google Fonts, Playwright, Mermaid and the other third-party products named in this repository are trademarks of their respective owners. They are named only to describe how this tool works with them.
 
 ## License
 
