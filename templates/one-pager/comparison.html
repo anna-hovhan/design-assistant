@@ -1,0 +1,144 @@
+<!doctype html>
+<!--
+  One-pager: a comparison of two things, A4, light ground (docs/brand.md).
+  Copy it to out/<slug>.html and replace every [BRACKETED] slot; delete a row, an item or a card you don't need.
+
+  Layout: a header band (the one accent gradient, white Syne title, one accent word in aqua), then two columns (60/40).
+  Left:  a row-by-row table of the two sides, a list of what side A holds, and a list of what side B holds,
+         grouped with counts and a total.
+  Right: the key number, "why both" (what goes wrong with only one side), and what the two share.
+  Footer: a link and a date.
+
+  Rules: it must fit exactly one page and read in 30 seconds. Body text stays at 10pt or more; if it overflows,
+  cut words before shrinking type. Only the small mono labels go below 10pt. No pink (the consistency test checks).
+  Check it: Playwright PDF with page.pdf({ preferCSSPageSize: true, printBackground: true }) must be one page;
+  a PNG for a README is a screenshot of .sheet at deviceScaleFactor 2 (1588 x 2246).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[A] and [B]</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+:root{--ink:#0b1033;--muted:#5b6082;--page:#f6f7fd;--primary:#2e3cff;--dream:#8271c6;--peri:#99a5ff;--aqua:#60e7f0;--butter:#ffe7a3}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--page)}
+body{color:var(--ink);font:400 10pt/1.4 Manrope,system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:210mm;height:297mm;margin:0 auto;display:flex;flex-direction:column;background:linear-gradient(135deg,#f6f7fd,#eef1fe 55%,#dfe6ff);overflow:hidden}
+.band{flex-shrink:0;background:linear-gradient(135deg,#0b1560,#2f3dff);color:#fff;padding:12mm 15mm 9mm;position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;width:120mm;height:120mm;right:-40mm;top:-60mm;border-radius:50%;background:radial-gradient(circle,rgba(96,231,240,.22),transparent 65%)}
+.eyebrow{font:500 8pt/1 "JetBrains Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:#99a5ff;margin-bottom:4mm}
+h1{font:800 25pt/1.05 Syne,sans-serif;letter-spacing:-.01em}
+h1 .accent{color:var(--aqua)}
+.sub{margin-top:3mm;font-size:10.5pt;color:rgba(255,255,255,.88);max-width:160mm}
+.body{flex:1;display:grid;grid-template-columns:60fr 40fr;gap:6mm;padding:7mm 15mm 0}
+h2{font:800 11.5pt/1.2 Syne,sans-serif;margin:5mm 0 2.5mm}
+.col > h2:first-child{margin-top:0}
+.lbl{font:500 7.5pt/1 "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--dream)}
+.panel{background:rgba(255,255,255,.7);border:1px solid #fff;border-radius:5mm;box-shadow:0 3mm 8mm rgba(46,60,255,.08)}
+table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden}
+th,td{text-align:left;vertical-align:top;padding:2.1mm 2.8mm;font-size:10pt;line-height:1.32}
+thead th{font:500 7.5pt/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);padding-top:3mm;border-bottom:1.5px solid var(--peri)}
+tbody th{font:600 10pt/1.3 Manrope,sans-serif;color:var(--ink);width:19%}
+tbody td{color:var(--muted)}
+tbody tr+tr th,tbody tr+tr td{border-top:1px solid rgba(153,165,255,.35)}
+td b{color:var(--ink);font-weight:600}
+code{font:500 .9em "JetBrains Mono",monospace;color:var(--primary);white-space:nowrap}
+.items{list-style:none;padding:0}
+.items li{display:grid;grid-template-columns:1fr auto;gap:3mm;align-items:baseline;padding:2mm 3mm;font-size:10pt;line-height:1.3}
+.items li+li{border-top:1px solid rgba(153,165,255,.35)}
+.items .what{color:var(--muted)}
+.items .what b{display:block;color:var(--ink);font-weight:600}
+.items .n{font:500 10pt/1 "JetBrains Mono",monospace;color:var(--primary)}
+.items .total{font-weight:600;color:var(--ink)}
+.key{background:#fff;border:1.5px solid var(--primary);border-radius:5mm;padding:4mm 4.5mm}
+.key .big{font:800 30pt/1 Syne,sans-serif;color:var(--primary);white-space:nowrap}
+.key .big span{font-size:17pt;color:var(--ink)}
+.key p{margin-top:2mm;font-size:10pt;color:var(--muted)}
+.card{padding:3.2mm 3.8mm}
+.card+.card{margin-top:2.5mm}
+.card h3{font:600 10pt/1.3 Manrope,sans-serif;margin:1.5mm 0 1mm}
+.card p{font-size:10pt;color:var(--muted);line-height:1.36}
+.share{list-style:none;padding:0;display:grid;gap:2.5mm}
+.share li{padding:2.6mm 3.6mm;font-size:10pt;color:var(--muted);line-height:1.36}
+.share li b{display:block;color:var(--ink);font-weight:600;margin-bottom:.6mm}
+.foot{display:flex;justify-content:space-between;padding:4mm 15mm 7mm;font:500 7.5pt/1 "JetBrains Mono",monospace;letter-spacing:.08em;color:var(--muted)}
+@media screen and (max-width:700px){
+  .sheet{width:auto;height:auto}
+  .body{grid-template-columns:1fr;padding:6mm}
+  .band{padding:8mm 6mm}
+  code{white-space:normal;word-break:break-all}
+}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="band">
+    <div class="eyebrow">[PROJECT] · [WHAT THIS PAGE COMPARES]</div>
+    <h1>[Side A] and <span class="accent">[side B]</span></h1>
+    <p class="sub">[One sentence: how the two differ, and why the reader needs both.]</p>
+  </header>
+
+  <div class="body">
+    <section class="col">
+      <div class="panel">
+        <table>
+          <thead><tr><th></th><th>[Side A]</th><th>[Side B]</th></tr></thead>
+          <tbody>
+            <tr><th>[Answers]</th><td><b>[the question A answers]</b></td><td><b>[the question B answers]</b></td></tr>
+            <tr><th>[Used when]</th><td>[when A is used]</td><td>[when B is used]</td></tr>
+            <tr><th>[Made by]</th><td>[who or what makes A]</td><td>[who or what makes B]</td></tr>
+            <tr><th>[Decides]</th><td>[what A decides]</td><td>[what B decides]</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>[The side A items]</h2>
+      <ul class="items panel">
+        <li><span class="what"><b><code>[item one]</code></b>[what it covers]</span></li>
+        <li><span class="what"><b><code>[item two]</code></b>[what it covers]</span></li>
+      </ul>
+
+      <h2>[The side B items, by group]</h2>
+      <ul class="items panel">
+        <li><span class="what"><b>[group one]</b>[what it holds]</span><span class="n">[n]</span></li>
+        <li><span class="what"><b>[group two]</b>[what it holds]</span><span class="n">[n]</span></li>
+        <li><span class="what"><b>[group three]</b>[what it holds]</span><span class="n">[n]</span></li>
+        <li><span class="what total">[All of them]</span><span class="n">[total]</span></li>
+      </ul>
+    </section>
+
+    <aside class="col">
+      <div class="key">
+        <div class="lbl">[THE KEY NUMBER]</div>
+        <div class="big">[n] <span>of [total]</span></div>
+        <p>[One sentence on what the number means.]</p>
+      </div>
+
+      <h2>Why both</h2>
+      <div class="panel card">
+        <div class="lbl">With only [side B]</div>
+        <h3>[What would go wrong]</h3>
+        <p>[One or two sentences, with a concrete case.]</p>
+      </div>
+      <div class="panel card">
+        <div class="lbl">With only [side A]</div>
+        <h3>[What would go wrong]</h3>
+        <p>[One or two sentences, with a concrete case.]</p>
+      </div>
+
+      <h2>What they share</h2>
+      <ul class="share">
+        <li class="panel"><b>[Shared thing one]</b>[one line]</li>
+        <li class="panel"><b>[Shared thing two]</b>[one line]</li>
+        <li class="panel"><b>[Shared thing three]</b>[one line]</li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer class="foot"><span>[link]</span><span>[date]</span></footer>
+</main>
+</body>
+</html>

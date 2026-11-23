@@ -29,7 +29,7 @@ Start from `/visual-brief` when the user describes content but not a format. The
 | Line-art cover image (1200x720) for a project card, an article or a post outside the site | `/card-illustration` | Ground: `docs/brand.md` and the command. Follow the safe area in the command. Examples in `templates/thumbnail-illustrations/` (`b/` line art, `final/` chosen for the site), but follow the command, not the old files. |
 | Slide, hero, LinkedIn cover or social hero (1920x1080) | Copy `templates/blue-backgrounds/hero-slide.html` and set `data-bg` | Ground: `docs/brand.md` (the template starts on the primary one). Export with Playwright at 1920x1080. |
 | One idea taught visually (scroll, slides or poster) | `/explainer` | Ground: `docs/brand.md`. |
-| Printable brief, case study or leave-behind | `/one-pager` | Ground: `docs/brand.md`. |
+| Printable brief, case study or leave-behind | `/one-pager` | Ground: `docs/brand.md`. A comparison of two things starts from `templates/one-pager/comparison.html` (`--type=comparison`). |
 | Anything repeatable that does not exist yet | Add a generator (see top of this file) | Deterministic, dependency-free, with a test. Check `ROADMAP.md` first. |
 
 Rules for choosing:
