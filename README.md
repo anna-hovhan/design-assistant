@@ -20,14 +20,18 @@ Generators write dependency-free SVG with text drawn as outlines from the brand 
 ## What it does
 One line in, one on-brand asset out. Six commands share one set of brand rules (`docs/brand.md`): code generators draw the repeatable shapes, and Claude draws the rest to the same rules.
 
-[![design-assistant at a glance: the problem, the five commands and who draws what, three steps, and a /placeholder example](docs/design-assistant-card.png)](docs/design-assistant-explainer.html)
+[![design-assistant at a glance: the problem, the six commands and who draws what, three steps, and a /placeholder example](docs/design-assistant-card.png)](docs/design-assistant-explainer.html)
 
 Open [`docs/design-assistant-explainer.html`](docs/design-assistant-explainer.html) in a browser for the full page.
 
 ## Design system
 The same style is the Design System **AH Visuals** in Claude, for decks, designs and pages made there. Its source is `design-system/`; how it is published and kept in step: `docs/design-system.md`. It covers everything outside annahovhannisyan.com, which has its own design system in the Portfolio repo.
 
-## Generators
+## Commands
+
+### visual-brief
+Start here when you know the content but not the format. Claude recommends the one visual that fits (an architecture diagram, an explainer, a one-pager, a card illustration or a placeholder), says why in two sentences, and runs that command once you agree.
+In Claude Code: `/visual-brief "How Atlas routes support tickets, for new team members"`.
 
 ### placeholder
 A gradient card with the name's initials or acronym drawn as thin outlined lettering (Syne ExtraBold),
@@ -64,8 +68,17 @@ Claude draws a 1200x720 SVG cover for a project card, an article or a post: whit
 The command keeps the subject inside the part of the card that stays visible (above the glass text panel, clear of the corner badges, inside the phone crop).
 In Claude Code: `/card-illustration "GTM Engine: one shared AI skill library for GTM teams"` or `/card-illustration "Company Brain" --style=recolor --source=old.svg`. Examples: `templates/thumbnail-illustrations/`.
 
+### explainer
+Claude builds one self-contained HTML page that teaches one idea, as a scroll page, slides with arrow-key navigation, or a 1200x1600 poster. A poster can be exported to PNG, and any explainer to PDF, with Playwright. Statistics and quotes it has no source for are marked `[TODO: source]`, never invented.
+In Claude Code: `/explainer "How the placeholder picks its colours"` or `/explainer "<idea>" --format=poster --audience=designers`. `docs/design-assistant-explainer.html` is a scroll explainer.
+
+### one-pager
+Claude builds a one-page brief as print-ready HTML (A4 or Letter) and exports a PDF with Playwright, checking that it fits exactly one page. Types: case study, project brief, proposal, profile and comparison, which starts from `templates/one-pager/comparison.html`. Facts it still needs are marked `[TODO]`.
+In Claude Code: `/one-pager "Orbit: Field service platform" --type=project-brief` or `/one-pager "<subject>" --type=comparison --size=letter`.
+
 ## Templates
 `templates/architecture/` holds architecture specs. `templates/blue-backgrounds/` holds the hero slide template (1920x1080) with its six grounds, light (the primary one) and five dark blues, and a PNG preview of each.
+`templates/thumbnail-illustrations/` holds example card illustrations: white line art (`b/`), a version on the light ground (`light/`) and the one chosen for the site (`final/`); follow `/card-illustration`, not these files, for placement and stroke width. `templates/art/` holds conceptual cover art, each piece with a reference image and a deterministic `generate.mjs`. `templates/one-pager/` and `templates/mermaid/` are described under Reference templates below.
 
 ## Ideas
 See `ROADMAP.md` for the commands and skills to add next.

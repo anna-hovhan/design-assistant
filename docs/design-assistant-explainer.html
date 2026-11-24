@@ -30,7 +30,7 @@ code{font:500 14px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9ec
 .ex{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;margin-top:36px}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
 .chips span{font:500 14px 'JetBrains Mono',monospace;background:#fff;border:1.5px solid var(--peri);border-radius:999px;padding:8px 16px}
-.row.five{display:grid;grid-template-columns:repeat(5,1fr)}
+.row.six{display:grid;grid-template-columns:repeat(3,1fr)}
 .ex>svg{border-radius:30px}
 .arch{margin-top:36px;display:grid;gap:12px}
 .layer{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:18px 22px}
@@ -46,8 +46,8 @@ code{font:500 14px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9ec
 .eng small{color:var(--muted);font-size:14px;line-height:1.35;display:block;margin-top:4px}
 .sw{display:flex;gap:6px;align-items:center}.sw i{width:22px;height:22px;border-radius:50%;border:1.5px solid #fff;box-shadow:0 0 0 1px #d8dcf3}
 .down{text-align:center;color:var(--primary);font:500 16px 'JetBrains Mono',monospace;line-height:1}
-@media(max-width:1000px){.row.five{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.row.five{grid-template-columns:1fr}}
+@media(max-width:1000px){.row.six{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.row.six{grid-template-columns:1fr}}
 @media(max-width:760px){.layer{grid-template-columns:1fr;gap:10px}}
 @media(max-width:760px){section{padding:52px 0}.steps,.ex{grid-template-columns:1fr}body{font-size:17px}}
 </style>
@@ -58,7 +58,7 @@ code{font:500 14px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9ec
 <section>
   <div class="tag">design-assistant</div>
   <h1>One line in. One on-brand asset out.</h1>
-  <p class="lead">A personal tool that draws tiles and diagrams in the portfolio's look, from the command line or from Claude Code.</p>
+  <p class="lead">A personal tool that draws tiles, diagrams, covers, explainers and one-pagers in one brand style, from the command line or from Claude Code.</p>
   <div class="visual card">
     <svg viewBox="0 0 680 140" role="img" aria-label="A request line flows into a gradient tile">
       <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3cff"/><stop offset="1" stop-color="#4fd8f0"/></linearGradient></defs>
@@ -87,22 +87,23 @@ code{font:500 14px/1.5 'JetBrains Mono',monospace;background:#0b1132;color:#e9ec
 
 <section>
   <div class="tag">The architecture</div>
-  <h2>Five commands, one shared style.</h2>
+  <h2>Six commands, one shared style.</h2>
   <p class="lead">Every command reads the same brand rules. Code generators draw the repeatable shapes; Claude draws the rest.</p>
   <div class="arch">
     <div class="card layer"><b>You ask</b><div class="row"><div class="cmd"><code>npm run design</code><small>CLI</small></div><div class="cmd"><code>/command</code><small>Claude Code slash command</small></div></div></div>
     <div class="down" aria-hidden="true">&#8595;</div>
-    <div class="card layer"><b>5 commands</b><div class="row five">
-      <div class="cmd router"><code>/visual-brief</code><small>Picks the right visual, hands off to the next four</small></div>
+    <div class="card layer"><b>6 commands</b><div class="row six">
+      <div class="cmd router"><code>/visual-brief</code><small>Picks the right visual, hands off to that command</small></div>
       <div class="cmd"><code>/placeholder</code><small>Named cover tile</small></div>
       <div class="cmd"><code>/architecture-diagram</code><small>Layers, flow or context diagram</small></div>
       <div class="cmd"><code>/explainer</code><small>One idea as a scroll, slides or poster</small></div>
       <div class="cmd"><code>/one-pager</code><small>Printable A4 or Letter brief</small></div>
+      <div class="cmd"><code>/card-illustration</code><small>Line-art cover for a card, article or post, 1200 by 720</small></div>
     </div></div>
     <div class="down" aria-hidden="true">&#8595;</div>
     <div class="card layer"><b>Who draws it</b><div class="row">
       <div class="eng code"><strong>Code generators</strong><small>placeholder, architecture (stacked layers). Same input, same SVG.</small></div>
-      <div class="eng hand"><strong>Claude, by the rules</strong><small>Flow and context diagrams, explainers, one-pagers as HTML.</small></div>
+      <div class="eng hand"><strong>Claude, by the rules</strong><small>Flow and context diagrams, explainers and one-pagers as HTML, card illustrations as SVG.</small></div>
     </div></div>
     <div class="down" aria-hidden="true">&#8593;</div>
     <div class="card layer"><b>Brand rules</b><div class="row"><div class="cmd"><code>docs/brand.md</code><small>Gradients, fonts, shapes, contrast</small></div><div class="cmd sw" aria-label="Brand colours"><i style="background:#99a5ff"></i><i style="background:#6fa8ff"></i><i style="background:#ffe7a3"></i><i style="background:#60e7f0"></i><i style="background:#8271c6"></i><i style="background:#2e3cff"></i><i style="background:#0b1132"></i></div></div></div>
