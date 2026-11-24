@@ -14,6 +14,6 @@ Read `$ROOT/AGENTS.md`, then `$ROOT/docs/brand.md` in full. `brand.md` is the on
 
 ## While following a command
 
-- Write to `$ROOT/out/<slug>.<ext>`, or to a piece folder's `visuals/` when personal-content-assistant asked for the image. Never overwrite a file without asking.
+- Write to `$ROOT/out/<slug>.<ext>`, or to a piece folder's `visuals/` when content-ops-harness asked for the image. Never overwrite a file without asking.
 - Render it, look at it at its final size, check the fonts loaded, and state the fonts in the reply.
 - Change the repo only when the user asks. Finished work may go straight to `main` once `npm test` and `npm run typecheck` pass; rebase if `main` moved, never force-push. A change to `design-system/` counts the AH Visuals version up and is published to Claude (`docs/design-system.md`).
